@@ -1,0 +1,24 @@
+import Vue from 'vue';
+import Default from '@/components/Layout/Default.vue';
+import Other from '@/components/Layout/Other.vue';
+import BaseButton from '@/components/Button/BaseButton.vue';
+import ButtonBox from '@/components/ButtonBox/index.vue';
+import TextInput from '@/components/Form/TextInput.vue';
+import RadioInput from '@/components/Form/RadioInput.vue';
+import TextArea from '@/components/Form/TextArea.vue';
+import Select from '@/components/Form/Select.vue';
+import CheckboxInput from '@/components/Form/CheckboxInput.vue';
+import DateInput from '@/components/Form/DateInput.vue';
+import BaseModal from '@/components/Modal/BaseModal.vue';
+
+Vue.component('defaultLayout', Default);
+Vue.component('otherLayout', Other);
+Vue.component('BaseButton', BaseButton);
+Vue.component('ButtonBox', ButtonBox);
+Vue.component('TextInput', TextInput);
+Vue.component('RadioInput', RadioInput);
+Vue.component('TextArea', TextArea);
+Vue.component('Select', Select);
+Vue.component('CheckboxInput', CheckboxInput);
+Vue.component('DateInput', DateInput);
+Vue.component('BaseModal', BaseModal);

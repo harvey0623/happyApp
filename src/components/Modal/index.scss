@@ -1,0 +1,38 @@
+.baseModal {
+   // .modal-content {
+      
+   // }
+   .modal-header,
+   .modal-footer {
+      padding: 15px;
+   }
+   .modal-body {
+      padding: 20px 15px;
+   }
+   .modal-footer {
+      >button, a {
+         min-width: 90px;
+         height: 40px;
+         line-height: 40px;
+      }
+   }
+}
+
+.closeSpan {
+   position: absolute;
+   right: -10px;
+   top: -10px;
+   @include size(28px);
+   line-height: 28px;
+   text-align: center;
+   color: white;
+   background-color: #707070;
+   border-radius: 50%;
+   cursor: pointer;
+}
+
+@media (min-width: 576px) {
+   .modal-dialog {
+      max-width: 450px;
+   }  
+}

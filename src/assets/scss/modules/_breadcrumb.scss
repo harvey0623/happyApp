@@ -1,0 +1,8 @@
+.mybreadcrumb {
+   margin-bottom: 40px;
+   @include pxToRem(16);
+   a {
+      color: map-get($fontColor, primary);
+      @include elGutter(margin-right, 3px);
+   }
+}

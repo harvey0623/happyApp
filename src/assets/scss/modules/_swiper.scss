@@ -1,0 +1,24 @@
+.swiper-slide {
+   img {
+      @extend %imageSize;
+      min-height: 150px;
+      object-fit: cover;
+   }
+}
+
+//====bullet
+.swiper-pagination-bullet-active {
+   background-color: map-get($elBgColor, indicate);
+}
+
+//====progressbar
+.swiper-pagination-progressbar {
+   background-color: #fff;
+}
+
+.swiper-pagination-progressbar {
+   .swiper-pagination-progressbar-fill {
+      background-color: map-get($elBgColor, indicate);
+   }
+} 
+
