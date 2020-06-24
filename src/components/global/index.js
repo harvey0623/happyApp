@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Default from '@/components/Layout/Default.vue';
-import Other from '@/components/Layout/Other.vue';
+import Entrance from '@/components/Layout/Entrance.vue';
 import BaseButton from '@/components/Button/BaseButton.vue';
 import ButtonBox from '@/components/ButtonBox/index.vue';
 import TextInput from '@/components/Form/TextInput.vue';
@@ -12,7 +12,7 @@ import DateInput from '@/components/Form/DateInput.vue';
 import BaseModal from '@/components/Modal/BaseModal.vue';
 
 Vue.component('defaultLayout', Default);
-Vue.component('otherLayout', Other);
+Vue.component('entranceLayout', Entrance);
 Vue.component('BaseButton', BaseButton);
 Vue.component('ButtonBox', ButtonBox);
 Vue.component('TextInput', TextInput);

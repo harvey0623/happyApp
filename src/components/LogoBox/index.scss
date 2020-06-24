@@ -1,0 +1,105 @@
+.logoBox {
+   @extend %centerFlex;
+   flex-direction: column;
+   padding-top: 140px;
+   margin-bottom: 260px;
+}
+
+.flashBox {
+   position: relative;
+   margin-bottom: 30px;
+   >.imgBox {
+      position: relative;
+      @include size(120px);
+      z-index: 2;
+      >img {
+         @include size(100%);
+         border-radius: 50%;
+      }
+   }
+}
+
+.fontLogo {
+   @include size(110px, auto);
+}
+
+.rippleBox {
+   @extend %posCenter;
+   >.ripple {
+      @extend %posCenter;
+      border-radius: 50%;
+      opacity: 0;
+      animation-duration: 3s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      &-inner{
+         @include size(130px);
+         background-color: rgba(#fff, 0.35);
+         animation-name: rippleOne;
+      }
+      &-middle{
+         @include size(145px);
+         background-color: rgba(#fff, 0.25);
+         animation-name: rippleTwo;
+      }
+      &-outer{
+         @include size(160px);
+         background-color: rgba(#fff, 0.18);
+         animation-name: rippleThree;
+      }
+   }
+}
+
+@keyframes rippleOne {
+   0% {
+      opacity: 0;
+   }
+   10% {
+      opacity: 0.5;
+   }
+   30% {
+     opacity: 1; 
+   }
+   80% {
+      opacity: 1;
+   }
+   100% {
+      opacity: 0;
+   }
+}
+
+@keyframes rippleTwo {
+   10% {
+      opacity: 0;
+   }
+   20% {
+      opacity: 0.5;
+   }
+   40% {
+      opacity: 1;
+   }
+   80% {
+      opacity: 1;
+   }
+   100% {
+      opacity: 0;
+   }
+}
+
+@keyframes rippleThree {
+   20% {
+      opacity: 0;
+   }
+   30% {
+      opacity: 0.5;
+   }
+   50% {
+      opacity: 1;
+   }
+   80% {
+      opacity: 1;
+   }
+   100% {
+      opacity: 0;
+   }
+}

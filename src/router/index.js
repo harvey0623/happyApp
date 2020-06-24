@@ -1,27 +1,27 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import i18n from '@/plugins/i18n/index.js';
-import Home from '@/views/home/index.vue';
-import Contact from '@/views/contact/index.vue';
+// import Home from '@/views/home/index.vue';
+import Entrance from '@/views/entrance/index.vue';
 Vue.use(VueRouter);
 
 const routes = [
 	{
 		path: '/',
-		name: 'home',
-		component: Home,
+		name: 'entrance',
+		component: Entrance,
 		meta: {
-			
-		},
-	},
-	{
-		path: '/contact',
-		name: 'contact',
-		component: Contact,
-		meta: {
-			
+			layout: 'entranceLayout'
 		}
 	},
+	// {
+	// 	path: '/',
+	// 	name: 'home',
+	// 	component: Home,
+	// 	meta: {
+			
+	// 	},
+	// },
 	{
 		path: '*',
 		redirect: '/'

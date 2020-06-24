@@ -1,9 +1,9 @@
 $normalArr: 
-   (btnSearch, white, map-get($btnBgColor, search), none),
+   (btnLogin, map-get($fontColor, primary), #fff, none),
 ;
 
 $outlineArr: 
-   (outline-main, 1px, black, white, orange),
+   (outline-signIn, 1px, #fff, transparent, #fff),
 ;
 
 
@@ -15,8 +15,8 @@ $outlineArr:
 }
 
 //線條外框
-// @each $class, $bdWidth, $color, $bgColor, $bdColor in $outlineArr {
-//    .#{$class} {
-//       @include outlineBtn($bdWidth, $color, $bgColor, $bdColor);
-//    }
-// }
+@each $class, $bdWidth, $color, $bgColor, $bdColor in $outlineArr {
+   .#{$class} {
+      @include outlineBtn($bdWidth, $color, $bgColor, $bdColor);
+   }
+}

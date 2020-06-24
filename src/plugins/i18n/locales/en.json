@@ -2,6 +2,9 @@
    "seo": {
       "home": {
          "title": "Home"
+      },
+      "entrance": {
+         "title": "Entrance"
       }
    },
    "validate": {

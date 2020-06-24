@@ -2,6 +2,9 @@
    "seo": {
       "home": {
          "title": "首頁"
+      },
+      "entrance": {
+         "title": "入口"
       }
    },
    "validate": {

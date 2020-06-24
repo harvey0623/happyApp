@@ -14,7 +14,6 @@ import '@/filter/index.js';
 
 //===plugin
 import '@/plugins/bootstrap/index.js';
-import '@/plugins/tweenmax/index.js';
 
 
 Vue.config.productionTip = false;
