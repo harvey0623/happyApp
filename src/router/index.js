@@ -19,7 +19,7 @@ const routes = [
 	// 	name: 'home',
 	// 	component: Home,
 	// 	meta: {
-			
+
 	// 	},
 	// },
 	{
@@ -45,6 +45,12 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+	// if (to.matched.some(record => record.meta.requiresAuth)) {
+		
+	// } else {
+	// 	return next();
+	// }
+
 	return next();
 });
 
