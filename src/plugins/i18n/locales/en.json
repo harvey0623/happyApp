@@ -5,6 +5,9 @@
       },
       "entrance": {
          "title": "Entrance"
+      },
+      "login": {
+         "title": "login"
       }
    },
    "validate": {

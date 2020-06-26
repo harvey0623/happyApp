@@ -5,6 +5,9 @@
       },
       "entrance": {
          "title": "入口"
+      },
+      "login": {
+         "title": "登入"
       }
    },
    "validate": {

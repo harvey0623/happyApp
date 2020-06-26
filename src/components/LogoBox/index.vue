@@ -1,5 +1,5 @@
 <template>
-<div class="logoBox">
+<div class="logoBox" :class="{ small: isSmall }">
    <div class="flashBox">
       <div class="imgBox">
          <img :src="require('@/assets/img/logo.png')">
@@ -16,7 +16,12 @@
 
 <script>
 export default {
-   
+   props: {
+      isSmall: {
+         type: Boolean,
+         default: false
+      }
+   }
 }
 </script>
 

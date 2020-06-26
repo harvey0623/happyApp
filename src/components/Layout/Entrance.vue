@@ -1,5 +1,11 @@
 <template>
 <div class="entranceLayout">
+	<div class="backBox" v-if="showBack">
+		<i 
+			class="fal fa-long-arrow-left"
+			@click="backHandler">
+		</i>
+	</div>
 	<slot></slot>
 </div>
 </template>
@@ -7,13 +13,15 @@
 <script>
 export default {
 	computed: {
-		
+		showBack() {
+			let routeName = this.$route.name;
+			return routeName !== 'entrance';
+		}
 	},
-	mounted() {
-		
-	},
-   components: {
-
+	methods: {
+		backHandler() {
+			this.$router.back();
+		}
 	}
 }
 </script>
@@ -26,4 +34,11 @@ export default {
 	background-position: center center;
 	background-repeat: no-repeat;
 }
+
+.backBox {
+	padding: 5px 15px 0;
+	color: #fff;
+	font-size: 30px;
+}
+
 </style>

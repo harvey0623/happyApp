@@ -103,3 +103,20 @@
       opacity: 0;
    }
 }
+
+.logoBox.small {
+   padding-top: 35px;
+   margin-bottom: 50px;
+   .flashBox {
+      margin-bottom: 10px;
+      >.imgBox {
+         @include size(75px);
+      }
+   }
+   .fontLogo {
+      width: 64px;
+   }
+   .rippleBox {
+      display: none;
+   }
+}
