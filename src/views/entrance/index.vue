@@ -35,11 +35,15 @@ export default {
       @include size(100%, 42px);
       @include elGutter(margin-bottom, 15px);
       font-weight: bold;
-      &.btnLogin {
-         line-height: 42px;
-      }
-      &.outline-signIn {
-         line-height: 40px;
+   }
+   .btnLogin {
+      line-height: 42px;
+   }
+   .outline-signIn {
+      line-height: 40px;
+      &:focus,
+      &:hover {
+         color: #fff;
       }
    }
 }
