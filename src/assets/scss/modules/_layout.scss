@@ -10,47 +10,13 @@
    >.formRow {
       @extend %clearFix;
       @include elGutter(margin-bottom, 25px);
-      >* {
-         float: left;
-      }
       >.formTitle {
-         width: 70px;
-         padding-top: 10px;
-         text-align: center;
+         margin-bottom: 10px;
+         font-size: 14px;
+         color: map-get($fontColor, form);
       }
       >.formContent {
-         width: calc(100% - 70px);
-      }
-   }
-   &.vertical {
-      >.formRow {
-         >* {
-            float: none;
-         }
-         >.formTitle {
-            width: 100%;
-            padding-top: 0px;
-            margin-bottom: 10px;
-            text-align: left;
-         }
-         >.formContent {
-            width: 100%;
-         }
-      }
-   }
-   &.flex {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      >.formRow {
-         margin-right: 15px;
-         margin-bottom: 0;
-         >.formContent {
-            width: 180px;
-            .form-control {
-               height: 40px;
-            }
-         }
+         
       }
    }
 }

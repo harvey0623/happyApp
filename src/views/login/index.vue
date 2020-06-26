@@ -4,8 +4,16 @@
    <div class="mycontainer authBox">
       <h1 class="authTitle">會員登入</h1>
       <div class="authBody">
-         <div class="authForm">
-            
+         <div class="formLayout authForm">
+            <div class="formRow">
+               <div class="formTitle">密碼</div>
+               <div class="formContent">
+                  <input 
+                     type="password" 
+                     class="myInput" 
+                     placeholder="請輸入密碼">
+               </div>
+            </div>
          </div>
       </div>
    </div>

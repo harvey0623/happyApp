@@ -1,44 +1,15 @@
-%style {
-   border: 1px solid map-get($borderColor, primary);
-   border-radius: map-get($radius, basic);
-}
-
-//=====checkbox or radio
-.customRadio {
-   @extend %resetForm;
-   @include size(16px);
-   margin-right: 5px;
-	background-color: #fff;
-	border: 1px solid map-get($borderColor, primary);
-   cursor: pointer;
-   &:checked {
-      background-color: map-get($elBgColor, primary);
-   }
-}
-
-//======input
 .myInput {
-   @extend %style;
+   position: relative;
+   display: block;
+   @include size(100%, 30px);
+   color: map-get($fontColor, form);
+   border-width: 0 0 1px 0;
+   border-color: map-get($borderColor, primary);
    &::placeholder {
-      @include pxToRem(16);
+      color: map-get($fontColor, placeholder);
+      font-size: 14px;
    }
-}
-
-//====select
-.mySelect {
-   @extend %style;
-}
-
-//=====textArea
-textArea {
-   resize: none;
-   min-height: 150px;
-}
-
-input[type=checkbox],
-input[type=radio] {
-   @include size(18px);
-   transform: translateY(2px);
-   margin-right: 3px;
-   cursor: pointer;
+   &:focus {
+      outline: none;
+   }
 }
