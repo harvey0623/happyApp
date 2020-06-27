@@ -1,0 +1,23 @@
+$color: map-get($fontColor, form);
+
+.settingBox {
+   @extend %bwtFlex;
+   margin-top: 25px;
+   margin-bottom: -15px;
+   font-size: 14px;
+   color: $color;
+   >a {
+      color: $color;
+   }
+}
+
+.luckyTip {
+   text-align: center;
+   color: #fff;
+   margin-top: 50px;
+   >a {
+      color: #fff;
+      text-decoration: underline;
+      margin-left: 5px;
+   }
+}

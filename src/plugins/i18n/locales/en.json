@@ -13,7 +13,8 @@
    "validate": {
       "required": "required",
       "email": "email format error",
-      "mobile": "mobile format error",
+      "mobileTw": "taiwan mobile format error",
+      "mobileCn": "china mobile format error",
       "password": "password format error",
       "pwNotEqual": "password is different",
       "taiwanId": "taiwanId format error"

@@ -19,9 +19,16 @@ export default {
          message: i18n.t('validate.email')
       });
 
-      extend('mobile', {
-         message: i18n.t('validate.mobile'),
+      extend('mobileTw', {
+         message: i18n.t('validate.mobileTw'),
          validate: value => value.length === 10 && /^09\d{8}$/.test(value)
+      });
+
+      extend('mobileCn', {
+         message: i18n.t('validate.mobileCn'),
+         validate(value) {
+            return /^1(3|4|5|7|8)\d{9}$/.test(value);
+         }
       });
 
       extend('password', {

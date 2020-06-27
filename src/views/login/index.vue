@@ -4,7 +4,7 @@
    <div class="mycontainer authBox">
       <h1 class="authTitle">會員登入</h1>
       <div class="authBody">
-         <div class="formLayout authForm">
+         <ValidationObserver tag="div" class="formLayout authForm" ref="form">
             <div class="formRow">
                <div class="formTitle">帳號</div>
                <div class="formContent phoneContent">
@@ -13,24 +13,38 @@
                         {{ item }}
                      </option>
                   </select>
-                  <input 
-                     type="text" 
-                     class="myInput" 
-                     placeholder="請輸入手機號碼"
-                     v-model="user.phone">
+                  <ValidationProvider 
+                     class="outer" tag="div" 
+                     :rules="`required|${phoneRule}`" v-slot="{ errors }"> 
+                     <input 
+                        type="text" 
+                        class="myInput" 
+                        placeholder="請輸入手機號碼"
+                        v-model="user.phone">
+                     <span 
+                        class="validate-error" 
+                        v-show="errors.length !== 0"
+                     >{{ errors[0] }}</span>
+                  </ValidationProvider>
                </div>
             </div>
             <div class="formRow">
                <div class="formTitle">密碼</div>
-               <div class="formContent">
+               <ValidationProvider 
+                  class="formContent" tag="div" 
+                  rules="required|password" v-slot="{ errors }">
                   <input 
                      type="password" 
                      class="myInput" 
                      placeholder="請輸入密碼"
                      v-model="user.password">
-               </div>
+                  <span 
+                     class="validate-error"
+                     v-show="errors.length !== 0"
+                  >{{ errors[0] }}</span>
+               </ValidationProvider >
             </div>
-         </div>
+         </ValidationObserver>
          <div class="settingBox">
             <label>
                <input type="checkbox" class="keepCheckbox" v-model="user.keep">
@@ -67,9 +81,16 @@ export default {
          keep: false
       }
    }),
+   computed: {
+      phoneRule() {
+         let ruleObj = { '+886': 'mobileTw', '+86': 'mobileCn' };
+         return ruleObj[this.code];
+      }
+   },
    methods: {
-      loginHandler() {
-         
+      async loginHandler() {
+         let isValid = await this.$refs.form.validate().then(res => res);
+         if (!isValid) return;
       }
    },
    components: {
@@ -78,28 +99,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-$color: map-get($fontColor, form);
-
-.settingBox {
-   @extend %bwtFlex;
-   margin-top: 25px;
-   margin-bottom: -15px;
-   font-size: 14px;
-   color: $color;
-   >a {
-      color: $color;
-   }
-}
-
-.luckyTip {
-   text-align: center;
-   color: #fff;
-   margin-top: 50px;
-   >a {
-      color: #fff;
-      text-decoration: underline;
-      margin-left: 5px;
-   }
-}
-</style>
+<style lang="scss" src="./index.scss"></style>
