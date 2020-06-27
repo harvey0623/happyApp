@@ -1,6 +1,7 @@
 $checkBdColor: map-get($borderColor, check);
 
-input {
+input,
+select {
    &:checked,
    &:focus {
       outline: none;

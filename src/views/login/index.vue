@@ -8,10 +8,16 @@
             <div class="formRow">
                <div class="formTitle">帳號</div>
                <div class="formContent phoneContent">
-                  <select class="myInput">
-                     <option value="886">+886</option>
+                  <select class="myInput" v-model="code">
+                     <option v-for="item in areaCode" :key="item" :value="item">
+                        {{ item }}
+                     </option>
                   </select>
-                  <input type="text" class="myInput" placeholder="請輸入手機號碼">
+                  <input 
+                     type="text" 
+                     class="myInput" 
+                     placeholder="請輸入手機號碼"
+                     v-model="user.phone">
                </div>
             </div>
             <div class="formRow">
@@ -20,19 +26,20 @@
                   <input 
                      type="password" 
                      class="myInput" 
-                     placeholder="請輸入密碼">
+                     placeholder="請輸入密碼"
+                     v-model="user.password">
                </div>
             </div>
          </div>
          <div class="settingBox">
             <label>
-               <input type="checkbox" class="keepCheckbox">
+               <input type="checkbox" class="keepCheckbox" v-model="user.keep">
                <span>記住我</span>
             </label>
             <router-link to="/">忘記密碼?</router-link>
          </div>
          <div class="btnBox center">
-            <button class="btnAuth">登入</button>
+            <button class="btnAuth" @click="loginHandler">登入</button>
          </div>
       </div>
       <div class="luckyTip">
@@ -49,6 +56,20 @@ export default {
    metaInfo() {
       return { 
          title: this.$i18n.t('seo.login.title'),
+      }
+   },
+   data: () => ({
+      areaCode: ['+886', '+86'],
+      code: '+886',
+      user: {
+         phone: '',
+         password: '',
+         keep: false
+      }
+   }),
+   methods: {
+      loginHandler() {
+         
       }
    },
    components: {

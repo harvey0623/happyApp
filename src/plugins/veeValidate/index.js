@@ -28,7 +28,7 @@ export default {
          message: i18n.t('validate.password'),
          validate(value) {
             let valueLength = value.length;
-            return valueLength >= 8 && valueLength <= 20;
+            return valueLength >= 6 && valueLength <= 20;
          }
       });
 
