@@ -35,6 +35,10 @@
             <button class="btnAuth">登入</button>
          </div>
       </div>
+      <div class="luckyTip">
+         還沒有家幸福帳號? 
+         <router-link to="/">立即註冊</router-link>
+      </div>
    </div>
 </div>
 </template>
@@ -55,14 +59,26 @@ export default {
 
 <style lang="scss">
 $color: map-get($fontColor, form);
+
 .settingBox {
    @extend %bwtFlex;
    margin-top: 25px;
-   margin-bottom: 0;
+   margin-bottom: -15px;
    font-size: 14px;
    color: $color;
    >a {
       color: $color;
+   }
+}
+
+.luckyTip {
+   text-align: center;
+   color: #fff;
+   margin-top: 50px;
+   >a {
+      color: #fff;
+      text-decoration: underline;
+      margin-left: 5px;
    }
 }
 </style>

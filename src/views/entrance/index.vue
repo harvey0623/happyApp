@@ -23,10 +23,6 @@ export default {
 </script>
 
 <style lang="scss">
-.entrance {
-   padding-bottom: 30px;
-}
-
 .directBox {
    max-width: 280px;
    margin: 0 auto;

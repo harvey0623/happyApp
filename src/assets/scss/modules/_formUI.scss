@@ -36,7 +36,7 @@ input {
       border: 1px solid transparent; 
       border-bottom-color: $checkBdColor;
       border-right-color: $checkBdColor;
-      transform: translateY(-1px) rotate(45deg);
+      transform: translateY(-1.5px) rotate(45deg);
       opacity: 0;
    }
    &:checked {
