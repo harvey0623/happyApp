@@ -1,4 +1,6 @@
 //=======variable
+$buttonHeight: 42px;
+
 //圓角
 $radius: (
 	basic: 5px,
@@ -18,12 +20,13 @@ $elBgColor: (
 
 //按鈕背景色
 $btnBgColor:(
-   
+   auth: #BAD6C8,
 );
 
 //邊框顏色
 $borderColor: (
-   primary: #707070
+   primary: #d4cece,
+   check: #FA5870
 );
 
 //======extand

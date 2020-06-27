@@ -1,3 +1,12 @@
+$checkBdColor: map-get($borderColor, check);
+
+input {
+   &:checked,
+   &:focus {
+      outline: none;
+   }
+}
+
 .myInput {
    position: relative;
    display: block;
@@ -9,7 +18,30 @@
       color: map-get($fontColor, placeholder);
       font-size: 14px;
    }
-   &:focus {
-      outline: none;
+}
+
+.keepCheckbox {
+   display: inline-flex;
+   @extend %resetForm;
+   @include size(18px);
+   margin-right: 5px;
+   border: 1px solid #D6D6D8;
+   vertical-align: middle;
+   transform: translateY(-2px);
+   &:after {
+      content: '';
+      display: block;
+      margin: auto;
+      @include size(6px, 12px);
+      border: 1px solid transparent; 
+      border-bottom-color: $checkBdColor;
+      border-right-color: $checkBdColor;
+      transform: translateY(-1px) rotate(45deg);
+      opacity: 0;
+   }
+   &:checked {
+      &:after {
+         opacity: 1;
+      }
    }
 }

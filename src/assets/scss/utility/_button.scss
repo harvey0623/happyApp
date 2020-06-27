@@ -1,8 +1,7 @@
 %button {
-   @include size(auto);
-   line-height: initial;
-   padding-left: 10px;
-   padding-right: 10px;
+   height: $buttonHeight;
+   line-height: $buttonHeight;
+   padding: 0 10px;
    border-radius: 20px;
    text-align: center;
    >span {

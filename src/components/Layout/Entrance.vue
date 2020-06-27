@@ -29,6 +29,7 @@ export default {
 <style>
 .entranceLayout {
 	min-height: 100vh;
+	padding-bottom: 40px;
 	background-image: url("~@/assets/img/bg.png");
 	background-size: cover;
 	background-position: center center;

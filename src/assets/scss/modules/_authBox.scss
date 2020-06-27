@@ -7,9 +7,26 @@
       font-weight: bold;
    }
    >.authBody {
-      min-height: 150px;
       padding: 25px 20px;
       background-color: #fff;
       border-radius: 15px;
+   }
+   .btnBox {
+      transform: translateY(45px);
+      >.btnAuth {
+         width: 220px;
+      }
+   }
+}
+
+.phoneContent {
+   display: flex;
+   align-items: center;
+   >select {
+      flex: 0 0 80px;
+      margin-right: 15px;
+   }
+   >input {
+      flex: 1;
    }
 }

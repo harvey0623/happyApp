@@ -32,12 +32,9 @@ export default {
    margin: 0 auto;
    >a {
       display: block;
-      @include size(100%, 42px);
+      @include size(100%, $buttonHeight);
       @include elGutter(margin-bottom, 15px);
       font-weight: bold;
-   }
-   .btnLogin {
-      line-height: 42px;
    }
    .outline-signIn {
       line-height: 40px;
