@@ -4,6 +4,7 @@ import i18n from '@/plugins/i18n/index.js';
 import Home from '@/views/home/index.vue';
 import Entrance from '@/views/entrance/index.vue';
 import Login from '@/views/login/index.vue';
+import Register from '@/views/register/index.vue';
 Vue.use(VueRouter);
 
 const routes = [
@@ -27,6 +28,14 @@ const routes = [
 		path: '/login',
 		name: 'login',
 		component: Login,
+		meta: {
+			layout: 'entranceLayout'
+		}
+	},
+	{
+		path: '/register',
+		name: 'register',
+		component: Register,
 		meta: {
 			layout: 'entranceLayout'
 		}

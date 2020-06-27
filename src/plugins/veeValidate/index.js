@@ -34,8 +34,7 @@ export default {
       extend('password', {
          message: i18n.t('validate.password'),
          validate(value) {
-            let valueLength = value.length;
-            return valueLength >= 6 && valueLength <= 20;
+            return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,10}$/.test(value);
          }
       });
 

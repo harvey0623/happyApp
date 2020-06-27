@@ -8,7 +8,10 @@
       },
       "login": {
          "title": "login"
-      }
+      },
+      "register": {
+         "title": "register"
+      },
    },
    "validate": {
       "required": "required",

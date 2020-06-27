@@ -3,7 +3,7 @@
    <LogoBox></LogoBox>
    <div class="directBox">
       <router-link to="/login" class="btnLogin">登入</router-link>
-      <router-link to="/" class="outline-signIn">註冊</router-link>
+      <router-link to="/register" class="outline-signIn">註冊</router-link>
    </div>
 </div>
 </template>

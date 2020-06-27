@@ -58,7 +58,7 @@
       </div>
       <div class="luckyTip">
          還沒有家幸福帳號? 
-         <router-link to="/">立即註冊</router-link>
+         <router-link to="/register">立即註冊</router-link>
       </div>
    </div>
 </div>
