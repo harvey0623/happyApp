@@ -1,10 +1,7 @@
 <template>
 <div class="entranceLayout">
-	<div class="backBox" v-if="showBack">
-		<i 
-			class="fal fa-long-arrow-left"
-			@click="backHandler">
-		</i>
+	<div class="backBox" v-if="showBack" :class="{ hasMargin: hasMargin }">
+		<i class="fal fa-long-arrow-left" @click="backHandler"></i>
 	</div>
 	<slot></slot>
 </div>
@@ -13,9 +10,15 @@
 <script>
 export default {
 	computed: {
+		routeName() {
+			return this.$route.name;
+		},
 		showBack() {
-			let routeName = this.$route.name;
-			return routeName !== 'entrance';
+			return this.routeName !== 'entrance';
+		},
+		hasMargin() {
+			let lists = ['register', 'forgotPw'];
+			return lists.includes(this.routeName);
 		}
 	},
 	methods: {
@@ -26,7 +29,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .entranceLayout {
 	min-height: 100vh;
 	padding-bottom: 40px;
@@ -40,6 +43,9 @@ export default {
 	padding: 5px 15px 0;
 	color: #fff;
 	font-size: 30px;
+	&.hasMargin {
+		margin-bottom: 30px;
+	}
 }
 
 </style>
