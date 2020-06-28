@@ -51,6 +51,14 @@ button {
 	}
 }
 
+input,
+select {
+   &:checked,
+   &:focus {
+      outline: none;
+   }
+}
+
 a,
 a:hover,
 a:focus {

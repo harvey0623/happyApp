@@ -7,11 +7,14 @@
          "title": "Entrance"
       },
       "login": {
-         "title": "login"
+         "title": "Login"
       },
       "register": {
-         "title": "register"
+         "title": "Register"
       },
+      "forgotPw": {
+         "title": "Forgot Password"
+      }
    },
    "validate": {
       "required": "required",

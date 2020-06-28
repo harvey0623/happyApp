@@ -1,10 +1,9 @@
 <template>
-<div class="login">
-   <LogoBox :isSmall="true"></LogoBox>
+<div class="forgotPw">
    <div class="mycontainer authBox">
-      <h1 class="authTitle">會員登入</h1>
+      <h1 class="authTitle">忘記密碼</h1>
       <div class="authBody">
-         <ValidationObserver tag="div" class="formLayout" ref="form">
+         <ValidationObserver tag="div" class="formLayout verifyForm" ref="verifyForm">
             <div class="formRow">
                <div class="formTitle">帳號</div>
                <div class="formContent phoneContent">
@@ -28,46 +27,42 @@
                </div>
             </div>
             <div class="formRow">
-               <div class="formTitle">密碼</div>
+               <button 
+                  class="outline-verify" 
+                  @click="sendHandler"
+               >寄送驗證碼</button>
+            </div>
+         </ValidationObserver>
+         <ValidationObserver tag="div" class="formLayout" ref="msgForm">
+            <div class="formRow">
+               <div class="formTitle">簡訊驗證碼</div>
                <ValidationProvider 
                   class="formContent" tag="div" 
-                  rules="required|password" v-slot="{ errors }">
+                  rules="required" v-slot="{ errors }">
                   <input 
                      type="password" 
                      class="myInput" 
-                     placeholder="請輸入密碼"
-                     v-model="user.password">
+                     placeholder="請輸入簡訊驗證碼"
+                     v-model="user.msg">
                   <span class="errMsg" v-show="errors.length !== 0">
                      {{ errors[0] }}
                   </span>
                </ValidationProvider >
             </div>
          </ValidationObserver>
-         <div class="settingBox">
-            <label>
-               <input type="checkbox" class="keepCheckbox" v-model="user.keep">
-               <span>記住我</span>
-            </label>
-            <router-link to="/forgotPw">忘記密碼?</router-link>
-         </div>
          <div class="btnBox center">
-            <button class="btnAuth" @click="clickHandler">登入</button>
+            <button class="btnAuth" @click="suerHandler">確定</button>
          </div>
-      </div>
-      <div class="luckyTip">
-         還沒有家幸福帳號? 
-         <router-link to="/register">立即註冊</router-link>
       </div>
    </div>
 </div>
 </template>
 
 <script>
-import LogoBox from '@/components/LogoBox/index.vue';
 export default {
    metaInfo() {
       return { 
-         title: this.$i18n.t('seo.login.title'),
+         title: this.$i18n.t('seo.register.title'),
       }
    },
    data: () => ({
@@ -75,9 +70,8 @@ export default {
       code: '+886',
       user: {
          phone: '',
-         password: '',
-         keep: false
-      }
+         msg: ''
+      },
    }),
    computed: {
       phoneRule() {
@@ -86,15 +80,26 @@ export default {
       }
    },
    methods: {
-      async clickHandler() {
-         let isValid = await this.$refs.form.validate().then(res => res);
+      async sendHandler() {
+         let isValid = await this.$refs.verifyForm.validate().then(res => res);
+         if (!isValid) return;
+      },
+      async suerHandler() {
+         let isValid = await this.$refs.msgForm.validate().then(res => res);
          if (!isValid) return;
       }
-   },
-   components: {
-      LogoBox
    }
 }
 </script>
 
-<style lang="scss" src="./index.scss"></style>
+<style lang="scss">
+.verifyForm {
+   margin-bottom: 30px;
+}
+
+.formRow {
+   .outline-verify {
+      min-width: 120px;
+   }
+}
+</style>

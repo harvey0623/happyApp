@@ -5,6 +5,7 @@ import Home from '@/views/home/index.vue';
 import Entrance from '@/views/entrance/index.vue';
 import Login from '@/views/login/index.vue';
 import Register from '@/views/register/index.vue';
+import ForgotPw from '@/views/forgotPw/index.vue';
 Vue.use(VueRouter);
 
 const routes = [
@@ -36,6 +37,14 @@ const routes = [
 		path: '/register',
 		name: 'register',
 		component: Register,
+		meta: {
+			layout: 'entranceLayout'
+		}
+	},
+	{
+		path: '/forgotPw',
+		name: 'forgotPw',
+		component: ForgotPw,
 		meta: {
 			layout: 'entranceLayout'
 		}

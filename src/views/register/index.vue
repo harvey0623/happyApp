@@ -1,9 +1,9 @@
 <template>
-<div class="login">
+<div class="register">
    <div class="mycontainer authBox">
       <h1 class="authTitle">會員註冊</h1>
       <div class="authBody">
-         <ValidationObserver tag="div" class="formLayout authForm" ref="form">
+         <ValidationObserver tag="div" class="formLayout" ref="form">
             <div class="formRow">
                <div class="formTitle">帳號*</div>
                <div class="formContent phoneContent">
@@ -20,10 +20,9 @@
                         class="myInput" 
                         placeholder="請輸入手機號碼"
                         v-model="user.phone">
-                     <span 
-                        class="validate-error" 
-                        v-show="errors.length !== 0"
-                     >{{ errors[0] }}</span>
+                     <span class="errMsg" v-show="errors.length !== 0">
+                        {{ errors[0] }}
+                     </span>
                   </ValidationProvider>
                </div>
             </div>
@@ -37,10 +36,9 @@
                      class="myInput"
                      placeholder="請輸入名稱"
                      v-model="user.name">
-                  <span 
-                     class="validate-error"
-                     v-show="errors.length !== 0"
-                  >{{ errors[0] }}</span>
+                  <span class="errMsg" v-show="errors.length !== 0">
+                     {{ errors[0] }}
+                  </span>
                </ValidationProvider >
             </div>
             <div class="formRow">
@@ -53,10 +51,9 @@
                      class="myInput"
                      placeholder="請輸入電子信箱"
                      v-model="user.email">
-                  <span 
-                     class="validate-error"
-                     v-show="errors.length !== 0"
-                  >{{ errors[0] }}</span>
+                  <span class="errMsg" v-show="errors.length !== 0">
+                     {{ errors[0] }}
+                  </span>
                </ValidationProvider >
             </div>
             <div class="formRow">
@@ -69,10 +66,9 @@
                      class="myInput" 
                      placeholder="請輸入含英文及數字，長度6~10碼"
                      v-model="user.password">
-                  <span 
-                     class="validate-error"
-                     v-show="errors.length !== 0"
-                  >{{ errors[0] }}</span>
+                  <span class="errMsg" v-show="errors.length !== 0">
+                     {{ errors[0] }}
+                  </span>
                </ValidationProvider >
             </div>
             <div class="formRow">
@@ -85,10 +81,9 @@
                      class="myInput" 
                      placeholder="請再次輸入密碼"
                      v-model="user.confirmPw">
-                  <span 
-                     class="validate-error"
-                     v-show="errors.length !== 0"
-                  >{{ errors[0] }}</span>
+                  <span class="errMsg" v-show="errors.length !== 0">
+                     {{ errors[0] }}
+                  </span>
                </ValidationProvider >
             </div>
          </ValidationObserver>

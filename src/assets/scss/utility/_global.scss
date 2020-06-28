@@ -10,7 +10,8 @@ $radius: (
 $fontColor: (
    primary: #FA5870,
    form: #646464,
-   placeholder: #D6D6D8
+   placeholder: #D6D6D8,
+   verify: #F397AE
 );
 
 //元素背景色(不包含按鈕)
@@ -26,7 +27,8 @@ $btnBgColor:(
 //邊框顏色
 $borderColor: (
    primary: #d4cece,
-   check: #FA5870
+   check: #FA5870,
+   verify: #F397AE
 );
 
 //======extand

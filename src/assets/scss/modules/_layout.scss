@@ -8,7 +8,6 @@
 //表單layout
 .formLayout {
    >.formRow {
-      @extend %clearFix;
       @include elGutter(margin-bottom, 20px);
       >.formTitle {
          margin-bottom: 10px;
@@ -51,8 +50,7 @@
 }
 
 //表單錯誤樣式
-.validate-error {
+.errMsg {
    color: red;
-   font-size: 14px;;
-   margin-top: 3px;
+   font-size: 14px;
 }

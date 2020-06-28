@@ -5,6 +5,7 @@ $normalArr:
 
 $outlineArr: 
    (outline-signIn, 1px, #fff, transparent, #fff),
+   (outline-verify, 1px, map-get($borderColor, verify), #fff, map-get($fontColor, verify)),
 ;
 
 

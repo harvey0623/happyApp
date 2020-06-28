@@ -11,6 +11,9 @@
       },
       "register": {
          "title": "註冊"
+      },
+      "forgotPw": {
+         "title": "忘記密碼"
       }
    },
    "validate": {
