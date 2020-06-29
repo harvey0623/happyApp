@@ -36,7 +36,7 @@
                      type="password" 
                      class="myInput" 
                      placeholder="請輸入密碼"
-                     v-model="user.password">
+                     v-model.trim="user.password">
                   <span class="errMsg" v-show="errors.length !== 0">
                      {{ errors[0] }}
                   </span>
@@ -64,6 +64,8 @@
 
 <script>
 import LogoBox from '@/components/LogoBox/index.vue';
+import axios from 'axios';
+import { mapActions } from 'vuex';
 export default {
    metaInfo() {
       return { 
@@ -74,8 +76,8 @@ export default {
       areaCode: ['+886', '+86'],
       code: '+886',
       user: {
-         phone: '',
-         password: '',
+         phone: '0986104667',
+         password: 'abc123',
          keep: false
       }
    }),
@@ -86,10 +88,24 @@ export default {
       }
    },
    methods: {
+      ...mapActions('auth', { doLogin: 'doLogin' }),
       async clickHandler() {
          let isValid = await this.$refs.form.validate().then(res => res);
          if (!isValid) return;
+         let { loginStatus } = await this.doLogin({
+            vAccount: this.user.phone,
+            vPassword: this.user.password,
+            keey: this.user.keep
+         }).then(res => res);
+         this.$swal({
+            icon: loginStatus ? 'success' : 'error',
+            title: loginStatus ? '登入成功' : '帳號密碼有誤',
+         });
+         if (loginStatus) this.$router.replace('/');
       }
+   },
+   mounted() {
+      
    },
    components: {
       LogoBox

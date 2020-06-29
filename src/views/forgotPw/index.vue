@@ -19,7 +19,7 @@
                         type="text" 
                         class="myInput" 
                         placeholder="請輸入手機號碼"
-                        v-model="user.phone">
+                        v-model.trim="user.phone">
                      <span class="errMsg" v-show="errors.length !== 0">
                         {{ errors[0] }}
                      </span>
@@ -40,10 +40,10 @@
                   class="formContent" tag="div" 
                   rules="required" v-slot="{ errors }">
                   <input 
-                     type="password" 
+                     type="password"
                      class="myInput" 
                      placeholder="請輸入簡訊驗證碼"
-                     v-model="user.msg">
+                     v-model.trim="user.msg">
                   <span class="errMsg" v-show="errors.length !== 0">
                      {{ errors[0] }}
                   </span>

@@ -10,14 +10,3 @@ $color: map-get($fontColor, form);
       color: $color;
    }
 }
-
-.luckyTip {
-   text-align: center;
-   color: #fff;
-   margin-top: 50px;
-   >a {
-      color: #fff;
-      text-decoration: underline;
-      margin-left: 5px;
-   }
-}
