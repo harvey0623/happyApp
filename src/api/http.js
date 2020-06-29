@@ -2,13 +2,16 @@ import axios from 'axios';
 import router from '@/router/index.js';
 import store from '@/store/index.js';
 import i18n from '@/plugins/i18n/index.js';
+import swal from '@/plugins/sweetAlert/index.js';
 
-const errorHandle = function(statusCode) {
+const errorHandle = function(code) {
    let codeObj = {
       400: '用戶端出現錯誤',
       401: '請重新登入',
       500: '司服器錯誤'
    };
+   swal({ icon: 'error', title: codeObj[code] });
+   if (code === 401) router.replace('/login');
 }
 
 const instance = axios.create({
@@ -30,8 +33,8 @@ instance.interceptors.response.use(function (response) {
    return response;
 }, function (error) {
    if (error.response) {
-      let statusCode = error.response.status;
-      errorHandle(statusCode);
+      let code = error.response.status;
+      errorHandle(code);
    }
    return Promise.reject(error);
 });
