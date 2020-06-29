@@ -105,14 +105,14 @@ export default {
       }
    },
    mounted() {
-      axios({
-         url: 'http://localhost:3034/happy/test',
-         method: 'post'
-      }).then(res => {
-         console.log(res)
-      }).catch(err => {
-         console.log(err.response);
-      })
+      // axios({
+      //    url: 'http://localhost:3034/happy/test',
+      //    method: 'post'
+      // }).then(res => {
+      //    console.log(res)
+      // }).catch(err => {
+      //    console.log(err.response);
+      // })
    },
    components: {
       LogoBox
