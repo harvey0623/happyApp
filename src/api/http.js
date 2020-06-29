@@ -1,19 +1,14 @@
 import axios from 'axios';
+import router from '@/router/index.js';
 import store from '@/store/index.js';
 import i18n from '@/plugins/i18n/index.js';
-// import mytoastr from '@/plugin/toastr/toastr.js';
 
 const errorHandle = function(statusCode) {
-   // switch (statusCode) {
-   //    case 400:
-   //       mytoastr.add({ msg: '', type: 'error' });
-   //       break;
-   //    case 401:
-   //       mytoastr.add({ msg: '', type: 'error' });
-   //       break;
-   //    default:
-   //       mytoastr.add({ msg: '', type: 'error' });
-   // }
+   let codeObj = {
+      400: '用戶端出現錯誤',
+      401: '請重新登入',
+      500: '司服器錯誤'
+   };
 }
 
 const instance = axios.create({
@@ -22,6 +17,9 @@ const instance = axios.create({
 
 //request interceptor
 instance.interceptors.request.use(function (config) {
+   let data = JSON.parse(config.data);
+   data.token = store.state.auth.userInfo.token || '';
+   config.data = JSON.stringify(data);
    return config;
 }, function (error) {
    return Promise.reject(error);

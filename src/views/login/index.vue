@@ -64,6 +64,7 @@
 
 <script>
 import LogoBox from '@/components/LogoBox/index.vue';
+import axios from 'axios';
 import { mapActions } from 'vuex';
 export default {
    metaInfo() {
@@ -102,6 +103,16 @@ export default {
          });
          if (loginStatus) this.$router.replace('/');
       }
+   },
+   mounted() {
+      axios({
+         url: 'http://localhost:3034/happy/test',
+         method: 'post'
+      }).then(res => {
+         console.log(res)
+      }).catch(err => {
+         console.log(err.response);
+      })
    },
    components: {
       LogoBox
