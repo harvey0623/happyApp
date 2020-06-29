@@ -163,6 +163,9 @@ a:focus {
   .phoneContent > .outer {
     flex: 1; }
 
+select {
+  background-color: #fff; }
+
 .myInput {
   position: relative;
   display: block;
