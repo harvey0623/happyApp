@@ -36,7 +36,7 @@
                      type="password" 
                      class="myInput" 
                      placeholder="請輸入密碼"
-                     v-model="user.password">
+                     v-model.trim="user.password">
                   <span class="errMsg" v-show="errors.length !== 0">
                      {{ errors[0] }}
                   </span>

@@ -19,7 +19,7 @@
                         type="text" 
                         class="myInput" 
                         placeholder="請輸入手機號碼"
-                        v-model="user.phone">
+                        v-model.trim="user.phone">
                      <span class="errMsg" v-show="errors.length !== 0">
                         {{ errors[0] }}
                      </span>
@@ -32,10 +32,10 @@
                   class="formContent" tag="div" 
                   rules="required" v-slot="{ errors }">
                   <input 
-                     type="password" 
+                     type="text" 
                      class="myInput"
                      placeholder="請輸入名稱"
-                     v-model="user.name">
+                     v-model.trim="user.name">
                   <span class="errMsg" v-show="errors.length !== 0">
                      {{ errors[0] }}
                   </span>
@@ -47,10 +47,10 @@
                   class="formContent" tag="div" 
                   rules="required|email" v-slot="{ errors }">
                   <input 
-                     type="password" 
+                     type="email" 
                      class="myInput"
                      placeholder="請輸入電子信箱"
-                     v-model="user.email">
+                     v-model.trim="user.email">
                   <span class="errMsg" v-show="errors.length !== 0">
                      {{ errors[0] }}
                   </span>
@@ -65,11 +65,11 @@
                      type="password" 
                      class="myInput" 
                      placeholder="請輸入含英文及數字，長度6~10碼"
-                     v-model="user.password">
+                     v-model.trim="user.password">
                   <span class="errMsg" v-show="errors.length !== 0">
                      {{ errors[0] }}
                   </span>
-               </ValidationProvider >
+               </ValidationProvider>
             </div>
             <div class="formRow">
                <div class="formTitle">再次輸入密碼*</div>
@@ -80,7 +80,7 @@
                      type="password" 
                      class="myInput" 
                      placeholder="請再次輸入密碼"
-                     v-model="user.confirmPw">
+                     v-model.trim="user.confirmPw">
                   <span class="errMsg" v-show="errors.length !== 0">
                      {{ errors[0] }}
                   </span>
@@ -91,11 +91,16 @@
             <button class="btnAuth" @click="clickHandler">註冊</button>
          </div>
       </div>
+      <div class="luckyTip">
+         已有帳號?
+         <router-link to="/login">立即登入</router-link>
+      </div>
    </div>
 </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
    metaInfo() {
       return { 
@@ -106,11 +111,11 @@ export default {
       areaCode: ['+886', '+86'],
       code: '+886',
       user: {
-         phone: '',
-         name: '',
-         email: '',
-         password: '',
-         confirmPw: ''
+         phone: '0976104667',
+         name: 'admin',
+         email: 'admin@gmail.com',
+         password: 'abc123',
+         confirmPw: 'abc123'
       }
    }),
    computed: {
@@ -120,9 +125,22 @@ export default {
       }
    },
    methods: {
+      ...mapActions('auth', { doRegister: 'doRegister' }),
       async clickHandler() {
          let isValid = await this.$refs.form.validate().then(res => res);
          if (!isValid) return;
+         let { registerStatus, message } = await this.doRegister({
+            vAccount: this.user.phone,
+            name: this.user.name,
+            email: this.user.email,
+            password: this.user.password,
+            confirmPw: this.user.confirmPw
+         }).then(res => res);
+         this.$swal({
+            icon: registerStatus ? 'success' : 'error',
+            title: message
+         });
+         if (registerStatus) this.$router.replace('/login');
       }
    }
 }

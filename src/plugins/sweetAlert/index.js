@@ -7,7 +7,6 @@ Vue.use(VueSweetalert2, {
    showConfirmButton: false,
    showCancelButton: false,
    reverseButtons: true,
-   allowOutsideClick: false,
    confirmButtonColor: '#F397AE',
    cancelButtonColor: '#d33',
    timer: 2000,

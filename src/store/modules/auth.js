@@ -36,6 +36,14 @@ const authStore = function() {
             let { status, userinfo } = result;
             if (status === 1) commit('setUserInfo', userinfo);
             return { loginStatus: status === 1 };
+         },
+         async doRegister({ commit }, payload) {
+            let result = await authObj.doRegister(payload).then(res => res);
+            let { status, message } = result;
+            return { 
+               registerStatus: status === 1,
+               message
+            }
          }
       }
    }
