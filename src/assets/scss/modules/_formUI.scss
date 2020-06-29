@@ -1,4 +1,7 @@
 $checkBdColor: map-get($borderColor, check);
+select {
+   background-color: #fff;
+}
 
 .myInput {
    position: relative;
