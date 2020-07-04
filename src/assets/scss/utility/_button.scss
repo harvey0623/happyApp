@@ -1,3 +1,5 @@
+$buttonHeight: map-get($heightObj, button);
+
 %button {
    height: $buttonHeight;
    line-height: $buttonHeight;

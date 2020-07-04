@@ -1,0 +1,55 @@
+.myheader {
+   @extend %bwtFlex;
+   position: fixed;
+   left: 0;
+   top: 0;
+   @include size(100%, map-get($heightObj, header));
+   padding: 0 20px;
+   background-color: map-get($elBgColor, header);
+   color: #fff;
+   z-index: 18;
+   i {
+      font-size: 20px;
+   }
+}
+
+.menuBar {
+   margin-top: 3px;
+}
+
+.centerLogo {
+   display: flex;
+   align-items: center;
+   >.pic {
+      @include size(25px);
+      margin-right: 12px;
+   }
+   >.text {
+      @include size(70px, auto);
+   }
+}
+
+.bellBox {
+   position: relative;
+   margin-top: 2px;
+   color: #fff;
+   &:focus {
+      color: #fff;
+   }
+   &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      right: -3px;
+      top: 0;
+      @include size(8px);
+      background-color: transparent;
+      border-radius: 50%;
+   }
+   &.notice {
+      &:after {
+         background-color: #FCD03C;
+      }
+   }
+}
+

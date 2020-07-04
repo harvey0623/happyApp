@@ -28,7 +28,7 @@ export default {
    margin: 0 auto;
    >a {
       display: block;
-      @include size(100%, $buttonHeight);
+      @include size(100%, map-get($heightObj, button));
       @include elGutter(margin-bottom, 15px);
       font-weight: bold;
    }

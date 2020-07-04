@@ -11,10 +11,12 @@ Vuex.Store.prototype.hasModule = function (module) {
 export default new Vuex.Store({
 	strict: process.NODE_ENV === 'development',
 	state: {
-		
+		isMenuOpen: false
 	},
 	mutations: {
-		
+		setMenuOpen(state, value) {
+			state.isMenuOpen = value;
+		}
 	},
 	actions: {
 		
