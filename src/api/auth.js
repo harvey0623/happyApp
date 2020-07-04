@@ -20,5 +20,8 @@ export default {
          data
       }).then(res => res.data);
       return result;
+   },
+   async doLogout(payload) {
+      let url = '';
    }
 }

@@ -22,7 +22,11 @@ const authStore = function() {
       mutations: {
          setUserInfo(state, value) {
             state.userInfo = value;
-            if (value.token) LS.set('userInfo', value);
+            if (value.token) {
+               LS.set('userInfo', value);
+            } else {
+               LS.remove('userInfo');
+            }
          }
       },
       getters: {
@@ -44,6 +48,9 @@ const authStore = function() {
                registerStatus: status === 1,
                message
             }
+         },
+         async doLogout({ commit }, payload) {
+            commit('setUserInfo', {});
          }
       }
    }
