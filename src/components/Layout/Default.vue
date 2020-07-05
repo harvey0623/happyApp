@@ -4,6 +4,7 @@
 	<transition name="fade" mode="out-in">
 		<Cover v-if="isMenuOpen" :key="isMenuOpen"></Cover>
 	</transition>
+	<Sidebar></Sidebar>
 	<slot></slot>
 </div>
 </template>
@@ -12,6 +13,7 @@
 import { mapState } from 'vuex';
 import Header from '@/components/Header/index.vue';
 import Cover from '@/components/Cover/index.vue';
+import Sidebar from '@/components/Sidebar/index.vue';
 export default {
 	computed: {
 		...mapState(['isMenuOpen'])
@@ -21,7 +23,8 @@ export default {
 	},
    components: {
 		Header,
-		Cover
+		Cover,
+		Sidebar
 	}
 }
 </script>

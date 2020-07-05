@@ -14,7 +14,7 @@ const routes = [
 		name: 'home',
 		component: Home,
 		meta: {
-
+			auth: true
 		},
 	},
 	{
@@ -72,12 +72,12 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-	// if (to.matched.some(record => record.meta.requiresAuth)) {
-		
-	// } else {
-	// 	return next();
-	// }
-
+	if (to.matched.some(record => record.meta.auth)) {
+		let userInfo = localStorage.getItem('userInfo');
+		if (userInfo === null || JSON.parse(userInfo).token === undefined) {
+			return next('/entrance');
+		}
+	}
 	return next();
 });
 

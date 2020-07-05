@@ -1,0 +1,38 @@
+$sidebarHeadHeight: 120px;
+
+.sidebar {
+   position: fixed;
+   left: 0;
+   top: 0;
+   @include size(300px, 100vh);
+   background-color: #fff;
+   z-index: 20;
+}
+
+.sidebarHead {
+   height: $sidebarHeadHeight;
+   border-bottom-right-radius: 25px;
+   background-image: url("~@/assets/img/bg.png");
+   background-position: center center;
+   background-size: cover;
+}
+
+.sidebarBody {
+   padding: 20px;
+   height: calc(100vh - #{$sidebarHeadHeight});
+}
+
+.sidebarItem {
+   display: flex;
+   align-items: center;
+   >i {
+      color: map-get($fontColor, primary);
+      font-size: 20px;
+   }
+   >span {
+      margin-left: 10px;
+      color: map-get($fontColor, sidebar);
+      font-weight: bold;
+      font-size: 18px;
+   }
+}
