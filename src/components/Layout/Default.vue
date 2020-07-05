@@ -1,10 +1,12 @@
 <template>
 <div class="defaultLayout">
 	<Header></Header>
-	<transition name="fade" mode="out-in">
-		<Cover v-if="isMenuOpen" :key="isMenuOpen"></Cover>
+	<transition name="fade">
+		<Cover v-if="isMenuOpen"></Cover>
 	</transition>
-	<Sidebar></Sidebar>
+	<transition name="slide-right">
+		<Sidebar v-show="isMenuOpen"></Sidebar>
+	</transition>
 	<slot></slot>
 </div>
 </template>

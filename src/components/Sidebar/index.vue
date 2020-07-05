@@ -2,7 +2,6 @@
 <div class="sidebar">
    <div class="sidebarHead"></div>
    <div class="sidebarBody">
-      
 
 
       <div class="sidebarItem" @click="logoutHandler">
@@ -19,6 +18,7 @@ export default {
       logoutHandler() {
          this.$store.dispatch('auth/doLogout');
          this.$router.replace('/entrance');
+         this.$store.commit('setMenuOpen', false);
       }
    }
 }

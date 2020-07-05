@@ -1,4 +1,4 @@
-//=====淡入淡出
+//===淡入淡出
 .fade-enter, 
 .fade-leave-to {
    opacity: 0;
@@ -7,4 +7,20 @@
 .fade-enter-active,
 .fade-leave-active {
    transition: opacity 0.2s;
+}
+
+//===滑入
+.slide-right-enter,
+.slide-right-leave-to {
+   transform: translateX(-100%);
+}
+
+.slide-right-enter-active,
+.slide-right-leave-active {
+   transition: transform 0.2s;
+}
+
+.slide-right-enter-to, 
+.slide-right-leave {
+   transform: translateX(0px);
 }
