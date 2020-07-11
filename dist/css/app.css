@@ -77,7 +77,23 @@ a:focus {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity .25s; }
+  transition: opacity 0.2s; }
+
+.slide-right-enter,
+.slide-right-leave-to {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%); }
+
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s; }
+
+.slide-right-enter-to,
+.slide-right-leave {
+  -webkit-transform: translateX(0px);
+          transform: translateX(0px); }
 
 .btnLogin {
   border: none;
@@ -463,6 +479,113 @@ select {
 }
 .formRow .outline-verify {
   min-width: 120px;
+}
+
+.myheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.myheader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 45px;
+  padding: 0 20px;
+  background-color: #f65d75;
+  color: #fff;
+  z-index: 18;
+}
+.myheader i {
+    font-size: 20px;
+}
+.menuBar {
+  margin-top: 3px;
+}
+.centerLogo {
+  display: flex;
+  align-items: center;
+}
+.centerLogo > .pic {
+    width: 25px;
+    height: 25px;
+    margin-right: 12px;
+}
+.centerLogo > .text {
+    width: 70px;
+    height: auto;
+}
+.bellBox {
+  position: relative;
+  margin-top: 2px;
+  color: #fff;
+}
+.bellBox:focus {
+    color: #fff;
+}
+.bellBox:after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: -3px;
+    top: 0;
+    width: 8px;
+    height: 8px;
+    background-color: transparent;
+    border-radius: 50%;
+}
+.bellBox.notice:after {
+    background-color: #FCD03C;
+}
+
+#cover {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 19;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 300px;
+  height: 100vh;
+  background-color: #fff;
+  z-index: 20;
+}
+.sidebarHead {
+  height: 120px;
+  border-bottom-right-radius: 25px;
+  background-image: url(../img/bg.7ef84cda.png);
+  background-position: center center;
+  background-size: cover;
+}
+.sidebarBody {
+  padding: 20px;
+  height: calc(100vh - 120px);
+}
+.sidebarItem {
+  display: flex;
+  align-items: center;
+}
+.sidebarItem > i {
+    color: #FA5870;
+    font-size: 20px;
+}
+.sidebarItem > span {
+    margin-left: 10px;
+    color: #4F3B54;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.defaultLayout {
+  padding-top: 45px;
 }
 
 .entranceLayout {
