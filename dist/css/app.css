@@ -570,18 +570,47 @@ select {
   height: calc(100vh - 120px);
 }
 .sidebarItem {
-  display: flex;
-  align-items: center;
+  margin-bottom: 20px;
 }
-.sidebarItem > i {
-    color: #FA5870;
-    font-size: 20px;
+.sidebarItem:last-child {
+    margin-bottom: 0;
 }
-.sidebarItem > span {
-    margin-left: 10px;
-    color: #4F3B54;
-    font-weight: bold;
-    font-size: 18px;
+.sidebarItem > .itemTop {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.sidebarItem > .itemTop > i {
+      font-size: 18px;
+}
+.sidebarItem > .itemTop > i.featureIcon {
+        color: #FA5870;
+}
+.sidebarItem > .itemTop > i.fa-chevron-down {
+        margin-left: auto;
+        color: #d3cfcf;
+        transition: -webkit-transform 0.25s;
+        transition: transform 0.25s;
+        transition: transform 0.25s, -webkit-transform 0.25s;
+}
+.sidebarItem > .itemTop > i.fa-chevron-down.rotate {
+          -webkit-transform: rotate(-180deg);
+                  transform: rotate(-180deg);
+}
+.sidebarItem > .itemTop > span {
+      margin-left: 10px;
+      color: #4F3B54;
+      font-weight: bold;
+      font-size: 18px;
+}
+.sidebarItem > .itemBottom {
+    padding-left: 28px;
+    border-bottom: 1px solid #d4cece;
+}
+.sidebarItem > .itemBottom > a {
+      display: block;
+      margin-bottom: 15px;
+      color: #777777;
 }
 
 .defaultLayout {

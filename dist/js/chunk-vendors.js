@@ -5480,6 +5480,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/*!\n  * vue-router v3.3.4\n 
 
 /***/ }),
 
+/***/ "./node_modules/vue-slide-up-down/dist/vue-slide-up-down.m.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/vue-slide-up-down/dist/vue-slide-up-down.m.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({name:\"SlideUpDown\",props:{active:Boolean,duration:{type:Number,default:500},tag:{type:String,default:\"div\"},useHidden:{type:Boolean,default:!0}},data:function(){return{style:{},initial:!1,hidden:!1}},watch:{active:function(){this.layout()}},render:function(t){return t(this.tag,{style:this.style,attrs:this.attrs,ref:\"container\",on:{transitionend:this.onTransitionEnd}},this.$slots.default)},mounted:function(){this.layout(),this.initial=!0},created:function(){this.hidden=!this.active},computed:{el:function(){return this.$refs.container},attrs:function(){var t={\"aria-hidden\":!this.active,\"aria-expanded\":this.active};return this.useHidden&&(t.hidden=this.hidden),t}},methods:{layout:function(){var t=this;this.active?(this.hidden=!1,this.$emit(\"open-start\"),this.initial&&this.setHeight(\"0px\",function(){return t.el.scrollHeight+\"px\"})):(this.$emit(\"close-start\"),this.setHeight(this.el.scrollHeight+\"px\",function(){return\"0px\"}))},asap:function(t){this.initial?this.$nextTick(t):t()},setHeight:function(t,i){var e=this;this.style={height:t},this.asap(function(){e.__=e.el.scrollHeight,e.style={height:i(),overflow:\"hidden\",\"transition-property\":\"height\",\"transition-duration\":e.duration+\"ms\"}})},onTransitionEnd:function(t){t.target===this.el&&(this.active?(this.style={},this.$emit(\"open-end\")):(this.style={height:\"0\",overflow:\"hidden\"},this.hidden=!0,this.$emit(\"close-end\")))}}});\n//# sourceMappingURL=vue-slide-up-down.m.js.map\n\n\n//# sourceURL=webpack:///./node_modules/vue-slide-up-down/dist/vue-slide-up-down.m.js?");
+
+/***/ }),
+
 /***/ "./node_modules/vue-sweetalert2/dist/index.js":
 /*!****************************************************!*\
   !*** ./node_modules/vue-sweetalert2/dist/index.js ***!

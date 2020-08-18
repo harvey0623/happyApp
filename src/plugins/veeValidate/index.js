@@ -34,7 +34,8 @@ export default {
       extend('password', {
          message: i18n.t('validate.password'),
          validate(value) {
-            return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,10}$/.test(value);
+            return true;
+            // return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{1,10}$/.test(value);
          }
       });
 
