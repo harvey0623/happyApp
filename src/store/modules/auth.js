@@ -3,7 +3,7 @@ import authObj from '@/api/auth.js';
 const LS = {
    get(key) {
       let data = localStorage.getItem(key);
-      return data !== undefined ? JSON.parse(data) : null; 
+      return data !== null ? JSON.parse(data) : null; 
    },
    set(key, data) {
       localStorage.setItem(key, JSON.stringify(data));
@@ -50,7 +50,10 @@ const authStore = function() {
             }
          },
          async doLogout({ commit }, payload) {
-            commit('setUserInfo', {});
+            return await new Promise((resolve) => {
+               commit('setUserInfo', {});
+               resolve();
+            });
          }
       }
    }

@@ -23,16 +23,39 @@ $sidebarHeadHeight: 120px;
 }
 
 .sidebarItem {
-   display: flex;
-   align-items: center;
-   >i {
-      color: map-get($fontColor, primary);
-      font-size: 20px;
+   @include elGutter(margin-bottom, 20px);
+   >.itemTop {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      >i {
+         font-size: 18px;
+         &.featureIcon {
+            color: map-get($fontColor, primary);
+         }
+         &.fa-chevron-down {
+            margin-left: auto;
+            color: #d3cfcf;
+            transition: transform 0.25s;
+            &.rotate {
+               transform: rotate(-180deg);
+            }
+         }
+      }
+      >span {
+         margin-left: 10px;
+         color: map-get($fontColor, sidebar);
+         font-weight: bold;
+         font-size: 18px;
+      }
    }
-   >span {
-      margin-left: 10px;
-      color: map-get($fontColor, sidebar);
-      font-weight: bold;
-      font-size: 18px;
+   >.itemBottom {
+      padding-left: 28px;
+      border-bottom: 1px solid map-get($borderColor, primary);
+      >a {
+         display: block;
+         margin-bottom: 15px;
+         color: #777777;
+      }
    }
 }

@@ -2,7 +2,7 @@
 <div class="defaultLayout">
 	<Header></Header>
 	<transition name="fade">
-		<Cover v-if="isMenuOpen"></Cover>
+		<Cover v-show="isMenuOpen"></Cover>
 	</transition>
 	<transition name="slide-right">
 		<Sidebar v-show="isMenuOpen"></Sidebar>
