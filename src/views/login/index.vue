@@ -64,7 +64,7 @@
 
 <script>
 import LogoBox from '@/components/LogoBox/index.vue';
-import axios from 'axios';
+import crypto from '@/plugins/crypto/index.js';
 import { mapActions } from 'vuex';
 export default {
    metaInfo() {
@@ -76,8 +76,8 @@ export default {
       areaCode: ['+886', '+86'],
       code: '+886',
       user: {
-         phone: '0986104667',
-         password: 'abc123',
+         phone: '0900000002',
+         password: 'password',
          keep: false
       }
    }),
@@ -94,7 +94,7 @@ export default {
          if (!isValid) return;
          let { loginStatus } = await this.doLogin({
             vAccount: this.user.phone,
-            vPassword: this.user.password,
+            vPassword: crypto.encodeMd5(this.user.password),
             keey: this.user.keep
          }).then(res => res);
          this.$swal({
