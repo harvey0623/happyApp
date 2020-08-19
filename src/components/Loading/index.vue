@@ -1,5 +1,5 @@
 <template>
-   <div id="loadingBox">
+   <div id="loading">
       <div class="dots">
          <div></div>
          <div></div>
@@ -15,15 +15,15 @@ export default {
 </script>
 
 <style lang="scss">
-#loadingBox {
+#loading {
    position: fixed;
    left: 0;
    top: 0;
    @extend %centerFlex;
    @include size(100%);
    background-color: rgba(black, 0.5);
-   color: white;
-   z-index: 11;
+   color: #fff;
+   z-index: 20;
    >.dots {
       @extend %bwtFlex;
       flex-flow: row nowrap;

@@ -34,6 +34,7 @@
          <button class="btnSure" @click="switchCommunity">確定</button>
       </template>
    </b-modal>
+
 </div>
 </template>
 

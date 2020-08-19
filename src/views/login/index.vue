@@ -1,6 +1,7 @@
 <template>
 <div class="login">
    <LogoBox :isSmall="true"></LogoBox>
+   <Loading v-show="isLoading"></Loading>
    <div class="mycontainer authBox">
       <h1 class="authTitle">會員登入</h1>
       <div class="authBody">
@@ -65,7 +66,6 @@
 <script>
 import LogoBox from '@/components/LogoBox/index.vue';
 import crypto from '@/plugins/crypto/index.js';
-import { mapActions } from 'vuex';
 export default {
    metaInfo() {
       return { 
@@ -75,6 +75,7 @@ export default {
    data: () => ({
       areaCode: ['+886', '+86'],
       code: '+886',
+      isLoading: false,
       user: {
          phone: '0900000002',
          password: 'password',
@@ -88,15 +89,20 @@ export default {
       }
    },
    methods: {
-      ...mapActions('auth', { doLogin: 'doLogin' }),
-      async clickHandler() {
-         let isValid = await this.$refs.form.validate().then(res => res);
-         if (!isValid) return;
-         let { loginStatus } = await this.doLogin({
+      async doLogin() {
+         this.isLoading = true;
+         return await this.$store.dispatch('auth/doLogin', {
             vAccount: this.user.phone,
             vPassword: crypto.encodeMd5(this.user.password),
             keey: this.user.keep
-         }).then(res => res);
+         }).then(res => {
+            return res;
+         }).finally(() => this.isLoading = false);
+      },
+      async clickHandler() {
+         let isValid = await this.$refs.form.validate().then(res => res);
+         if (!isValid) return;
+         let { loginStatus } = await this.doLogin().then(res => res);
          this.$swal({
             icon: loginStatus ? 'success' : 'error',
             title: loginStatus ? '登入成功' : '帳號密碼有誤',
