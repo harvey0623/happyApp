@@ -34,5 +34,6 @@ export default {
 <style lang="scss">
 .defaultLayout {
 	padding-top: map-get($heightObj, header);
+	padding-bottom: 15px;
 }
 </style>

@@ -8,7 +8,7 @@
   width: 100%;
   height: auto; }
 
-.btnLogin, .btnAuth, .outline-signIn, .outline-verify {
+.btnLogin, .btnAuth, .btnSure, .outline-signIn, .outline-verify {
   height: 42px;
   line-height: 42px;
   padding: 0 10px;
@@ -111,6 +111,14 @@ a:focus {
     color: #fff;
     background-color: #bad6c8; }
 
+.btnSure {
+  border: none;
+  color: #fff;
+  background-color: #F397AE; }
+  .btnSure:hover, .btnSure:focus {
+    color: #fff;
+    background-color: #f397ae; }
+
 .outline-signIn {
   color: #fff;
   background-color: transparent;
@@ -206,6 +214,14 @@ select {
     color: #D6D6D8;
     font-size: 14px; }
 
+.mySelect {
+  display: block;
+  width: 100%;
+  height: 30px;
+  color: #646464;
+  border-width: 0 0 1px 0;
+  border-color: #d4cece; }
+
 .keepCheckbox {
   display: inline-flex;
   width: 18px;
@@ -237,12 +253,210 @@ select {
   background-image: none !important; }
 
 .swiper-slide img {
-  min-height: 150px;
   -o-object-fit: cover;
      object-fit: cover; }
 
-.swiper-pagination-progressbar {
-  background-color: #fff; }
+.mymodal .modal-content {
+  border-radius: 15px; }
+
+.mymodal .modal-header {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-bottom: none; }
+  .mymodal .modal-header > .fa-times {
+    align-self: flex-end;
+    color: #D6D6D8;
+    font-size: 22px; }
+  .mymodal .modal-header > h3 {
+    color: #4F3B54;
+    font-size: 22px;
+    font-weight: bold; }
+
+.mymodal .modal-body > .formTitle {
+  margin-bottom: 10px;
+  color: #646464; }
+
+.mymodal .modal-footer {
+  justify-content: center;
+  padding: 15px 15px 25px 15px;
+  border-top: none; }
+  .mymodal .modal-footer > button {
+    width: 220px;
+    height: 42px;
+    margin: 0; }
+
+.bannerBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bannerBlock, .bannerBlock:after {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.bannerBlock {
+  position: relative;
+  padding-left: 25px;
+  height: 150px;
+  margin-bottom: 20px;
+  background-image: url(../img/community1.acc14707.jpg);
+  background-size: cover;
+  background-position: center top;
+}
+.bannerBlock:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+}
+.bannerBlock > .communityIntro {
+    position: relative;
+    color: #fff;
+    font-size: 18px;
+    z-index: 2;
+}
+.bannerBlock > .communityIntro > .userName {
+      margin-bottom: 8px;
+}
+.bannerBlock > .communityIntro > .communityName > span {
+      margin-right: 10px;
+}
+
+.topSwiperBox .swiper-slide > .imgDesc {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.bulletinSlider {
+  padding: 15px;
+}
+.topSwiperBox {
+  padding-bottom: 25px;
+}
+.topSwiperBox .swiper-slide {
+    position: relative;
+}
+.topSwiperBox .swiper-slide:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 15px;
+}
+.topSwiperBox .swiper-slide > img {
+      min-height: 150px;
+      border-radius: 15px;
+}
+.topSwiperBox .swiper-slide > .imgDesc {
+      position: absolute;
+      font-size: 22px;
+      text-shadow: 0px 1px 10px #4F3B54;
+      color: #fff;
+      font-weight: bold;
+}
+.topSwiperBox .swiper-pagination-bullets {
+    bottom: 0;
+}
+.topSwiperBox .swiper-pagination-bullets > .swiper-pagination-bullet-active {
+      background-color: #FA5870;
+}
+
+.announceBox .swiper-slide > .desc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  padding: 0;
+  height: auto;
+}
+.announceBox {
+  padding: 15px;
+}
+.announceBox > .title {
+    margin-bottom: 10px;
+    color: #4F3B54;
+    font-weight: bold;
+}
+.announceBox .swiper-slide {
+    width: 150px;
+    height: auto;
+}
+.announceBox .swiper-slide > img {
+      border-radius: 10px;
+}
+.announceBox .swiper-slide > .desc {
+      padding-top: 5px;
+      padding-left: 10px;
+      -webkit-line-clamp: 2;
+      color: #646464;
+      font-size: 14px;
+}
+
+.positionBox {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+.positionBox > .title {
+    flex: 0 0 65px;
+    margin-right: 15px;
+    color: #4F3B54;
+    font-weight: bold;
+}
+.positionBox > .positionList {
+    flex: 1;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+}
+.positionBox > .positionList > a {
+      flex: 0 0 160px;
+      height: 38px;
+      margin-right: 15px;
+      background-color: #F2F2F2;
+      border-radius: 50px;
+      text-align: center;
+      line-height: 38px;
+}
+.positionBox > .positionList > a > i {
+        color: #f65d75;
+        font-size: 20px;
+}
+.positionBox > .positionList > a > span {
+        margin-left: 5px;
+        color: #646464;
+}
+
+.featureBox {
+  padding: 15px;
+}
+.featureBox > .featureList {
+    display: flex;
+    align-items: center;
+}
+.featureBox > .featureList > a {
+      flex: 0 0 20%;
+      text-align: center;
+}
+.featureBox > .featureList > a > img {
+        margin-bottom: 5px;
+}
+.featureBox > .featureList > a > p {
+        color: #646464;
+        font-size: 14px;
+}
 
 
 .logoBox {
@@ -615,6 +829,7 @@ select {
 
 .defaultLayout {
   padding-top: 45px;
+  padding-bottom: 15px;
 }
 
 .entranceLayout {

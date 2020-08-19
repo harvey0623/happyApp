@@ -37,7 +37,7 @@ export default {
    @extend %centerFlex;
    padding-left: 25px;
    height: 150px;
-   margin-bottom: 15px;
+   margin-bottom: 20px;
    background-image: url("~@/assets/img/community1.jpg");
    background-size: cover;
    background-position: center top;

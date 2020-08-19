@@ -31,6 +31,7 @@ export default {
    display: flex;
    align-items: center;
    padding: 15px;
+   margin-bottom: 15px;
    >.title {
       flex: 0 0 65px;
       margin-right: 15px;

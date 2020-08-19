@@ -4,11 +4,9 @@
       :targetCommunity="targetCommunity"
       @switch="chooseCommunity"
    ></BannerBlock>
-
    <PositionBox></PositionBox>
-
+   <FeatureBox></FeatureBox>
    <BulletinSlider :bulletinData="bulletin1"></BulletinSlider>
-
    <Announce
       :title="'社區公告'"
       :announceData="bulletin2"
@@ -36,7 +34,6 @@
          <button class="btnSure" @click="switchCommunity">確定</button>
       </template>
    </b-modal>
-
 </div>
 </template>
 
@@ -45,6 +42,7 @@ import BannerBlock from '@/components/BannerBlock/index.vue';
 import BulletinSlider from '@/components/BulletinSlider/index.vue';
 import Announce from '@/components/Announce/index.vue';
 import PositionBox from '@/components/PositionBox/index.vue';
+import FeatureBox from '@/components/FeatureBox/index.vue';
 import communityObj from '@/api/community.js';
 export default {
    metaInfo() {
@@ -115,7 +113,8 @@ export default {
       BannerBlock,
       BulletinSlider,
       Announce,
-      PositionBox
+      PositionBox,
+      FeatureBox
    }
 }
 </script>
