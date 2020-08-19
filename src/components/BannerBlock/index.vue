@@ -26,7 +26,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 %bannerRadius {
    border-bottom-left-radius: 20px;
    border-bottom-right-radius: 20px;
@@ -34,12 +34,12 @@ export default {
 
 .bannerBlock {
    position: relative;
-   display: flex;
-   align-items: center;
+   @extend %centerFlex;
    padding-left: 25px;
    height: 150px;
    background-image: url("~@/assets/img/community1.jpg");
-   background-size: 100% 100%;
+   background-size: cover;
+   background-position: center top;
    @extend %bannerRadius;
    &:after {
       content: '';
@@ -47,7 +47,7 @@ export default {
       left: 0;
       top: 0;
       @include size(100%);
-      background-color: rgba(#000, 0.7);
+      background-color: rgba(#000, 0.55);
       @extend %bannerRadius;
       z-index: 1;
    }
