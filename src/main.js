@@ -15,6 +15,7 @@ import '@/filter/index.js';
 //===plugin
 import '@/plugins/bootstrap/index.js';
 import '@/plugins/sweetAlert/index.js';
+import '@/plugins/swiper/index.js';
 
 
 Vue.config.productionTip = false;

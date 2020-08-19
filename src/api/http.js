@@ -20,7 +20,6 @@ const instance = axios.create({
 
 //request interceptor
 instance.interceptors.request.use(function (config) {
-   config.data.token = store.state.auth.userInfo.token || '';
    return config;
 }, function (error) {
    return Promise.reject(error);

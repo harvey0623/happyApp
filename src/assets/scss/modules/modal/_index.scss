@@ -1,0 +1,37 @@
+.mymodal {
+   .modal-content {
+      border-radius: 15px;
+   }
+   .modal-header {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      border-bottom: none;
+      >.fa-times {
+         align-self: flex-end;
+         color: map-get($fontColor, placeholder);
+         font-size: 22px;
+      }
+      >h3 {
+         color: map-get($fontColor, sidebar);
+         font-size: 22px;
+         font-weight: bold;
+      }
+   }
+   .modal-body {
+      >.formTitle {
+         margin-bottom: 10px;
+         color: map-get($fontColor, form);
+      }
+   }
+   .modal-footer {
+      justify-content: center;
+      padding: 15px 15px 25px 15px;
+      border-top: none;
+      >button {
+         @include size(220px, map-get($heightObj, button));
+         margin: 0;
+      }
+   }
+}

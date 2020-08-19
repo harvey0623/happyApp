@@ -1,6 +1,7 @@
 $normalArr: 
    (btnLogin, map-get($fontColor, primary), #fff, none),
    (btnAuth, #fff, map-get($btnBgColor, auth), none),
+   (btnSure, #fff, map-get($btnBgColor, sure), none),
 ;
 
 $outlineArr: 

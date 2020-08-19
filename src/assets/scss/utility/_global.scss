@@ -1,7 +1,8 @@
 //=======variable
 $heightObj: (
    header: 45px,
-   button: 42px
+   button: 42px,
+   form: 30px,
 );
 
 //圓角
@@ -20,12 +21,14 @@ $fontColor: (
 
 //元素背景色(不包含按鈕)
 $elBgColor: (
-   header: #f65d75
+   header: #f65d75,
+   dot: #FA5870,
 );
 
 //按鈕背景色
 $btnBgColor:(
    auth: #BAD6C8,
+   sure: #F397AE
 );
 
 //邊框顏色

@@ -6,7 +6,7 @@ select {
 .myInput {
    position: relative;
    display: block;
-   @include size(100%, 30px);
+   @include size(100%, map-get($heightObj, form));
    color: map-get($fontColor, form);
    border-width: 0 0 1px 0;
    border-color: map-get($borderColor, primary);
@@ -14,6 +14,14 @@ select {
       color: map-get($fontColor, placeholder);
       font-size: 14px;
    }
+}
+
+.mySelect {
+   display: block;
+   @include size(100%, map-get($heightObj, form));
+   color: map-get($fontColor, form);
+   border-width: 0 0 1px 0;
+   border-color: map-get($borderColor, primary);
 }
 
 .keepCheckbox {
