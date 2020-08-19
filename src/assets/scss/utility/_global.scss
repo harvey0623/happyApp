@@ -16,13 +16,15 @@ $fontColor: (
    form: #646464,
    placeholder: #D6D6D8,
    verify: #F397AE,
-   sidebar: #4F3B54
+   sidebar: #4F3B54,
+   header: #f65d75,
 );
 
 //元素背景色(不包含按鈕)
 $elBgColor: (
    header: #f65d75,
    dot: #FA5870,
+   position: #F2F2F2
 );
 
 //按鈕背景色

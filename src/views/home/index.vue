@@ -5,6 +5,8 @@
       @switch="chooseCommunity"
    ></BannerBlock>
 
+   <PositionBox></PositionBox>
+
    <BulletinSlider :bulletinData="bulletin1"></BulletinSlider>
 
    <Announce
@@ -42,6 +44,7 @@
 import BannerBlock from '@/components/BannerBlock/index.vue';
 import BulletinSlider from '@/components/BulletinSlider/index.vue';
 import Announce from '@/components/Announce/index.vue';
+import PositionBox from '@/components/PositionBox/index.vue';
 import communityObj from '@/api/community.js';
 export default {
    metaInfo() {
@@ -111,7 +114,8 @@ export default {
    components: {
       BannerBlock,
       BulletinSlider,
-      Announce
+      Announce,
+      PositionBox
    }
 }
 </script>

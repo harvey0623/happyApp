@@ -27,7 +27,7 @@ export default {
    data: () => ({
       swiper: null,
       swiperOption: {
-         spaceBetween: 8,
+         spaceBetween: 10,
          slidesPerView: 3,
          slidesPerView: 'auto',
       },
