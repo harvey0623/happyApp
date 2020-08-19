@@ -7,6 +7,11 @@
 
    <BulletinSlider :bulletinData="bulletin1"></BulletinSlider>
 
+   <Announce
+      :title="'社區公告'"
+      :announceData="bulletin2"
+   ></Announce>
+
    <!-- 社區選擇modal -->
    <b-modal 
       id="calModal" modal-class="mymodal" 
@@ -36,6 +41,7 @@
 <script>
 import BannerBlock from '@/components/BannerBlock/index.vue';
 import BulletinSlider from '@/components/BulletinSlider/index.vue';
+import Announce from '@/components/Announce/index.vue';
 import communityObj from '@/api/community.js';
 export default {
    metaInfo() {
@@ -104,7 +110,8 @@ export default {
    },
    components: {
       BannerBlock,
-      BulletinSlider
+      BulletinSlider,
+      Announce
    }
 }
 </script>

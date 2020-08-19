@@ -21,6 +21,7 @@ export default {
       }
    },
    data: () => ({
+      swiper: null,
       swiperOption: {
          loop: true,
          initialSlide: 0,
@@ -29,7 +30,6 @@ export default {
             el: '.swiper-pagination'
          }
       },
-      swiper: null
    }),
    computed: {
       hasData() {
@@ -70,7 +70,8 @@ export default {
          border-radius: 15px;
       }
       >img {
-         border-radius: 15px;  
+         min-height: 150px;  
+         border-radius: 15px;
       }
       >.imgDesc {
          position: absolute;
