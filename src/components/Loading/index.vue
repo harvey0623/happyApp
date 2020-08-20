@@ -10,7 +10,9 @@
 
 <script>
 export default {
-
+   mounted() {
+      console.log('yes')
+   }
 };
 </script>
 
@@ -23,10 +25,9 @@ export default {
    @include size(100%);
    background-color: rgba(black, 0.5);
    color: #fff;
-   z-index: 20;
+   z-index: 1200;
    >.dots {
-      @extend %bwtFlex;
-      flex-flow: row nowrap;
+      display: flex;
       >div {
          @include size(20px);
          margin-right: 15px;
@@ -35,6 +36,7 @@ export default {
          animation: fade 0.8s ease-in-out alternate infinite;
          &:nth-child(1) {
             animation-delay: -0.4s;
+            margin-left: 15px;
          }
          &:nth-child(2) {
             animation-delay: -0.2s;

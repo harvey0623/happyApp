@@ -103,15 +103,9 @@ export default {
          let isValid = await this.$refs.form.validate().then(res => res);
          if (!isValid) return;
          let { loginStatus } = await this.doLogin().then(res => res);
-         this.$swal({
-            icon: loginStatus ? 'success' : 'error',
-            title: loginStatus ? '登入成功' : '帳號密碼有誤',
-         });
-         if (loginStatus) this.$router.replace('/');
+         if (!loginStatus) this.$swal({ icon: 'error', title: '帳號密碼有誤' });
+         else this.$router.replace('/');
       }
-   },
-   mounted() {
-      
    },
    components: {
       LogoBox

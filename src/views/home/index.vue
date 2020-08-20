@@ -35,6 +35,8 @@
       </template>
    </b-modal>
 
+   <Loading v-show="isLoading"></Loading>
+
 </div>
 </template>
 
@@ -58,6 +60,7 @@ export default {
       selectId: '',
       bulletin1: [],
       bulletin2: [],
+      isLoading: false
    }),
    computed: {
       targetCommunity() {
@@ -68,11 +71,13 @@ export default {
    },
    methods: {
       async getBulletin() { //取得社區公告資料
+         this.isLoading = true;
          return await communityObj.getBulletin({
             iUserId: this.userInfo.user_id,
             vToken: this.userInfo.token,
             iCommunityId: this.communityId
-         }).then(res => res);
+         }).then(res => res)
+            .finally(() => this.isLoading = false)
       },
       chooseCommunity() {
          this.$bvModal.show('calModal');
