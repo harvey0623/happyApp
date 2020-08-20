@@ -16,11 +16,11 @@
 export default {
    data: () => ({
       lists: [
-         { title: '管委會', imgUrl: require('@/assets/img/commonBtn1.svg'), href: '/' },
-         { title: '保全人員', imgUrl: require('@/assets/img/commonBtn2.svg'), href: '/' },
-         { title: '物業人員', imgUrl: require('@/assets/img/commonBtn3.svg'), href: '/' },
-         { title: '房仲人員', imgUrl: require('@/assets/img/commonBtn4.svg'), href: '/' },
-         { title: '房仲人員', imgUrl: require('@/assets/img/commonBtn5.svg'), href: '/' },
+         { title: '繳交費用', imgUrl: require('@/assets/img/commonBtn1.svg'), href: '/' },
+         { title: '郵件包裹', imgUrl: require('@/assets/img/commonBtn2.svg'), href: '/' },
+         { title: '費用代轉', imgUrl: require('@/assets/img/commonBtn3.svg'), href: '/' },
+         { title: '我的預約', imgUrl: require('@/assets/img/commonBtn4.svg'), href: '/' },
+         { title: '意見反饋', imgUrl: require('@/assets/img/commonBtn5.svg'), href: '/' },
       ]
    })
 }

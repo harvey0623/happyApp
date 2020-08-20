@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapMutations  } from 'vuex';
 import BannerBlock from '@/components/BannerBlock/index.vue';
 import BulletinSlider from '@/components/BulletinSlider/index.vue';
 import Announce from '@/components/Announce/index.vue';
@@ -56,27 +56,27 @@ export default {
    },
    data: () => ({
       communityList: [],
-      communityId: '',
       selectId: '',
       bulletin1: [],
       bulletin2: [],
       isLoading: false
    }),
    computed: {
-      ...mapState('auth', ['userInfo']),
+      ...mapState('auth', ['userInfo', 'userCommunity']),
       targetCommunity() {
-         let result = this.communityList.find(item => item.iId === this.communityId);
+         let result = this.communityList.find(item => item.iId === this.userCommunity);
          if (result !== undefined) return result;
          else return {};
       }
    },
    methods: {
+      ...mapMutations('auth', ['setUserCommunity']),
       async getBulletin() { //取得社區公告資料
          this.isLoading = true;
          return await communityObj.getBulletin({
             iUserId: this.userInfo.user_id,
             vToken: this.userInfo.token,
-            iCommunityId: this.communityId
+            iCommunityId: this.userCommunity
          }).then(res => res)
             .finally(() => this.isLoading = false)
       },
@@ -94,21 +94,23 @@ export default {
       },
       setDefaultData() { //寫入預設資料
          this.communityList = this.tidyCommunity();
-         this.communityId = this.communityList[0].iId;
-         this.selectId = this.communityId;
+         if (this.userCommunity === null) {
+            this.setUserCommunity(this.communityList[0].iId);
+         }
+         this.selectId = this.userCommunity;
       },
       tidyBulletin(data) { //整理社區公告資料
          this.bulletin1 = data.filter(item => item.iPosition === 1);
          this.bulletin2 = data.filter(item => item.iPosition === 2);
       },
       async switchCommunity() { //切換社區
-         this.communityId = this.selectId;
+         this.setUserCommunity(this.selectId);
          let bulletinData = await this.getBulletin().then(res => res);
-         this.tidyBulletin(bulletinData);   
+         this.tidyBulletin(bulletinData);
          this.$bvModal.hide('calModal');
       },
       hiddenModal() {
-         this.selectId = this.communityId;
+         this.selectId = this.userCommunity;
       }
    },
    async mounted() {

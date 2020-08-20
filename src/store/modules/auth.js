@@ -21,13 +21,17 @@ const authStore = function() {
       namespaced: true,
       state: {
          userInfo: LS.get('userInfo'),
-         communityId: ''
+         userCommunity: LS.get('communityId')
       },
       mutations: {
          setUserInfo(state, value) {
             state.userInfo = value;
             if (value !== null) LS.set('userInfo', value);
             else LS.remove('userInfo');
+         },
+         setUserCommunity(state, value) {
+            state.userCommunity = value;
+            LS.set('communityId', value);
          }
       },
       getters: {

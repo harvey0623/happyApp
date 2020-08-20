@@ -854,11 +854,6 @@ select {
   justify-content: center;
   align-items: center;
 }
-#loading > .dots {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 #loading {
   position: fixed;
   left: 0;
@@ -867,10 +862,10 @@ select {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
-  z-index: 20;
+  z-index: 1200;
 }
 #loading > .dots {
-    flex-flow: row nowrap;
+    display: flex;
 }
 #loading > .dots > div {
       width: 20px;
@@ -884,6 +879,7 @@ select {
 #loading > .dots > div:nth-child(1) {
         -webkit-animation-delay: -0.4s;
                 animation-delay: -0.4s;
+        margin-left: 15px;
 }
 #loading > .dots > div:nth-child(2) {
         -webkit-animation-delay: -0.2s;
