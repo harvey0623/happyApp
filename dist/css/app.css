@@ -784,10 +784,10 @@ select {
   height: calc(100vh - 120px);
 }
 .sidebarItem {
-  margin-bottom: 20px;
+  padding-bottom: 10px;
 }
 .sidebarItem:last-child {
-    margin-bottom: 0;
+    padding-bottom: 0;
 }
 .sidebarItem > .itemTop {
     display: flex;
