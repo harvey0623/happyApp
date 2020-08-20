@@ -24,8 +24,8 @@
          <p class="formTitle">選擇社區</p>
          <select class="mySelect" v-model="selectId">
             <option 
-               v-for="item in communityList"
-               :key="item.iId"
+               v-for="(item,index) in communityList"
+               :key="index"
                :value="item.iId"
             >{{ item.vName }}</option>
          </select>

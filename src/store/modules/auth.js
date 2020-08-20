@@ -37,7 +37,8 @@ const authStore = function() {
          },
          setUserCommunity(state, value) {
             state.userCommunity = value;
-            LS.set('communityId', value);
+            if (value !== null) LS.set('communityId', value);
+            else LS.remove('communityId');
          }
       },
       getters: {
@@ -63,6 +64,7 @@ const authStore = function() {
          async doLogout({ commit }, payload) {
             return await new Promise((resolve) => {
                commit('setUserInfo', null);
+               commit('setUserCommunity', null);
                resolve();
             });
          }

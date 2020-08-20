@@ -695,6 +695,133 @@ select {
   min-width: 120px;
 }
 
+.characterInfo {
+  position: relative;
+  margin-bottom: 20px;
+  height: 150px;
+  background-image: url(../img/community1.acc14707.jpg);
+  background-position: center top;
+  background-size: cover;
+  border-bottom-left-radius: 20px;
+}
+.characterInfo:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-bottom-left-radius: 20px;
+    z-index: 1;
+}
+.characterInfo > .backIcon {
+    position: relative;
+    padding: 15px 15px 5px 15px;
+    z-index: 2;
+}
+.characterInfo > .backIcon > i {
+      font-size: 30px;
+      color: #C5C1C0;
+}
+.characterInfo > .detailBox {
+    position: relative;
+    margin-bottom: 15px;
+    color: #fff;
+    text-align: center;
+    z-index: 2;
+}
+.characterInfo > .detailBox:last-child {
+      margin-bottom: 0;
+}
+.characterInfo > .detailBox > .companyName {
+      margin-bottom: 10px;
+      font-size: 20px;
+}
+.characterInfo > .detailBox > .laborName > span {
+      margin-right: 8px;
+}
+
+.punchBox, .workBox .workRow.split > .workItem, .workItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.workBox .workRow.split {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.punchBox {
+  margin-bottom: 25px;
+  height: 60px;
+  border-radius: 5px;
+  background-color: #FEB7BB;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+}
+.punchBox > span {
+    margin-left: 10px;
+}
+.workBox {
+  margin-bottom: 35px;
+}
+.workBox:last-child {
+    margin-bottom: 0;
+}
+.workBox > p {
+    margin-bottom: 10px;
+    color: #4F3B54;
+    font-weight: bold;
+}
+.workBox .workRow {
+    margin-bottom: 12px;
+}
+.workBox .workRow:last-child {
+      margin-bottom: 0;
+}
+.workBox .workRow.split > .workItem {
+      flex: 0 0 48.5%;
+      flex-direction: column;
+}
+.workBox .workRow.split > .workItem > span {
+        margin-right: 0;
+}
+.workBox .workRow.split > .workItem > img {
+        width: 50px;
+        height: auto;
+        margin-bottom: 5px;
+}
+.workItem {
+  height: 100px;
+  background-color: #F5F5F5;
+  border-radius: 5px;
+  box-shadow: 0px 3px 3px #00000029;
+  overflow: hidden;
+}
+.workItem.small {
+    height: 65px;
+}
+.workItem > span {
+    margin-right: 80px;
+    color: #646464;
+    font-size: 20px;
+    font-weight: bold;
+}
+.workItem > .imgBox {
+    display: flex;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #E6E6E6;
+}
+.workItem > .imgBox > img {
+      width: 50px;
+      height: auto;
+      margin: auto;
+}
+
 .myheader {
   display: flex;
   justify-content: space-between;
