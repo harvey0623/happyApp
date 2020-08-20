@@ -76,10 +76,7 @@ const entranceName = ['entrance', 'login', 'register', 'forgotPw'];
 
 router.beforeEach((to, from, next) => {
 	if (to.matched.some(record => record.meta.auth)) {
-		let userInfo = localStorage.getItem('userInfo');
-		if (userInfo === null || JSON.parse(userInfo).token === undefined) {
-			return next('/entrance');
-		}
+		if (store.state.auth.userInfo === null) return next('/entrance');
 	}
 	if (entranceName.includes(to.name)) { //登入狀態下不可進入的頁面
 		if (store.getters['auth/isLogin']) return next('/');

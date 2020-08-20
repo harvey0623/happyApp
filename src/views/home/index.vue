@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import BannerBlock from '@/components/BannerBlock/index.vue';
 import BulletinSlider from '@/components/BulletinSlider/index.vue';
 import Announce from '@/components/Announce/index.vue';
@@ -54,7 +55,6 @@ export default {
       }
    },
    data: () => ({
-      userInfo: null,
       communityList: [],
       communityId: '',
       selectId: '',
@@ -63,6 +63,7 @@ export default {
       isLoading: false
    }),
    computed: {
+      ...mapState('auth', ['userInfo']),
       targetCommunity() {
          let result = this.communityList.find(item => item.iId === this.communityId);
          if (result !== undefined) return result;
@@ -92,7 +93,6 @@ export default {
          return result;
       },
       setDefaultData() { //寫入預設資料
-         this.userInfo = this.getStorageData();
          this.communityList = this.tidyCommunity();
          this.communityId = this.communityList[0].iId;
          this.selectId = this.communityId;

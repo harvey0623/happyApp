@@ -23,10 +23,10 @@ const crypto = {
       return this.decodeUft8(words);
    },
    encodeAes(text) {
-      return Aes.encrypt(text, 'secret key').toString();
+      return Aes.encrypt(text, process.env.VUE_APP_AESKEY).toString();
    },
    decodeAes(text) {
-      let bytes = Aes.decrypt(text, 'secret key');
+      let bytes = Aes.decrypt(text, process.env.VUE_APP_AESKEY);
       return bytes.toString(CryptoJS.enc.Utf8);
    },
    encodeAesJson(data) {

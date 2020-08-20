@@ -1,12 +1,15 @@
 import authObj from '@/api/auth.js';
+import crypto from '@/plugins/crypto/index.js';
 
 const LS = {
    get(key) {
       let data = localStorage.getItem(key);
-      return data !== null ? JSON.parse(data) : null; 
+      if (data !== null) data = JSON.parse(crypto.decodeAes(data));
+      return data;
    },
    set(key, data) {
-      localStorage.setItem(key, JSON.stringify(data));
+      let jsonData = JSON.stringify(data);
+      localStorage.setItem(key, crypto.encodeAes(jsonData));
    },
    remove(key) {
       localStorage.removeItem(key);
@@ -17,21 +20,19 @@ const authStore = function() {
    return {
       namespaced: true,
       state: {
-         userInfo: LS.get('userInfo') || {}
+         userInfo: LS.get('userInfo'),
+         communityId: ''
       },
       mutations: {
          setUserInfo(state, value) {
             state.userInfo = value;
-            if (value.token) {
-               LS.set('userInfo', value);
-            } else {
-               LS.remove('userInfo');
-            }
+            if (value !== null) LS.set('userInfo', value);
+            else LS.remove('userInfo');
          }
       },
       getters: {
          isLogin(state) {
-            return state.userInfo.token !== undefined;
+            return state.userInfo !== null;
          }
       },
       actions: {
@@ -51,7 +52,7 @@ const authStore = function() {
          },
          async doLogout({ commit }, payload) {
             return await new Promise((resolve) => {
-               commit('setUserInfo', {});
+               commit('setUserInfo', null);
                resolve();
             });
          }
