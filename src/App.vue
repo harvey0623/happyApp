@@ -12,7 +12,7 @@ export default {
    metaInfo() {
       return {
          title: '',
-         titleTemplate: '%s | project',
+         titleTemplate: '%s',
          meta: [
             { property: 'og:image', content: '' },
             { property: 'og:description', content: 'project' },

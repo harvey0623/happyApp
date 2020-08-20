@@ -7,6 +7,8 @@ import Entrance from '@/views/entrance/index.vue';
 import Login from '@/views/login/index.vue';
 import Register from '@/views/register/index.vue';
 import ForgotPw from '@/views/forgotPw/index.vue';
+import Security from '@/views/security/index.vue';
+import TempView from '@/views/tempView/index.vue';
 Vue.use(VueRouter);
 
 const routes = [
@@ -17,6 +19,24 @@ const routes = [
 		meta: {
 			auth: true
 		},
+	},
+	{
+		path: '/security',
+		component: TempView,
+		meta: {
+			auth: true
+		},
+		children: [
+			{
+				path: '',
+				name: 'security',
+				component: Security,		
+			},
+			{
+				path: '*',
+				redirect: '/security'
+			}
+		]
 	},
 	{
 		path: '/entrance',

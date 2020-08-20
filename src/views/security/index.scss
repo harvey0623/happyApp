@@ -1,0 +1,68 @@
+.punchBox {
+   @extend %centerFlex;
+   margin-bottom: 25px;
+   height: 60px;
+   border-radius: map-get($radius, basic);
+   background-color: map-get($btnBgColor, punch);
+   color: #fff;
+   font-size: 18px;
+   font-weight: bold;
+   >span {
+      margin-left: 10px;
+   }
+}
+
+.workBox {
+   @include elGutter(margin-bottom, 35px);
+   >p {
+      margin-bottom: 10px;
+      color: map-get($fontColor, sidebar);
+      font-weight: bold;
+   }
+   .workRow {
+      @include elGutter(margin-bottom, 12px);
+      &.split {
+         @extend %bwtFlex;
+         >.workItem {
+            flex: 0 0 48.5%;
+            @extend %centerFlex;
+            flex-direction: column;
+            >span {
+               margin-right: 0;
+            }
+            >img {
+               @include size(50px, auto);
+               margin-bottom: 5px;
+            }
+         }
+      }
+   }
+}
+
+.workItem {
+   @extend %centerFlex;
+   height: 100px;
+   background-color: map-get($elBgColor,work);
+   border-radius: map-get($radius, basic);
+   box-shadow: 0px 3px 3px #00000029;
+   overflow: hidden;
+   &.small {
+      height: 65px;
+   }
+   >span {
+      margin-right: 80px;
+      color: map-get($fontColor, form);
+      font-size: 20px;
+      font-weight: bold;
+   }
+   >.imgBox {
+      display: flex;
+      @include size(120px);
+      border-radius: 50%;
+      background-color: #E6E6E6;
+      >img {
+         @include size(50px, auto);
+         margin: auto;
+      }
+   }
+}

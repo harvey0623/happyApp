@@ -14,6 +14,9 @@
       },
       "forgotPw": {
          "title": "Forgot Password"
+      },
+      "security": {
+         "title": "security"
       }
    },
    "validate": {

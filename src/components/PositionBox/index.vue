@@ -18,7 +18,7 @@ export default {
    data: () => ({
       lists: [
          { title: '管委會', iconClass: 'fas fa-users', href: '/' },
-         { title: '保全人員', iconClass: 'fas fa-user-shield', href: '/' },
+         { title: '保全人員', iconClass: 'fas fa-user-shield', href: '/security' },
          { title: '物業人員', iconClass: 'fas fa-user', href: '/' },
          { title: '房仲人員', iconClass: 'fas fa-user-tie', href: '/' },
       ]

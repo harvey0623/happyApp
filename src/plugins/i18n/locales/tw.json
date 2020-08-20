@@ -14,6 +14,9 @@
       },
       "forgotPw": {
          "title": "忘記密碼"
+      },
+      "security": {
+         "title": "保全人員"
       }
    },
    "validate": {
