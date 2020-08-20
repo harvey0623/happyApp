@@ -10,9 +10,7 @@
 
 <script>
 export default {
-   mounted() {
-      console.log('yes')
-   }
+   
 };
 </script>
 

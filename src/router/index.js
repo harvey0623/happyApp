@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import i18n from '@/plugins/i18n/index.js';
+import store from '@/store/index.js';
 import Home from '@/views/home/index.vue';
 import Entrance from '@/views/entrance/index.vue';
 import Login from '@/views/login/index.vue';
@@ -71,12 +72,17 @@ const router = new VueRouter({
 	}
 });
 
+const entranceName = ['entrance', 'login', 'register', 'forgotPw'];
+
 router.beforeEach((to, from, next) => {
 	if (to.matched.some(record => record.meta.auth)) {
 		let userInfo = localStorage.getItem('userInfo');
 		if (userInfo === null || JSON.parse(userInfo).token === undefined) {
 			return next('/entrance');
 		}
+	}
+	if (entranceName.includes(to.name)) { //登入狀態下不可進入的頁面
+		if (store.getters['auth/isLogin']) return next('/');
 	}
 	return next();
 });
