@@ -4,12 +4,18 @@ import crypto from '@/plugins/crypto/index.js';
 const LS = {
    get(key) {
       let data = localStorage.getItem(key);
-      if (data !== null) data = JSON.parse(crypto.decodeAes(data));
+      if (data !== null) {
+         let aesData = crypto.decodeBase64(data);
+         let jsonData = crypto.decodeAes(aesData);
+         data = JSON.parse(jsonData);
+      }
       return data;
    },
    set(key, data) {
       let jsonData = JSON.stringify(data);
-      localStorage.setItem(key, crypto.encodeAes(jsonData));
+      let aseData = crypto.encodeAes(jsonData) 
+      let base64 = crypto.encodeBase64(aseData);
+      localStorage.setItem(key, base64);
    },
    remove(key) {
       localStorage.removeItem(key);

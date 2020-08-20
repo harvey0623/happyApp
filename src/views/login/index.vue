@@ -107,6 +107,16 @@ export default {
          else this.$router.replace('/');
       }
    },
+   mounted() {
+      // let data = { name: 'harvy', age: 100 };
+      // let jsonData = JSON.stringify(data);
+      // let aseData = crypto.encodeAes(jsonData) 
+      // let base64 = crypto.encodeBase64(aseData);
+      // localStorage.setItem('aaa', base64)
+      // let aaa = crypto.decodeBase64(base64);
+      // let bbb = crypto.decodeAes(aaa);
+      // console.log(bbb);
+   },
    components: {
       LogoBox
    }

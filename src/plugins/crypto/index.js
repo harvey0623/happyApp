@@ -2,7 +2,7 @@ import CryptoJS from "crypto-js";
 const Utf8 = CryptoJS.enc.Utf8;
 const Base64 = CryptoJS.enc.Base64;
 const Md5 = CryptoJS.MD5;
-const Aes  = CryptoJS.AES;
+const Aes = CryptoJS.AES;
 
 const crypto = {
    encodeMd5(text) {
