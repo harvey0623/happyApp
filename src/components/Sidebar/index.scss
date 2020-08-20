@@ -23,7 +23,7 @@ $sidebarHeadHeight: 120px;
 }
 
 .sidebarItem {
-   @include elGutter(margin-bottom, 20px);
+   @include elGutter(padding-bottom, 10px);
    >.itemTop {
       display: flex;
       align-items: center;

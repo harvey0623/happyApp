@@ -1,4 +1,4 @@
-import CryptoJS from "crypto-js";
+import CryptoJS from 'crypto-js';
 const Utf8 = CryptoJS.enc.Utf8;
 const Base64 = CryptoJS.enc.Base64;
 const Md5 = CryptoJS.MD5;
@@ -27,7 +27,7 @@ const crypto = {
    },
    decodeAes(text) {
       let bytes = Aes.decrypt(text, process.env.VUE_APP_AESKEY);
-      return bytes.toString(CryptoJS.enc.Utf8);
+      return bytes.toString(Utf8);
    },
    encodeAesJson(data) {
       return this.encodeAes(JSON.stringify(data));
