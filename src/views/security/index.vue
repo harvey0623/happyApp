@@ -65,6 +65,7 @@
 <script>
 import CharacterInfo from '@/components/CharacterInfo/index.vue';
 export default {
+   name: 'security',
    metaInfo() {
       return { 
          title: this.$i18n.t('seo.security.title'),

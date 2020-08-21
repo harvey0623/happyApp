@@ -1,8 +1,10 @@
 <template>
 <div id="app">
-	<component :is="layout">
-		<router-view></router-view>
-	</component>
+   <component :is="layout">
+      <keep-alive :include="['home']">
+         <router-view></router-view>
+      </keep-alive>
+   </component>
 </div>
 </template>
 

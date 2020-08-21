@@ -60,6 +60,7 @@
 
 <script>
 export default {
+   name: 'forgotPw',
    metaInfo() {
       return { 
          title: this.$i18n.t('seo.register.title'),

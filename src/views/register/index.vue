@@ -102,6 +102,7 @@
 <script>
 import { mapActions } from 'vuex';
 export default {
+   name: 'register',
    metaInfo() {
       return { 
          title: this.$i18n.t('seo.register.title'),

@@ -11,6 +11,7 @@
 <script>
 import LogoBox from '@/components/LogoBox/index.vue';
 export default {
+   name: 'entrance',
    metaInfo() {
       return { 
          title: this.$i18n.t('seo.entrance.title'),

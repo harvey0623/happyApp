@@ -67,6 +67,7 @@
 import LogoBox from '@/components/LogoBox/index.vue';
 import crypto from '@/plugins/crypto/index.js';
 export default {
+   name: 'login',
    metaInfo() {
       return { 
          title: this.$i18n.t('seo.login.title'),

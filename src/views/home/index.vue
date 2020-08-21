@@ -49,6 +49,7 @@ import PositionBox from '@/components/PositionBox/index.vue';
 import FeatureBox from '@/components/FeatureBox/index.vue';
 import communityObj from '@/api/community.js';
 export default {
+   name: 'home',
    metaInfo() {
       return { 
          title: this.$i18n.t('seo.home.title'),
