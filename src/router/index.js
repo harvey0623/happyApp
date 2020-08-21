@@ -8,6 +8,7 @@ import Login from '@/views/login/index.vue';
 import Register from '@/views/register/index.vue';
 import ForgotPw from '@/views/forgotPw/index.vue';
 import Security from '@/views/security/index.vue';
+import WorkInfo from '@/views/workInfo/index.vue';
 import TempView from '@/views/tempView/index.vue';
 Vue.use(VueRouter);
 
@@ -31,6 +32,11 @@ const routes = [
 				path: '',
 				name: 'security',
 				component: Security,		
+			},
+			{
+				path: 'workInfo',
+				name: 'workInfo',
+				component: WorkInfo,		
 			},
 			{
 				path: '*',
