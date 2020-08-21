@@ -742,7 +742,7 @@ select {
       margin-right: 8px;
 }
 
-.punchBox, .workBox .workRow.split > .workItem, .workItem {
+.punchBox, .workBox .workRow.split > .workItem, .workBox .workRow > .workItem {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -793,33 +793,44 @@ select {
         height: auto;
         margin-bottom: 5px;
 }
-.workItem {
-  height: 100px;
-  background-color: #F5F5F5;
-  border-radius: 5px;
-  box-shadow: 0px 3px 3px #00000029;
-  overflow: hidden;
+.workBox .workRow > .workItem {
+      height: 100px;
+      background-color: #F5F5F5;
+      border-radius: 5px;
+      box-shadow: 0px 3px 3px #00000029;
+      overflow: hidden;
 }
-.workItem.small {
-    height: 65px;
+.workBox .workRow > .workItem.small {
+        height: 65px;
 }
-.workItem > span {
-    margin-right: 80px;
-    color: #646464;
-    font-size: 20px;
-    font-weight: bold;
+.workBox .workRow > .workItem.small > span {
+          -webkit-transform: translateX(-22px);
+                  transform: translateX(-22px);
 }
-.workItem > .imgBox {
-    display: flex;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background-color: #E6E6E6;
+.workBox .workRow > .workItem.small > .imgBox {
+          width: 75px;
+          height: 75px;
 }
-.workItem > .imgBox > img {
-      width: 50px;
-      height: auto;
-      margin: auto;
+.workBox .workRow > .workItem.small > .imgBox > img {
+            width: 36px;
+}
+.workBox .workRow > .workItem > span {
+        margin-right: 85px;
+        color: #646464;
+        font-size: 20px;
+        font-weight: bold;
+}
+.workBox .workRow > .workItem > .imgBox {
+        display: flex;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background-color: #E6E6E6;
+}
+.workBox .workRow > .workItem > .imgBox > img {
+          width: 50px;
+          height: auto;
+          margin: auto;
 }
 
 .myheader {
@@ -956,7 +967,7 @@ select {
 
 .defaultLayout {
   padding-top: 50px;
-  padding-bottom: 15px;
+  padding-bottom: 40px;
 }
 
 .entranceLayout {
