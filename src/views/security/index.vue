@@ -29,6 +29,35 @@
             </div>
          </div>
       </div>
+      <div class="workBox">
+         <p class="title">我的紀錄</p>
+         <div class="workContent">
+            <div class="workRow">
+               <router-link to="/" class="workItem small">
+                  <span>工作紀錄</span>
+                  <div class="imgBox">
+                     <img :src="require('@/assets/img/record.svg')" alt="">
+                  </div>
+               </router-link>
+            </div>
+            <div class="workRow">
+               <router-link to="/" class="workItem small">
+                  <span>我的班表</span>
+                  <div class="imgBox">
+                     <img :src="require('@/assets/img/shift.svg')" alt="">
+                  </div>
+               </router-link>
+            </div>
+            <div class="workRow">
+               <router-link to="/" class="workItem small">
+                  <span>請假事項</span>
+                  <div class="imgBox">
+                     <img :src="require('@/assets/img/task.svg')" alt="">
+                  </div>
+               </router-link>
+            </div>
+         </div>
+      </div>
    </div>
 </div>
 </template>
