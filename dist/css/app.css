@@ -132,16 +132,19 @@ a:focus {
 .mycontainer {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px; }
+  padding-left: 15px;
+  padding-right: 15px; }
+  .mycontainer.vertical {
+    padding-top: 25px; }
 
 .formLayout > .formRow {
   margin-bottom: 20px; }
   .formLayout > .formRow:last-child {
     margin-bottom: 0; }
   .formLayout > .formRow > .formTitle {
-    margin-bottom: 10px;
-    font-size: 14px;
-    color: #646464; }
+    margin-bottom: 5px;
+    color: #646464;
+    font-size: 14px; }
 
 .btnBox.center {
   text-align: center; }
@@ -287,16 +290,16 @@ select {
     height: 42px;
     margin: 0; }
 
-.bannerBlock {
+.bannerBlock[data-v-33700ff8] {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.bannerBlock, .bannerBlock:after {
+.bannerBlock[data-v-33700ff8], .bannerBlock[data-v-33700ff8]:after {
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
-.bannerBlock {
+.bannerBlock[data-v-33700ff8] {
   position: relative;
   padding-left: 25px;
   height: 150px;
@@ -305,7 +308,7 @@ select {
   background-size: cover;
   background-position: center top;
 }
-.bannerBlock:after {
+.bannerBlock[data-v-33700ff8]:after {
     content: '';
     position: absolute;
     left: 0;
@@ -315,16 +318,17 @@ select {
     background-color: rgba(0, 0, 0, 0.55);
     z-index: 1;
 }
-.bannerBlock > .communityIntro {
+.bannerBlock > .communityIntro[data-v-33700ff8] {
     position: relative;
-    color: #fff;
     font-size: 18px;
+    color: #fff;
+    text-align: center;
     z-index: 2;
 }
-.bannerBlock > .communityIntro > .userName {
+.bannerBlock > .communityIntro > .userName[data-v-33700ff8] {
       margin-bottom: 8px;
 }
-.bannerBlock > .communityIntro > .communityName > span {
+.bannerBlock > .communityIntro > .communityName > span[data-v-33700ff8] {
       margin-right: 10px;
 }
 
@@ -695,16 +699,21 @@ select {
   min-width: 120px;
 }
 
-.characterInfo {
+.characterInfo[data-v-0e368d8c] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.characterInfo[data-v-0e368d8c] {
   position: relative;
-  margin-bottom: 20px;
   height: 150px;
+  margin-bottom: 20px;
   background-image: url(../img/community1.acc14707.jpg);
   background-position: center top;
   background-size: cover;
   border-bottom-left-radius: 20px;
 }
-.characterInfo:after {
+.characterInfo[data-v-0e368d8c]:after {
     content: '';
     position: absolute;
     left: 0;
@@ -715,30 +724,32 @@ select {
     border-bottom-left-radius: 20px;
     z-index: 1;
 }
-.characterInfo > .backIcon {
-    position: relative;
-    padding: 15px 15px 5px 15px;
+.characterInfo > .backIcon[data-v-0e368d8c] {
+    position: absolute;
+    left: 15px;
+    top: 12px;
     z-index: 2;
 }
-.characterInfo > .backIcon > i {
+.characterInfo > .backIcon > i[data-v-0e368d8c] {
       font-size: 30px;
       color: #C5C1C0;
 }
-.characterInfo > .detailBox {
+.characterInfo > .detailBox[data-v-0e368d8c] {
     position: relative;
+    top: 5px;
     margin-bottom: 15px;
     color: #fff;
     text-align: center;
     z-index: 2;
 }
-.characterInfo > .detailBox:last-child {
+.characterInfo > .detailBox[data-v-0e368d8c]:last-child {
       margin-bottom: 0;
 }
-.characterInfo > .detailBox > .companyName {
+.characterInfo > .detailBox > .companyName[data-v-0e368d8c] {
       margin-bottom: 10px;
       font-size: 20px;
 }
-.characterInfo > .detailBox > .laborName > span {
+.characterInfo > .detailBox > .laborName > span[data-v-0e368d8c] {
       margin-right: 8px;
 }
 
@@ -760,6 +771,7 @@ select {
   color: #fff;
   font-size: 18px;
   font-weight: bold;
+  box-shadow: 0px 3px 3px #00000029;
 }
 .punchBox > span {
     margin-left: 10px;
@@ -831,6 +843,26 @@ select {
           width: 50px;
           height: auto;
           margin: auto;
+}
+
+.companyInfo[data-v-08358dbc] {
+  margin-bottom: 30px;
+}
+.companyInfo > .nameBlock[data-v-08358dbc] {
+    text-align: center;
+    font-size: 18px;
+}
+.companyInfo > .nameBlock.companyName[data-v-08358dbc] {
+      margin-bottom: 5px;
+      color: #4F3B54;
+      font-weight: bold;
+}
+.companyInfo > .nameBlock.communityName[data-v-08358dbc] {
+      color: #f65d75;
+}
+.laborInfo[data-v-08358dbc] {
+  padding-left: 22px;
+  padding-right: 22px;
 }
 
 .myheader {
@@ -1038,5 +1070,24 @@ from {
 to {
     opacity: 0;
 }
+}
+
+.backBlock {
+  position: relative;
+  height: 45px;
+  line-height: 45px;
+  background-color: #F2F2F2;
+}
+.backBlock > .fa-long-arrow-left {
+    position: absolute;
+    left: 15px;
+    top: 8px;
+    color: #C5C1C0;
+    font-size: 30px;
+}
+.backBlock > p {
+    color: #646464;
+    text-align: center;
+    font-size: 18px;
 }
 
