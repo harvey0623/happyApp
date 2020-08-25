@@ -20,6 +20,9 @@
       },
       "workInfo": {
          "title": "工作資料"
+      },
+      "notify": {
+         "title": "通知"
       }
    },
    "validate": {

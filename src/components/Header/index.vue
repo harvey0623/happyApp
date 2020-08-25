@@ -7,7 +7,7 @@
       <img :src="require('@/assets/img/logo.png')" class="pic" alt="">
       <img :src="require('@/assets/img/fontLogo.svg')" class="text" alt="">
    </router-link>
-   <router-link to="/" class="bellBox" :class="{ notice: true }">
+   <router-link to="/notify" class="bellBox" :class="{ notice: true }">
       <i class="fal fa-bell"></i>
    </router-link>
 </header>

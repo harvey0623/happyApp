@@ -20,6 +20,9 @@
       },
       "workInfo": {
          "title": "workInfo"
+      },
+      "notify": {
+         "title": "notify"
       }
    },
    "validate": {

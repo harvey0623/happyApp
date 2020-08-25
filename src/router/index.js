@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import i18n from '@/plugins/i18n/index.js';
 import store from '@/store/index.js';
+import TempView from '@/views/tempView/index.vue';
 import Home from '@/views/home/index.vue';
 import Entrance from '@/views/entrance/index.vue';
 import Login from '@/views/login/index.vue';
@@ -9,7 +10,7 @@ import Register from '@/views/register/index.vue';
 import ForgotPw from '@/views/forgotPw/index.vue';
 import Security from '@/views/security/index.vue';
 import WorkInfo from '@/views/workInfo/index.vue';
-import TempView from '@/views/tempView/index.vue';
+import Notify from '@/views/notify/index.vue';
 Vue.use(VueRouter);
 
 const routes = [
@@ -43,6 +44,14 @@ const routes = [
 				redirect: '/security'
 			}
 		]
+	},
+	{
+		path: '/notify',
+		name: 'notify',
+		component: Notify,
+		meta: {
+			auth: true
+		}
 	},
 	{
 		path: '/entrance',
