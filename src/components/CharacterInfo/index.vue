@@ -3,13 +3,13 @@
    <div class="backIcon" @click="backHandler">
       <i class="fal fa-long-arrow-left"></i>
    </div>
-   <div class="detailBox">
+   <router-link to="/security/workInfo" class="detailBox">
       <div class="companyName">{{ companyName }}</div>
       <div class="laborName">
          <span>{{ laborName }}</span>
          <i class="fal fa-pen"></i>
       </div>
-   </div>
+   </router-link>
 </div>
 </template>
 
@@ -39,11 +39,12 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .characterInfo {
    position: relative;
-   margin-bottom: 20px;
+   @extend %centerFlex;
    height: 150px;
+   margin-bottom: 20px;
    background-image: url("~@/assets/img/community1.jpg");
    background-position: center top;
    background-size: cover;
@@ -59,16 +60,18 @@ export default {
       z-index: 1;
    }
    >.backIcon {
-      position: relative;
-      padding: 15px 15px 5px 15px;
+      position: absolute;
+      left: 15px;
+      top: 12px;
       z-index: 2;
       >i {
          font-size: 30px;
-         color: #C5C1C0;
+         color: map-get($fontColor, arrow);
       }      
    }
    >.detailBox {
       position: relative;
+      top: 5px;
       @include elGutter(margin-bottom, 15px);
       color: #fff;
       text-align: center;

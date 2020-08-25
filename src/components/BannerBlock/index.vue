@@ -26,7 +26,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 %bannerRadius {
    border-bottom-left-radius: 20px;
    border-bottom-right-radius: 20px;
@@ -54,8 +54,9 @@ export default {
    }
    >.communityIntro {
       position: relative;
-      color: #fff;
       font-size: 18px;
+      color: #fff;
+      text-align: center;
       z-index: 2;
       >.userName {
          margin-bottom: 8px;

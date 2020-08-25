@@ -17,6 +17,9 @@
       },
       "security": {
          "title": "保全人員"
+      },
+      "workInfo": {
+         "title": "工作資料"
       }
    },
    "validate": {

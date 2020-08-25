@@ -2,7 +2,11 @@
 .mycontainer {
    max-width: 1200px;
    margin: 0 auto;
-   padding: 0 15px;
+   padding-left: 15px;
+   padding-right: 15px;
+   &.vertical {
+      padding-top: 25px;
+   }
 }
 
 //表單layout
@@ -10,9 +14,9 @@
    >.formRow {
       @include elGutter(margin-bottom, 20px);
       >.formTitle {
-         margin-bottom: 10px;
-         font-size: 14px;
+         margin-bottom: 5px;
          color: map-get($fontColor, form);
+         font-size: 14px;
       }
       // >.formContent {
          

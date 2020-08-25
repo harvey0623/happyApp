@@ -17,6 +17,9 @@
       },
       "security": {
          "title": "security"
+      },
+      "workInfo": {
+         "title": "workInfo"
       }
    },
    "validate": {
