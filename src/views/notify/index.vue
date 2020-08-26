@@ -1,19 +1,34 @@
 <template>
 <div class="notify">
    <BackBlock title="通知"></BackBlock>
-   <div class="mycontainer vertical">
+   <div class="mycontainer vertical tabGutter">
       <NotifyTab 
          :currentTabId="currentTabId"
          @tabUpdate="tabHandler"
       ></NotifyTab>
+      <KeywordPanel
+         :editId.sync="editId"
+         v-model="currentKeyword"
+      ></KeywordPanel>
+   </div>
+   <div class="notifyWrap">
+      <NotifyContent
+         v-for="tab in tabStatus"
+         :key="tab.id"
+         :detail="tab"
+         :showRemove="showRemove"
+         v-show="tab.id === currentTabId"
+      ></NotifyContent>
    </div>
 </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import NotifyTab from '@/components/NotifyTab/index.vue';
 import notifyObj from '@/api/notify.js';
+import NotifyTab from '@/components/NotifyTab/index.vue';
+import NotifyContent from '@/components/NotifyTab/NotifyContent.vue';
+import KeywordPanel from '@/components/KeywordPanel/index.vue';
 export default {
    name: 'notify',
    metaInfo() {
@@ -22,14 +37,29 @@ export default {
       }
    },
    data: () => ({
-      currentTabId: 2,
+      currentTabId: 3,
       tabStatus: [
-         { id: 2, isFirst: true, data: [] },
-         { id: 3, isFirst: true, data: [] }
-      ]
+         { id: 2, isFirst: true, keyword: '', data: [] },
+         { id: 3, isFirst: true, keyword: '', data: [] }
+      ],
+      editId: 1, //1:編輯 2:完成
    }),
    computed: {
-      ...mapState('auth', ['userInfo', 'userCommunity'])
+      ...mapState('auth', ['userInfo', 'userCommunity']),
+      targetCategory() {
+         return this.tabStatus.find(item => item.id === this.currentTabId);
+      },
+      currentKeyword: {
+         get() {
+            return this.targetCategory.keyword;
+         },
+         set(val) {
+            this.targetCategory.keyword = val;
+         }
+      },
+      showRemove() { //是否顯示移儲icon
+         return this.editId === 2;
+      }
    },
    methods: {
       tabHandler({ id }) {
@@ -46,12 +76,10 @@ export default {
          return result;
       },
       async initHandler() {
-         let targetStatus = this.tabStatus.find(item => item.id === this.currentTabId);
-         if (targetStatus.isFirst) {
+         if (this.targetCategory.isFirst) {
             let notifyData = await this.getNotifyData().then(res => res);
-            console.log(notifyData);
-            targetStatus.data = targetStatus.data.concat(notifyData);
-            targetStatus.isFirst = false;
+            this.targetCategory.data = this.targetCategory.data.concat(notifyData);
+            this.targetCategory.isFirst = false;
          }
       }
    },
@@ -59,11 +87,16 @@ export default {
       this.initHandler();
    },
    components: {
-      NotifyTab
+      NotifyTab,
+      KeywordPanel,
+      NotifyContent
    }
 }
 </script>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
+.notifyWrap {
+   height: calc(100vh - 50px - 45px - 125px - 40px - 30px);
+   overflow: auto;
+}
 </style>

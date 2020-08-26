@@ -61,6 +61,7 @@ $height: 40px;
    position: relative;
    display: flex;
    height: $height;
+   margin-bottom: 30px;
    background-color: map-get($elBgColor, position);
    border-radius: 100px;
    >.tabItem {
@@ -68,7 +69,7 @@ $height: 40px;
       flex: 1;
       line-height: $height;
       text-align: center;
-      color: #3C4043;
+      color: map-get($fontColor, tab);
       z-index: 2;
       &.active {
          transition: color 0.1s;
