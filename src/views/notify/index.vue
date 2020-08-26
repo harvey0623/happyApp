@@ -40,8 +40,8 @@ export default {
       currentTabId: 2,
       editId: 1, //1:編輯 2:完成
       tabStatus: [
-         { id: 2, isFirst: true, keyword: '', data: [], scrollPos: 0 },
-         { id: 3, isFirst: true, keyword: '', data: [], scrollPos: 0 }
+         { id: 2, isFirst: true, keyword: '', data: [], scrollPos: 0, isLoading: false },
+         { id: 3, isFirst: true, keyword: '', data: [], scrollPos: 0, isLoading: false }
       ],
    }),
    computed: {
@@ -79,9 +79,11 @@ export default {
       },
       async initHandler() {
          if (this.targetCategory.isFirst) {
+            this.targetCategory.isLoading = true;
             let notifyData = await this.getNotifyData().then(res => res);
             this.targetCategory.data = this.targetCategory.data.concat(notifyData);
             this.targetCategory.isFirst = false;
+            this.targetCategory.isLoading = false;
          }
       },
       getScrollPos() {

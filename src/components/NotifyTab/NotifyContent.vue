@@ -6,6 +6,7 @@
       :list="list.data"
       :showRemove="showRemove"
    ></NotifyList>
+   <p class="loadingTip" v-show="isLoading">資料加載中~</p>
 </div>
 </template>
 
@@ -29,6 +30,9 @@ export default {
       keyword() {
          return this.detail.keyword;
       },
+      isLoading() {
+         return this.detail.isLoading;
+      },
       filterList() {
          let keyword = this.keyword;
          if (keyword === '') return this.lists;
@@ -46,7 +50,3 @@ export default {
    }
 }
 </script>
-
-<style scoped>
-
-</style>

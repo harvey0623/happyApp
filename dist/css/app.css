@@ -155,6 +155,10 @@ a:focus {
   color: red;
   font-size: 14px; }
 
+.loadingTip {
+  text-align: center;
+  color: #646464; }
+
 .authBox > .authTitle {
   margin-bottom: 30px;
   color: #fff;
