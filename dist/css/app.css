@@ -136,6 +136,8 @@ a:focus {
   padding-right: 15px; }
   .mycontainer.vertical {
     padding-top: 25px; }
+  .mycontainer.tabGutter {
+    margin-bottom: 30px; }
 
 .formLayout > .formRow {
   margin-bottom: 20px; }
@@ -865,6 +867,111 @@ select {
   padding-right: 22px;
 }
 
+.notifyTab[data-v-0873ff0f] {
+  position: relative;
+  display: flex;
+  height: 40px;
+  margin-bottom: 30px;
+  background-color: #F2F2F2;
+  border-radius: 100px;
+}
+.notifyTab > .tabItem[data-v-0873ff0f] {
+    position: relative;
+    flex: 1;
+    line-height: 40px;
+    text-align: center;
+    color: #3C4043;
+    z-index: 2;
+}
+.notifyTab > .tabItem.active[data-v-0873ff0f] {
+      transition: color 0.1s;
+      transition-delay: 0.09s;
+      color: #fff;
+}
+.moveItem[data-v-0873ff0f] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  height: 40px;
+  z-index: 1;
+  background-color: #f65d75;
+  border-radius: 100px;
+}
+.moveItem.animate[data-v-0873ff0f] {
+    transition: left 0.2s;
+}
+
+.notifyList[data-v-4b1b953a] {
+  display: flex;
+  border-bottom: 1px solid #d4cece;
+}
+.listBox[data-v-4b1b953a] {
+  flex: 1;
+  padding: 20px;
+}
+.listBox > .title[data-v-4b1b953a] {
+    margin-bottom: 5px;
+    color: #4F3B54;
+    font-size: 16px;
+    font-weight: bold;
+}
+.listBox > .content[data-v-4b1b953a] {
+    margin-bottom: 10px;
+    color: #646464;
+    font-size: 14px;
+    text-align: justify;
+}
+.listBox > .time[data-v-4b1b953a] {
+    text-align: right;
+    color: #646464;
+    font-size: 14px;
+}
+.removeBox[data-v-4b1b953a] {
+  display: flex;
+  flex: 0 0 0px;
+  background-color: #D6D6D8;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+  overflow: hidden;
+}
+.removeBox.show[data-v-4b1b953a] {
+    flex: 0 0 32px;
+}
+.removeBox > i[data-v-4b1b953a] {
+    margin: auto;
+}
+
+.keywordPanel[data-v-7f19768e] {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+.keywordPanel > .fa-filter[data-v-7f19768e] {
+    margin-right: 5px;
+    color: #f65d75;
+    font-size: 17px;
+}
+.keywordPanel > .searchBox[data-v-7f19768e] {
+    flex: 1;
+    position: relative;
+    margin: 0 10px;
+}
+.keywordPanel > .searchBox > .fa-search[data-v-7f19768e] {
+      position: absolute;
+      left: 0;
+      top: 8px;
+      z-index: 1;
+}
+.keywordPanel > .searchBox > .myInput[data-v-7f19768e] {
+      padding-left: 20px;
+}
+
+.notifyWrap {
+  height: calc(100vh - 50px - 45px - 125px - 40px - 30px);
+  overflow: auto;
+}
+
 .myheader {
   display: flex;
   justify-content: space-between;
@@ -923,14 +1030,14 @@ select {
     background-color: #FCD03C;
 }
 
-#cover {
+#cover[data-v-dc1e650c] {
   position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.75);
-  z-index: 19;
+  z-index: 20;
 }
 
 .sidebar {
@@ -940,7 +1047,7 @@ select {
   width: 300px;
   height: 100vh;
   background-color: #fff;
-  z-index: 20;
+  z-index: 21;
 }
 .sidebarHead {
   height: 120px;
@@ -1073,10 +1180,13 @@ to {
 }
 
 .backBlock {
-  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
   height: 45px;
   line-height: 45px;
   background-color: #F2F2F2;
+  z-index: 19;
 }
 .backBlock > .fa-long-arrow-left {
     position: absolute;
@@ -1086,8 +1196,8 @@ to {
     font-size: 30px;
 }
 .backBlock > p {
-    color: #646464;
     text-align: center;
     font-size: 18px;
+    color: #646464;
 }
 
