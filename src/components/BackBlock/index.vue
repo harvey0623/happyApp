@@ -24,10 +24,12 @@ export default {
 
 <style lang="scss">
 .backBlock {
-   position: relative;
+   position: sticky;
+   top: map-get($heightObj, header);
    height: 45px;
    line-height: 45px;
    background-color: map-get($elBgColor, position);
+   z-index: 19;
    >.fa-long-arrow-left {
       position: absolute;
       left: 15px;
@@ -36,9 +38,9 @@ export default {
       font-size: 30px;
    }
    >p {
-      color: map-get($fontColor, form);
       text-align: center;
       font-size: 18px;
+      color: map-get($fontColor, form);
    }
 }
 </style>

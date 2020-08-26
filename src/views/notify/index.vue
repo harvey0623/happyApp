@@ -11,7 +11,7 @@
          v-model="currentKeyword"
       ></KeywordPanel>
    </div>
-   <div class="notifyWrap">
+   <div class="notifyWrap" ref="notifyWrap">
       <NotifyContent
          v-for="tab in tabStatus"
          :key="tab.id"
@@ -37,12 +37,12 @@ export default {
       }
    },
    data: () => ({
-      currentTabId: 3,
-      tabStatus: [
-         { id: 2, isFirst: true, keyword: '', data: [] },
-         { id: 3, isFirst: true, keyword: '', data: [] }
-      ],
+      currentTabId: 2,
       editId: 1, //1:編輯 2:完成
+      tabStatus: [
+         { id: 2, isFirst: true, keyword: '', data: [], scrollPos: 0 },
+         { id: 3, isFirst: true, keyword: '', data: [], scrollPos: 0 }
+      ],
    }),
    computed: {
       ...mapState('auth', ['userInfo', 'userCommunity']),
@@ -62,9 +62,11 @@ export default {
       }
    },
    methods: {
-      tabHandler({ id }) {
+      async tabHandler({ id }) { //tab切換
+         this.targetCategory.scrollPos = this.getScrollPos();
          this.currentTabId = id;
-         this.initHandler();
+         await this.initHandler();
+         this.setScrollPos(this.targetCategory.scrollPos);
       },
       async getNotifyData() {
          let result = await notifyObj.getNotifyData({
@@ -81,6 +83,12 @@ export default {
             this.targetCategory.data = this.targetCategory.data.concat(notifyData);
             this.targetCategory.isFirst = false;
          }
+      },
+      getScrollPos() {
+         return this.$refs.notifyWrap.scrollTop;
+      },
+      setScrollPos(pos) {
+         this.$refs.notifyWrap.scrollTop = pos;
       }
    },
    async mounted() {
@@ -94,7 +102,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .notifyWrap {
    height: calc(100vh - 50px - 45px - 125px - 40px - 30px);
    overflow: auto;

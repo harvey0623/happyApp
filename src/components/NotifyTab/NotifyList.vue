@@ -3,7 +3,7 @@
    <div class="listBox">
       <p class="title">{{ list.action }}</p>
       <div class="content">{{ list.content }}</div>
-      <div class="time">通知時間:{{ list.time }}</div>
+      <div class="time">通知時間 : {{ list.time }}</div>
    </div>
    <div class="removeBox" :class="{ show: showRemove }">
       <i class="fal fa-trash-alt"></i>
@@ -64,7 +64,7 @@ $formColor: map-get($fontColor, form);
    border-bottom: 1px solid #fff;
    overflow: hidden;
    &.show {
-      flex: 0 0 35px;
+      flex: 0 0 32px;
    }
    >i {
       margin: auto;

@@ -12,13 +12,13 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #cover {
    position: fixed;
    left: 0;
    top: 0;
    @include size(100%, 100vh);
    background-color: rgba(#000, 0.75);
-   z-index: 19;
+   z-index: 20;
 }
 </style>
