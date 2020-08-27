@@ -974,7 +974,7 @@ select {
       padding-left: 20px;
 }
 
-.notifyWrap {
+.notifyWrap[data-v-2559b1a6] {
   height: calc(100vh - 50px - 45px - 125px - 40px - 30px);
   overflow: auto;
 }

@@ -104,7 +104,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .notifyWrap {
    height: calc(100vh - 50px - 45px - 125px - 40px - 30px);
    overflow: auto;

@@ -1,5 +1,6 @@
 <template>
 <div class="bulletin">
+   <BackBlock title="社區公告"></BackBlock>
    <div class="mycontainer vertical">
       <div v-if="!showEmpty" class="bulletin_descBox" v-html="bulletinContent"></div>
       <EmptyBlock v-else text="沒有任何公告~"></EmptyBlock>
