@@ -25,7 +25,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import notifyObj from '@/api/notify.js';
+import communityObj from '@/api/community.js';
 import NotifyTab from '@/components/NotifyTab/index.vue';
 import NotifyContent from '@/components/NotifyTab/NotifyContent.vue';
 import KeywordPanel from '@/components/KeywordPanel/index.vue';
@@ -69,7 +69,7 @@ export default {
          this.setScrollPos(this.targetCategory.scrollPos);
       },
       async getNotifyData() {
-         let result = await notifyObj.getNotifyData({
+         let result = await communityObj.getNotify({
             iUserId: this.userInfo.user_id,
             vToken : this.userInfo.token,
             iCommunityId: this.userCommunity,

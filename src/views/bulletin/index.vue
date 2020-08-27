@@ -1,7 +1,7 @@
 <template>
 <div class="bulletin">
    <div class="mycontainer vertical">
-      <div v-if="!showEmpty" class="descBox" v-html="bulletinContent"></div>
+      <div v-if="!showEmpty" class="bulletin_descBox" v-html="bulletinContent"></div>
       <EmptyBlock v-else text="沒有任何公告~"></EmptyBlock>
    </div>
 </div>
@@ -61,8 +61,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.descBox {
+<style lang="scss">
+.bulletin_descBox {
    img {
       max-width: 100%;
       height: auto;
