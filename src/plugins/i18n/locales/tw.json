@@ -23,6 +23,9 @@
       },
       "notify": {
          "title": "通知"
+      },
+      "bulletinInfo": {
+         "title": "公告詳情"
       }
    },
    "validate": {

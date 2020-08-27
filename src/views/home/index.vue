@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations  } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 import BannerBlock from '@/components/BannerBlock/index.vue';
 import BulletinSlider from '@/components/BulletinSlider/index.vue';
 import Announce from '@/components/Announce/index.vue';

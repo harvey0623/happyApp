@@ -11,6 +11,7 @@ import ForgotPw from '@/views/forgotPw/index.vue';
 import Security from '@/views/security/index.vue';
 import WorkInfo from '@/views/workInfo/index.vue';
 import Notify from '@/views/notify/index.vue';
+import Bulletin from '@/views/bulletin/index.vue';
 Vue.use(VueRouter);
 
 const routes = [
@@ -49,6 +50,14 @@ const routes = [
 		path: '/notify',
 		name: 'notify',
 		component: Notify,
+		meta: {
+			auth: true
+		}
+	},
+	{
+		path: '/bulletin/:id',
+		name: 'bulletin',
+		component: Bulletin,
 		meta: {
 			auth: true
 		}

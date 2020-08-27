@@ -5,8 +5,10 @@
       <swiper-slide  
          v-for="item in announceData"
          :key="item.iId">
-         <img :src="item.vImage" alt="">
-         <p class="desc">{{ item.vTitle }}</p>
+         <router-link :to="`/bulletin/${item.iId}`">
+            <img :src="item.vImage" alt="">
+            <p class="desc">{{ item.vTitle }}</p>
+         </router-link>
       </swiper-slide>
    </swiper>
 </div>
@@ -40,7 +42,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .announceBox {
    padding: 15px;
    >.title {
@@ -50,15 +52,18 @@ export default {
    }
    .swiper-slide {
       @include size(150px, auto);
-      >img {
-         border-radius: 10px;
-      }
-      >.desc {
-         padding-top: 5px;
-         padding-left: 10px;
-         @include setWebkitLimitRow(2);
-         color: map-get($fontColor, form);
-         font-size: 14px;
+      >a {
+         display: block;
+         >img {
+            border-radius: 10px;
+         }
+         >.desc {
+            padding-top: 5px;
+            padding-left: 10px;
+            @include setWebkitLimitRow(2);
+            color: map-get($fontColor, form);
+            font-size: 14px;
+         }
       }
    }
 }
