@@ -382,7 +382,7 @@ select {
       background-color: #FA5870;
 }
 
-.announceBox .swiper-slide > .desc {
+.announceBox .swiper-slide > a > .desc[data-v-ebf8b048] {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -390,27 +390,30 @@ select {
   padding: 0;
   height: auto;
 }
-.announceBox {
+.announceBox[data-v-ebf8b048] {
   padding: 15px;
 }
-.announceBox > .title {
+.announceBox > .title[data-v-ebf8b048] {
     margin-bottom: 10px;
     color: #4F3B54;
     font-weight: bold;
 }
-.announceBox .swiper-slide {
+.announceBox .swiper-slide[data-v-ebf8b048] {
     width: 150px;
     height: auto;
 }
-.announceBox .swiper-slide > img {
-      border-radius: 10px;
+.announceBox .swiper-slide > a[data-v-ebf8b048] {
+      display: block;
 }
-.announceBox .swiper-slide > .desc {
-      padding-top: 5px;
-      padding-left: 10px;
-      -webkit-line-clamp: 2;
-      color: #646464;
-      font-size: 14px;
+.announceBox .swiper-slide > a > img[data-v-ebf8b048] {
+        border-radius: 10px;
+}
+.announceBox .swiper-slide > a > .desc[data-v-ebf8b048] {
+        padding-top: 5px;
+        padding-left: 10px;
+        -webkit-line-clamp: 2;
+        color: #646464;
+        font-size: 14px;
 }
 
 .positionBox {
@@ -976,6 +979,11 @@ select {
   overflow: auto;
 }
 
+.descBox img[data-v-aba443f8] {
+  max-width: 100%;
+  height: auto;
+}
+
 .myheader {
   display: flex;
   justify-content: space-between;
@@ -1203,5 +1211,10 @@ to {
     text-align: center;
     font-size: 18px;
     color: #646464;
+}
+
+.emptyTip[data-v-8124781a] {
+  text-align: center;
+  color: #D6D6D8;
 }
 
