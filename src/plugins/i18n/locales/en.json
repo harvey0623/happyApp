@@ -26,6 +26,9 @@
       },
       "bulletinInfo": {
          "title": "bulletin information"
+      },
+      "memberProfile": {
+         "title": "memberProfile"
       }
    },
    "validate": {

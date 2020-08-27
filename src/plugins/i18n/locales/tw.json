@@ -26,6 +26,9 @@
       },
       "bulletinInfo": {
          "title": "公告詳情"
+      },
+      "memberProfile": {
+         "title": "會員資料"
       }
    },
    "validate": {

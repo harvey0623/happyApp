@@ -12,6 +12,7 @@ import Security from '@/views/security/index.vue';
 import WorkInfo from '@/views/workInfo/index.vue';
 import Notify from '@/views/notify/index.vue';
 import Bulletin from '@/views/bulletin/index.vue';
+import MemberProfile from '@/views/memberProfile/index.vue';
 Vue.use(VueRouter);
 
 const routes = [
@@ -19,6 +20,14 @@ const routes = [
 		path: '/',
 		name: 'home',
 		component: Home,
+		meta: {
+			auth: true
+		},
+	},
+	{
+		path: '/memberProfile',
+		name: 'memberProfile',
+		component: MemberProfile,
 		meta: {
 			auth: true
 		},
