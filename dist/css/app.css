@@ -135,7 +135,7 @@ a:focus {
   padding-left: 15px;
   padding-right: 15px; }
   .mycontainer.vertical {
-    padding-top: 25px; }
+    padding-top: 20px; }
   .mycontainer.tabGutter {
     margin-bottom: 30px; }
 
@@ -982,6 +982,111 @@ select {
 .bulletin_descBox img {
   max-width: 100%;
   height: auto;
+}
+
+.profileTab[data-v-e328b242] {
+  position: relative;
+  display: flex;
+  height: 40px;
+  margin-bottom: 30px;
+  background-color: #F2F2F2;
+  border-radius: 100px;
+}
+.profileTab > .tabItem[data-v-e328b242] {
+    position: relative;
+    flex: 1;
+    line-height: 40px;
+    text-align: center;
+    color: #3C4043;
+    z-index: 2;
+}
+.profileTab > .tabItem.active[data-v-e328b242] {
+      transition: color 0.1s;
+      transition-delay: 0.09s;
+      color: #fff;
+}
+.moveItem[data-v-e328b242] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  height: 40px;
+  z-index: 1;
+  background-color: #f65d75;
+  border-radius: 100px;
+}
+.moveItem.animate[data-v-e328b242] {
+    transition: left 0.2s;
+}
+
+.communityInfo[data-v-d2a88570] {
+  margin-bottom: 25px;
+  text-align: center;
+}
+.communityInfo > p[data-v-d2a88570] {
+    margin-bottom: 8px;
+}
+.communityInfo > p[data-v-d2a88570]:last-child {
+      margin-bottom: 0;
+}
+.communityInfo > p.communityName[data-v-d2a88570] {
+      color: #4F3B54;
+      font-weight: bold;
+      font-size: 20px;
+}
+.communityInfo > p.room[data-v-d2a88570] {
+      color: #C5C1C0;
+      font-size: 16px;
+}
+.communityInfo > p.account[data-v-d2a88570] {
+      color: #3C4043;
+      font-size: 18px;
+}
+
+.communityList[data-v-8c2c042c] {
+  display: flex;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #d4cece;
+}
+.communityList[data-v-8c2c042c]:last-child {
+    margin-bottom: 0;
+}
+.communityList[data-v-8c2c042c]:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
+}
+.communityList > .imgBox[data-v-8c2c042c] {
+    flex: 0 0 100px;
+    height: 100px;
+}
+.communityList > .imgBox > img[data-v-8c2c042c] {
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+}
+.communityList > .descBox[data-v-8c2c042c] {
+    flex: 1;
+    padding-top: 5px;
+    padding-left: 12px;
+}
+.communityList > .descBox > *[data-v-8c2c042c] {
+      margin-bottom: 3px;
+}
+.communityList > .descBox > *[data-v-8c2c042c]:last-child {
+        margin-bottom: 0;
+}
+.communityList > .descBox > .name[data-v-8c2c042c] {
+      color: #4F3B54;
+      font-weight: bold;
+}
+.communityList > .descBox > .unit[data-v-8c2c042c] {
+      color: #D6D6D8;
+}
+.communityList > .descBox > .address[data-v-8c2c042c] {
+      color: #646464;
 }
 
 .myheader {
