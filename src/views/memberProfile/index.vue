@@ -7,13 +7,15 @@
          <p class="room">{{ room }}</p>
          <p class="account">帳號 {{ userInfo.account }}</p>
       </div>
-      <div>xxsaxsxasxsa</div>
+      <ProfileTab></ProfileTab>
    </div>
+   <router-view></router-view>
 </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
+import ProfileTab from '@/components/ProfileTab/index.vue';
 export default {
    name: 'memberProfile',
    metaInfo() {
@@ -32,6 +34,9 @@ export default {
       room() {
          return this.targetCommunity.room;
       }
+   },
+   components: {
+      ProfileTab
    }
 }
 </script>

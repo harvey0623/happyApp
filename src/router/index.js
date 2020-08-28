@@ -13,6 +13,9 @@ import WorkInfo from '@/views/workInfo/index.vue';
 import Notify from '@/views/notify/index.vue';
 import Bulletin from '@/views/bulletin/index.vue';
 import MemberProfile from '@/views/memberProfile/index.vue';
+import BasicInfo from '@/views/memberProfile/basicInfo.vue';
+import CommunityInfo from '@/views/memberProfile/communityInfo.vue';
+import Organization from '@/views/memberProfile/organization.vue';
 Vue.use(VueRouter);
 
 const routes = [
@@ -26,11 +29,32 @@ const routes = [
 	},
 	{
 		path: '/memberProfile',
-		name: 'memberProfile',
+		// name: 'memberProfile',
 		component: MemberProfile,
 		meta: {
 			auth: true
 		},
+		children: [
+			{
+				path: '',
+				redirect: 'basicInfo'
+			},
+			{
+				path: 'basicInfo',
+				name: 'basicInfo',
+				component: BasicInfo,	
+			},
+			{
+				path: 'communityInfo',
+				name: 'communityInfo',
+				component: CommunityInfo,		
+			},
+			{
+				path: 'organization',
+				name: 'organization',
+				component: Organization,		
+			},
+		]
 	},
 	{
 		path: '/security',
