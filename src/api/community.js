@@ -16,5 +16,13 @@ export default {
          data: payload
       }).then(res => res.data.aaData);
       return result;
-   }
+   },
+   async getMember(payload) {
+      let result = await httpMethod({
+         url: '/community/member_detail',
+         method: 'post',
+         data: payload
+      }).then(res => res.data.aaData);
+      return result;
+   },
 }

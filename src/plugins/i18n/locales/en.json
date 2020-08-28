@@ -29,6 +29,12 @@
       },
       "memberProfile": {
          "title": "memberProfile"
+      },
+      "communityInfo": {
+         "title": "communityInfo"
+      },
+      "organization": {
+         "title": "organization"
       }
    },
    "validate": {

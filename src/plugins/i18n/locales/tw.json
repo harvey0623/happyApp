@@ -29,6 +29,12 @@
       },
       "memberProfile": {
          "title": "會員資料"
+      },
+      "communityInfo": {
+         "title": "社區資料"
+      },
+      "organization": {
+         "title": "社區組織"
       }
    },
    "validate": {

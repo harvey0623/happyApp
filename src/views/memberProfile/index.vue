@@ -9,7 +9,9 @@
       </div>
       <ProfileTab></ProfileTab>
    </div>
-   <router-view></router-view>
+   <div class="mycontainer">
+      <router-view></router-view>
+   </div>
 </div>
 </template>
 

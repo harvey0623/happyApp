@@ -1,9 +1,14 @@
 <template>
-<div>organization</div>  
+<div>organizarion</div>
 </template>
 
 <script>
 export default {
-   name: 'organization'
+   name: 'organization',
+   metaInfo() {
+      return { 
+         title: this.$i18n.t('seo.organization.title'),
+      }
+   },
 }
 </script>

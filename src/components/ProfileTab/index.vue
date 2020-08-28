@@ -19,14 +19,9 @@
 
 <script>
 export default {
-   props: {
-      
-   },
    data: () => ({
       isAnimate: false,
-      isFirst: true,
       tabList: [
-         { title: '基本資料', name: 'basicInfo' },
          { title: '社區資料', name: 'communityInfo' },
          { title: '組織成員', name: 'organization' },
       ]
@@ -86,7 +81,7 @@ $height: 40px;
    position: absolute;
    left: 0;
    top: 0;
-   @include size(33.33%, $height);
+   @include size(50%, $height);
    z-index: 1;
    background-color: map-get($elBgColor, header);
    border-radius: 100px;
