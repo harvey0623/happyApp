@@ -13,7 +13,8 @@ import WorkInfo from '@/views/workInfo/index.vue';
 import Notify from '@/views/notify/index.vue';
 import Bulletin from '@/views/bulletin/index.vue';
 import MemberProfile from '@/views/memberProfile/index.vue';
-import CommunityInfo from '@/views/memberProfile/communityInfo.vue';
+import Community from '@/views/memberProfile/community.vue';
+import CommunityDetail from '@/views/memberProfile/communityDetail.vue';
 import Organization from '@/views/memberProfile/organization.vue';
 Vue.use(VueRouter);
 
@@ -35,12 +36,12 @@ const routes = [
 		children: [
 			{
 				path: '',
-				redirect: 'communityInfo'
+				redirect: 'community'
 			},
 			{
-				path: 'communityInfo',
-				name: 'communityInfo',
-				component: CommunityInfo,
+				path: 'community',
+				name: 'community',
+				component: Community,
 			},
 			{
 				path: 'organization',

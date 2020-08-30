@@ -22,7 +22,7 @@ export default {
    data: () => ({
       isAnimate: false,
       tabList: [
-         { title: '社區資料', name: 'communityInfo' },
+         { title: '社區資料', name: 'community' },
          { title: '組織成員', name: 'organization' },
       ]
    }),

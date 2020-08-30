@@ -8,7 +8,10 @@
    <div class="descBox">
       <div class="name">{{ detail.CommunityName }}</div>
       <div class="unit">{{ detail.vRoom }}</div>
-      <div class="address">{{ detail.fullAddress }}</div>
+      <div class="address">
+         <i class="fal fa-map-marker-alt"></i> 
+         {{ detail.fullAddress }}
+      </div>
    </div>
 </router-link>
 </template>
@@ -60,6 +63,10 @@ export default {
       }
       >.address {
          color: map-get($fontColor, form);
+         >i {
+            margin-right: 3px;
+            color: map-get($fontColor, header);
+         }
       }
    }
 }
