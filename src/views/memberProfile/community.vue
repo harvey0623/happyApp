@@ -8,8 +8,17 @@
       ></communityList>
    </div>
    <div class="btnBox center" v-show="hasData">
-      <button class="btnSure">社區入住申請</button>
+      <button class="btnSure" @click="showApplyModal">社區入住申請</button>
    </div>
+
+   <ApplyModal
+      :modalId="modalId"
+      :vCity.sync="position.city"
+      :vArea.sync="position.area"
+      :apartmentId.sync="apartmentData.id"
+      :apartmentList="apartmentData.lists"
+   ></ApplyModal>
+   
 </div>
 </template>
 
@@ -17,6 +26,7 @@
 import { mapState } from 'vuex';
 import communityObj from '@/api/community.js';
 import CommunityList from '@/components/CommunityList/index.vue';
+import ApplyModal from '@/components/Modal/ApplyModal.vue';
 export default {
    name: 'communityInfo',
    metaInfo() {
@@ -25,7 +35,16 @@ export default {
       }
    },
    data: () => ({
-      lists: []
+      lists: [],
+      modalId: 'apply',
+      apartmentData: {
+         id: 0,
+         lists: []
+      },
+      position: {
+         city: '新北市',
+         area: '土城區'
+      }
    }),
    computed: {
       ...mapState('auth', ['userInfo']),
@@ -44,20 +63,46 @@ export default {
       }
    },
    methods: {
-      async getMember() {
-         let result = await communityObj.getMember({
+      showApplyModal() { //顯示申請modal
+         this.$bvModal.show(this.modalId);
+      },
+      async getMember() { //取得社區資料及組織成員
+         return await communityObj.getMember({
             iUserId: this.userInfo.user_id,
             vToken : this.userInfo.token,
             vAccount: this.userInfo.account
          }).then(res => res);
-         return result;
+      },
+      async getCommunityList() {
+         return await communityObj.getCommunityList({
+            iUserId: this.userInfo.user_id,
+            vToken : this.userInfo.token,
+            vCity: this.position.city,
+            vArea: this.position.area
+         }).then(res => res)
+      },
+      async getApartment() {
+         this.apartmentData.lists = await this.getCommunityList().then(res => res);
+         this.apartmentData.id = this.apartmentData.lists.length > 0 ? 
+            this.apartmentData.lists[0].iId : 0;
       }
    },
    async mounted() {
+      this.showApplyModal();
       this.lists = await this.getMember().then(res => res);
+      await this.getApartment();
+   },
+   watch: {
+      position: {
+         deep: true,
+         async handler(val) {
+            await this.getApartment();
+         }
+      }
    },
    components: {
-      CommunityList
+      CommunityList,
+      ApplyModal
    }
 }
 </script>

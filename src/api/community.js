@@ -25,4 +25,12 @@ export default {
       }).then(res => res.data.aaData);
       return result;
    },
+   async getCommunityList(payload) {
+      let result = await httpMethod({
+         url: '/community/community_list',
+         method: 'post',
+         data: payload
+      }).then(res => res.data.aaData);
+      return result;
+   }
 }
