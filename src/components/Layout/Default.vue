@@ -8,6 +8,7 @@
 		<Sidebar v-show="isMenuOpen"></Sidebar>
 	</transition>
 	<slot></slot>
+	<PagePanel></PagePanel>
 </div>
 </template>
 
@@ -16,6 +17,7 @@ import { mapState } from 'vuex';
 import Header from '@/components/Header/index.vue';
 import Cover from '@/components/Cover/index.vue';
 import Sidebar from '@/components/Sidebar/index.vue';
+import PagePanel from '@/components/PagePanel/index.vue';
 export default {
 	computed: {
 		...mapState(['isMenuOpen'])
@@ -26,7 +28,8 @@ export default {
    components: {
 		Header,
 		Cover,
-		Sidebar
+		Sidebar,
+		PagePanel
 	}
 }
 </script>
@@ -34,6 +37,6 @@ export default {
 <style lang="scss">
 .defaultLayout {
 	padding-top: map-get($heightObj, header);
-	padding-bottom: 40px;
+	padding-bottom: map-get($heightObj, pagePanel) + 10px;
 }
 </style>
