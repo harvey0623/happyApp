@@ -17,6 +17,12 @@
       :vArea.sync="position.area"
       :apartmentId.sync="apartmentData.id"
       :apartmentList="apartmentData.lists"
+      :floor.sync="houseInfo.floor"
+      :dong.sync="houseInfo.doing"
+      :number1.sync="houseInfo.number1"
+      :number2.sync="houseInfo.number2"
+      :room.sync="houseInfo.room"
+      :unit.sync="houseInfo.unit"
    ></ApplyModal>
    
 </div>
@@ -44,6 +50,14 @@ export default {
       position: {
          city: '新北市',
          area: '土城區'
+      },
+      houseInfo: {
+         floor: '',
+         dong: '',
+         number1: '',
+         number2: '',
+         room: '',
+         unit: ''
       }
    }),
    computed: {

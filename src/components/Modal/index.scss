@@ -1,38 +1,43 @@
-.baseModal {
-   // .modal-content {
-      
-   // }
-   .modal-header,
-   .modal-footer {
-      padding: 15px;
-   }
-   .modal-body {
-      padding: 20px 15px;
-   }
-   .modal-footer {
-      >button, a {
-         min-width: 90px;
-         height: 40px;
-         line-height: 40px;
+%titleStyle {
+   margin-bottom: 3px;
+   color: map-get($fontColor, form);
+   font-weight: bold;
+}
+.regionBox {
+   @extend %bwtFlex;
+   margin-bottom: 25px;
+   >.regionRow {
+      flex: 0 0 46%;
+      >.title {
+         @extend %titleStyle;      
       }
    }
 }
-
-.closeSpan {
-   position: absolute;
-   right: -10px;
-   top: -10px;
-   @include size(28px);
-   line-height: 28px;
-   text-align: center;
-   color: white;
-   background-color: #707070;
-   border-radius: 50%;
-   cursor: pointer;
+.nameBox {
+   >.title {
+      @extend %titleStyle;
+   }
 }
-
-@media (min-width: 576px) {
-   .modal-dialog {
-      max-width: 450px;
-   }  
+.applyBlock {
+   @include elGutter(margin-bottom, 25px);
+}
+.apply-middle {
+   >i {
+      margin-right: 10px;
+      color: map-get($fontColor, header);
+      font-size: 20px;
+   }
+   >span {
+      color: map-get($fontColor, form);
+   }
+}
+.numberSplit {
+   display: flex;
+   align-items: center;
+   >span {
+      margin: 0 15px;
+   }
+   >.myInput {
+      flex: 1;
+   }
 }

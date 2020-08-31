@@ -16,14 +16,23 @@
 .formLayout {
    >.formRow {
       @include elGutter(margin-bottom, 20px);
+      &.horizontal {
+         display: flex;
+         align-items: center;
+         margin-bottom: 25px;
+         >.formTitle {
+            flex: 0 0 35px;
+            margin-bottom: 0;
+         }
+         >.formContent {
+            flex: 1;
+         }
+      }
       >.formTitle {
          margin-bottom: 5px;
          color: map-get($fontColor, form);
          font-size: 14px;
       }
-      // >.formContent {
-         
-      // }
    }
 }
 

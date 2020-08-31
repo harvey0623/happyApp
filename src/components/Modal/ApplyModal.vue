@@ -39,10 +39,61 @@
             </select>
          </div>
       </div>
+
       <div class="applyBlock apply-middle">
          <i class="fal fa-map-marker-alt"></i>
          <span>{{ fullAddress }}</span> 
       </div>
+
+      <div class="applyBlock apply-bottom">
+         <div class="formLayout">
+            <div class="formRow horizontal">
+               <div class="formTitle">樓</div>
+               <div class="formContent">
+                  <input 
+                     type="number" class="myInput" 
+                     placeholder="請輸入數字" v-model.number="myFloor">
+               </div>
+            </div>
+            <div class="formRow horizontal">
+               <div class="formTitle">棟</div>
+               <div class="formContent">
+                  <input 
+                     type="text" class="myInput" 
+                     placeholder="請輸入文字" v-model="myDong">
+               </div>
+            </div>
+            <div class="formRow horizontal">
+               <div class="formTitle">號</div>
+               <div class="formContent numberSplit">
+                  <input 
+                     type="number" class="myInput" 
+                     placeholder="請輸入數字" v-model.number="myNumber1">
+                  <span>-</span>
+                  <input 
+                     type="number" class="myInput" 
+                     placeholder="請輸入數字" v-model.number="myNumber2">
+               </div>
+            </div>
+            <div class="formRow horizontal">
+               <div class="formTitle">室</div>
+               <div class="formContent">
+                  <input 
+                     type="text" class="myInput" 
+                     placeholder="請輸入文字" v-model="myRoom">
+               </div>
+            </div>
+            <div class="formRow horizontal">
+               <div class="formTitle">單元</div>
+               <div class="formContent">
+                  <input 
+                     type="text" class="myInput" 
+                     placeholder="請輸入文字" v-model="myUnit">
+               </div>
+            </div>
+         </div>
+      </div>
+
    </template>
    <template v-slot:modal-footer>
       <button class="btnSure">送出申請</button>
@@ -73,6 +124,24 @@ export default {
       apartmentList: {
          type: Array,
          required: true
+      },
+      floor: {
+         required: true
+      },
+      dong: {
+         required: true
+      },
+      number1: {
+         required: true
+      },
+      number2: {
+         required: true
+      },
+      room: {
+         required: true
+      },
+      unit: {
+         required: true
       }
    },
    data: () => ({
@@ -93,8 +162,55 @@ export default {
             return this.vArea;
          },
          set(val) {
-            console.log(val)
             this.$emit('update:vArea', val);
+         }
+      },
+      myFloor: {
+         get() {
+            return this.floor;
+         },
+         set(val) {
+            this.$emit('update:floor', val);
+         }
+      },
+      myDong: {
+         get() {
+            return this.dong;
+         },
+         set(val) {
+            this.$emit('update:dong', val);
+         }
+      },
+      myNumber1: {
+         get() {
+            return this.number1;
+         },
+         set(val) {
+            this.$emit('update:number1', val);
+         }
+      },
+      myNumber2: {
+         get() {
+            return this.number2;
+         },
+         set(val) {
+            this.$emit('update:number2', val);
+         }
+      },
+      myRoom: {
+         get() {
+            return this.room;
+         },
+         set(val) {
+            this.$emit('update:room', val);
+         }
+      },
+      myUnit: {
+         get() {
+            return this.unit;
+         },
+         set(val) {
+            this.$emit('update:unit', val);
          }
       },
       cityList() {
@@ -125,38 +241,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-%titleStyle {
-   margin-bottom: 3px;
-   color: map-get($fontColor, form);
-   font-weight: bold;
-}
-.regionBox {
-   @extend %bwtFlex;
-   margin-bottom: 25px;
-   >.regionRow {
-      flex: 0 0 46%;
-      >.title {
-         @extend %titleStyle;      
-      }
-   }
-}
-.nameBox {
-   >.title {
-      @extend %titleStyle;
-   }
-}
-.applyBlock {
-   @include elGutter(margin-bottom, 25px);
-}
-.apply-middle {
-   >i {
-      margin-right: 10px;
-      color: map-get($fontColor, header);
-      font-size: 20px;
-   }
-   >span {
-      color: map-get($fontColor, form);
-   }
-}
-</style>
+<style lang="scss" src="./index.scss"></style>
