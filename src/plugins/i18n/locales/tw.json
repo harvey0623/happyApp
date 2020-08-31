@@ -35,6 +35,9 @@
       },
       "organization": {
          "title": "社區組織"
+      },
+      "communityIntro": {
+         "title": "社區簡介"
       }
    },
    "validate": {

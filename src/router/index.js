@@ -14,7 +14,7 @@ import Notify from '@/views/notify/index.vue';
 import Bulletin from '@/views/bulletin/index.vue';
 import MemberProfile from '@/views/memberProfile/index.vue';
 import Community from '@/views/memberProfile/community.vue';
-import CommunityDetail from '@/views/memberProfile/communityDetail.vue';
+import CommunityIntro from '@/views/memberProfile/communityIntro.vue';
 import Organization from '@/views/memberProfile/organization.vue';
 Vue.use(VueRouter);
 
@@ -49,6 +49,11 @@ const routes = [
 				component: Organization,
 			},
 		]
+	},
+	{
+		path: '/communityIntro/:id',
+		name: 'communityIntro',
+		component: CommunityIntro
 	},
 	{
 		path: '/security',

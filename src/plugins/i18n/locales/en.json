@@ -35,6 +35,9 @@
       },
       "organization": {
          "title": "organization"
+      },
+      "communityIntro": {
+         "title": "communityIntro"
       }
    },
    "validate": {

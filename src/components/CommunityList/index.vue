@@ -1,7 +1,7 @@
 <template>
 <router-link
    class="communityList"
-   to="/">
+   :to="{ name: 'communityIntro', params: { id: detail.iId }}">
    <div class="imgBox">
       <img src="https://fakeimg.pl/100x100/">
    </div>
