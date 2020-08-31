@@ -7,6 +7,9 @@
          :detail="list"
       ></communityList>
    </div>
+   <div class="btnBox center" v-show="hasData">
+      <button class="btnSure">社區入住申請</button>
+   </div>
 </div>
 </template>
 
@@ -35,6 +38,9 @@ export default {
             });
             return prev;
          }, []);
+      },
+      hasData() { //是否有資料
+         return this.communityList.length > 0;
       }
    },
    methods: {
@@ -55,3 +61,15 @@ export default {
    }
 }
 </script>
+
+<style lang="scss" scoped>
+.listBox {
+   margin-bottom: 40px;
+}
+.btnBox {
+   margin-bottom: 15px;
+   >.btnSure {
+      width: 250px;
+   }
+}
+</style>

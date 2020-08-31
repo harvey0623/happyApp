@@ -31,6 +31,7 @@ export default {
    left: 0;
    bottom: 0;
    @include size(100%, map-get($heightObj, pagePanel));
+   padding-top: 5px;
    background-color: #fff;
    border: 1px solid map-get($borderColor, primary);
    z-index: 19;
