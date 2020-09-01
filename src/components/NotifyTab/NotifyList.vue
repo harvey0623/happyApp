@@ -31,7 +31,7 @@ $formColor: map-get($fontColor, form);
 
 .notifyList {
    display: flex;
-   border-bottom: 1px solid map-get($borderColor, primary);
+   border-bottom: 1px solid map-get($borderColor, notify);
    &:last-child {
       border-bottom: none;
    }

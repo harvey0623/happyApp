@@ -78,8 +78,8 @@ export default {
       code: '+886',
       isLoading: false,
       user: {
-         phone: '0900000002',
-         password: 'password',
+         phone: '0966666666',
+         password: 'password66',
          keep: false
       }
    }),

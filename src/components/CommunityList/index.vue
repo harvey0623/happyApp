@@ -33,7 +33,7 @@ export default {
    padding-bottom: 10px;
    margin-bottom: 10px;
    @include elGutter(margin-bottom, 10px);
-   border-bottom: 1px solid map-get($borderColor, primary);
+   border-bottom: 1px solid map-get($borderColor, notify);
    &:last-child {
       padding-bottom: 0;
       margin-bottom: 0;

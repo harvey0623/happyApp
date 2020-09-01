@@ -5,7 +5,7 @@
       <div class="communityInfo">
          <p class="communityName">{{ communityName }}</p>
          <p class="room">{{ room }}</p>
-         <p class="account">帳號 {{ userInfo.account }}</p>
+         <p class="account">帳號 {{ account }}</p>
       </div>
       <ProfileTab></ProfileTab>
    </div>
@@ -28,13 +28,20 @@ export default {
    computed: {
       ...mapState('auth', ['userInfo', 'userCommunity']),
       targetCommunity() {
+         if (this.userInfo === null) return null;
          return this.userInfo.community.find(item => item.iId === this.userCommunity);
       },
       communityName() {
+         if (this.targetCommunity === null) return '';
          return this.targetCommunity.vName;
       },
       room() {
+         if (this.targetCommunity === null) return '';
          return this.targetCommunity.room;
+      },
+      account() {
+         if (this.targetCommunity === null) return '';
+         return this.userInfo.account;
       }
    },
    components: {

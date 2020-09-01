@@ -33,7 +33,7 @@ export default {
    @include size(100%, map-get($heightObj, pagePanel));
    padding-top: 5px;
    background-color: #fff;
-   border: 1px solid #f4f4f4;
+   border: 1px solid map-get($borderColor, notify);
    z-index: 19;
    >a {
       flex: 1;
