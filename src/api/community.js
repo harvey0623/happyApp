@@ -32,5 +32,15 @@ export default {
          data: payload
       }).then(res => res.data.aaData);
       return result;
+   },
+   async addMember(payload) {
+      let result = await httpMethod({
+         url: '/community/member_doadd',
+         method: 'post',
+         data: payload
+      }).then(res => {
+         return res.data;
+      });
+      return result;
    }
 }

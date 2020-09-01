@@ -10,7 +10,6 @@
    <div class="btnBox center" v-show="hasData">
       <button class="btnSure" @click="showApplyModal">社區入住申請</button>
    </div>
-
    <ApplyModal
       :modalId="modalId"
       :vCity.sync="position.city"
@@ -18,13 +17,15 @@
       :apartmentId.sync="apartmentData.id"
       :apartmentList="apartmentData.lists"
       :floor.sync="houseInfo.floor"
-      :dong.sync="houseInfo.doing"
+      :dong.sync="houseInfo.dong"
       :number1.sync="houseInfo.number1"
       :number2.sync="houseInfo.number2"
       :room.sync="houseInfo.room"
       :unit.sync="houseInfo.unit"
+      :fullAddress="fullAddress"
+      @add="addHandler"
    ></ApplyModal>
-   
+   <Loading v-show="isLoading"></Loading>
 </div>
 </template>
 
@@ -41,6 +42,7 @@ export default {
       }
    },
    data: () => ({
+      isLoading: false,
       lists: [],
       modalId: 'apply',
       apartmentData: {
@@ -74,6 +76,31 @@ export default {
       },
       hasData() { //是否有資料
          return this.communityList.length > 0;
+      },
+      fullAddress() { //完整社區地址
+         let { city, area } = this.position;
+         let { floor, dong, number1, number2, room, unit } = this.houseInfo;
+         let floorText = floor !== '' ? `${floor}樓` : '';
+         let dongText = dong !== '' ? `${dong}棟` : '';
+         let roomText = room !== '' ? `${room}室` : '';
+         let unitText = unit !== '' ? unit : '';
+         let number1Text = '';
+         let number2Text = '';
+         if (number1 !== '' && number2 !== '') {
+            number1Text = number1;
+            number2Text = `-${number2}號`;
+         } else if (number1 !== '' && number2 === '') {
+            number1Text = `${number1}號`;
+            number2Text = '';
+         } else if (number1 === '' && number2 !== '') {
+            number1Text = '';
+            number2Text = `${number2}號`;
+         } else if (number1 === '' && number2 === '') {
+            number1Text = '';
+            number2Text = '';
+         }
+         return `${city}${area}${floorText}${dongText}${roomText}
+            ${number1Text}${number2Text}${unitText}`;
       }
    },
    methods: {
@@ -99,10 +126,32 @@ export default {
          this.apartmentData.lists = await this.getCommunityList().then(res => res);
          this.apartmentData.id = this.apartmentData.lists.length > 0 ? 
             this.apartmentData.lists[0].iId : 0;
+      },
+      async addMember() { //增加社區成員
+         this.isLoading = true;
+         return await communityObj.addMember({
+            iUserId: this.userInfo.user_id,
+            vToken: this.userInfo.token,
+            iCommunityId: this.apartmentData.id,
+            vRoom: this.houseInfo.room,
+            vAccount: this.userInfo.account,
+            iType: 1,
+            vRemark: ''
+         }).then(res => {
+            return res;
+         }).finally(() => this.isLoading = false);
+      },
+      async addHandler() {
+         let { status } = await this.addMember().then(res => res);
+         let isSuccess = status === 1;
+         this.$swal({
+            icon: isSuccess ? 'success' : 'error',
+            title: isSuccess ? '添加成功' : '添加失敗'
+         });
+         if (isSuccess) this.$bvModal.hide(this.modalId);
       }
    },
    async mounted() {
-      this.showApplyModal();
       this.lists = await this.getMember().then(res => res);
       await this.getApartment();
    },

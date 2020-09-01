@@ -96,7 +96,7 @@
 
    </template>
    <template v-slot:modal-footer>
-      <button class="btnSure">送出申請</button>
+      <button class="btnSure" @click="$emit('add')">送出申請</button>
    </template>
 </b-modal>
 </template>
@@ -142,6 +142,9 @@ export default {
       },
       unit: {
          required: true
+      },
+      fullAddress: {
+         required: true
       }
    },
    data: () => ({
@@ -149,6 +152,14 @@ export default {
       isFirst: true
    }),
    computed: {
+      iId: {
+         get() {
+            return this.apartmentId;
+         },
+         set(val) {
+            this.$emit('update:apartmentId', val);
+         }
+      },
       cityName: {
          get() {
             return this.vCity;
@@ -225,17 +236,6 @@ export default {
          } else {
             return [];
          }
-      },
-      iId: {
-         get() {
-            return this.apartmentId;
-         },
-         set(val) {
-            this.$emit('update:apartmentId', val);
-         }
-      },
-      fullAddress() {
-         return `${this.cityName}${this.areaName}`;
       }
    }
 }
