@@ -42,5 +42,15 @@ export default {
          return res.data;
       });
       return result;
+   },
+   async saveMember(payload) {
+      let result = await httpMethod({
+         url: '/community/member_dosave',
+         method: 'post',
+         data: payload
+      }).then(res => {
+         return res.data;
+      });
+      return result;
    }
 }

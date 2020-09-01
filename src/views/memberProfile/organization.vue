@@ -7,8 +7,25 @@
          :communityName="group.CommunityName"
          :vRoom="group.vRoom"
          :lists="group.lists"
+         @updateRenter="editRenter"
       ></OrganizeList>
    </ul>
+
+   <b-modal 
+      id="editModal" modal-class="mymodal" 
+      footer-class="vertical" no-close-on-backdrop>
+      <template v-slot:modal-header="{ close }">
+         <i class="fal fa-times" @click="close()"></i>
+         <h3>編輯成員</h3>
+      </template>
+      <template v-slot:default>
+         
+      </template>
+      <template v-slot:modal-footer>
+         <button class="btnSure">確定</button>
+         <p class="remove">刪除此成員</p>
+      </template>
+   </b-modal>
 </div>
 </template>
 
@@ -24,7 +41,13 @@ export default {
       }
    },
    data: () => ({
-      communityData: []
+      communityData: [],
+      editData: {
+         iId: '',
+         iParentId: '',
+         iType: '',
+         remark: ''
+      }
    }),
    computed: {
       ...mapState('auth', ['userInfo']),
@@ -39,6 +62,17 @@ export default {
             }
             return prev;
          }, []);
+      },
+      renterData() { //人員資料
+         if (this.groupList.length === 0) return null;
+         let group = this.groupList.find(item => item.iParentId === this.editData.iParentId);
+         if (group !== undefined) {
+            let obj = group.lists.find(item => item.iId === this.editData.iId);
+            this.editData.remark = obj.vRemark || '';
+            return obj;
+         } else {
+            return null;
+         }
       }
    },
    methods: {
@@ -49,8 +83,21 @@ export default {
             vAccount: this.userInfo.account
          }).then(res => res);
       },
+      async saveMember() { //修改社區成員資料
+         return await communityObj.getMember({
+            iUserId: this.userInfo.user_id,
+            vToken : this.userInfo.token,
+            vAccount: this.userInfo.account
+         }).then(res => res);
+      },
+      editRenter(val) {
+         this.editData.iType = val.iType;
+         this.editData.iId = val.iId;
+         this.editData.iParentId = val.iParentId;
+      }
    },
    async mounted() {
+      this.$bvModal.show('editModal');
       this.communityData = await this.getMember().then(res => res);
    },
    components: {
@@ -58,3 +105,9 @@ export default {
    }
 }
 </script>
+
+<style lang="scss" scoped>
+.remove {
+   color: map-get($fontColor, header);
+}
+</style>

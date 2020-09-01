@@ -33,5 +33,8 @@
          @include size(220px, map-get($heightObj, button));
          margin: 0;
       }
+      &.vertical {
+         flex-direction: column;
+      }
    }
 }

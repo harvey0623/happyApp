@@ -11,6 +11,7 @@
          v-for="list in lists"
          :key="list.iId"
          :detail="list"
+         @edit="editHandler"
       ></OrganizeItem>
    </SlideUpDown>
 </li>
@@ -39,6 +40,11 @@ export default {
    computed: {
       room() {
          return this.vRoom || '';
+      }
+   },
+   methods: {
+      editHandler(val) {
+         this.$emit('updateRenter', val);
       }
    },
    components: {

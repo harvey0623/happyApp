@@ -1,5 +1,5 @@
 <template>
-<div class="organizeItem">
+<div class="organizeItem" @click="clickHandler">
    <div class="imgBox">
       <img src="https://fakeimg.pl/100x100" alt="">
    </div>
@@ -25,6 +25,12 @@ export default {
       detail: {
          type: Object,
          required: true
+      }
+   },
+   methods: {
+      clickHandler() {
+         let { iId, iParentId, iType } = this.detail;
+         this.$emit('edit', { iId, iParentId, iType });
       }
    },
    computed: {
