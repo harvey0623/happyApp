@@ -1,11 +1,13 @@
 <template>
 <div class="notifyContent">
-   <NotifyList
-      v-for="(list,index) in filterList"
-      :key="index"
-      :list="list.data"
-      :showRemove="showRemove"
-   ></NotifyList>
+   <div>
+      <NotifyList
+         v-for="(list,index) in filterList"
+         :key="index"
+         :list="list.data"
+         :showRemove="showRemove"
+      ></NotifyList>
+   </div>
    <p class="loadingTip" v-show="isLoading">資料加載中~</p>
 </div>
 </template>

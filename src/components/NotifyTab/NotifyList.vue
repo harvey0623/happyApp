@@ -32,6 +32,9 @@ $formColor: map-get($fontColor, form);
 .notifyList {
    display: flex;
    border-bottom: 1px solid map-get($borderColor, primary);
+   &:last-child {
+      border-bottom: none;
+   }
 }
 
 .listBox {
@@ -64,7 +67,7 @@ $formColor: map-get($fontColor, form);
    border-bottom: 1px solid #fff;
    overflow: hidden;
    &.show {
-      flex: 0 0 32px;
+      flex: 0 0 35px;
    }
    >i {
       margin: auto;
