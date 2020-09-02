@@ -1,30 +1,34 @@
 <template>
 <div class="organization">
    <Loading v-if="isLoading"></Loading>
-   <ul clas="organizeBox">
+   <ul class="organizeBox">
       <OrganizeList
          v-for="group in groupList"
          :key="group.iParentId"
          :communityName="group.CommunityName"
          :vRoom="group.vRoom"
          :lists="group.lists"
-         @updateRenter="showRenter"
+         @updateRenter="showEditModal"
       ></OrganizeList>
    </ul>
+
+   <div class="btnBox center" v-show="hasCommunity">
+      <button class="btnSure btnAddMember" @click="showResidentModal">添加成員</button>
+   </div>
 
    <!-- 編輯住戶modal -->
    <b-modal 
       id="editModal" modal-class="mymodal" footer-class="vertical" 
-      no-close-on-backdrop @hidden="hiddenHanler">
+      no-close-on-backdrop @hidden="editModalHidden">
       <template v-slot:modal-header="{ close }">
          <i class="fal fa-times" @click="close()"></i>
          <h3>編輯成員</h3>
       </template>
-      <template v-if="renterData !== null" v-slot:default>
+      <template v-if="residentData !== null" v-slot:default>
          <div class="infoBox">
             <img src="https://fakeimg.pl/100x100/" alt="">
-            <p class="name">{{ renterData.vName || 'userName' }}</p>
-            <p class="phone">{{ renterData.vContact }}</p>
+            <p class="name">{{ residentData.vName || 'userName' }}</p>
+            <p class="phone">{{ residentData.vContact }}</p>
          </div>
          <div class="formLayout">
             <div class="formRow">
@@ -43,7 +47,46 @@
       </template>
    </b-modal>
 
-
+   <!-- 增加住戶 -->
+   <b-modal 
+      id="residentModal" modal-class="mymodal" footer-class="vertical" 
+      no-close-on-backdrop>
+      <template v-slot:modal-header="{ close }">
+         <i class="fal fa-times" @click="close()"></i>
+         <h3>添加成員</h3>
+      </template>
+      <template v-slot:default>
+         <div class="formLayout">
+            <div class="formRow">
+               <div class="formTitle">社區單元號</div>
+               <div class="formContent">
+                  <select class="myInput" v-model="insertData.communityId">
+                     <option 
+                        v-for="group in groupList"
+                        :key="group.iParentId"
+                        :value="group.iParentId"
+                     >{{ group.CommunityName }}</option>
+                  </select>
+               </div>
+            </div>
+            <div class="formRow">
+               <div class="formTitle">會員帳號</div>
+               <div class="formContent">
+                  <input type="text" class="myInput" placeholder="請輸入會員帳號">
+               </div>
+            </div>
+            <div class="formRow">
+               <div class="formTitle">備註</div>
+               <div class="formContent">
+                  <input type="text" class="myInput" placeholder="請輸入備註">
+               </div>
+            </div>
+         </div>
+      </template>
+      <template v-slot:modal-footer>
+         <button class="btnSure" @click="insertHandler">確定</button>
+      </template>
+   </b-modal>
 
 </div>
 </template>
@@ -67,10 +110,18 @@ export default {
          iParentId: '',
          iType: '',
          remark: ''
+      },
+      insertData: {
+         communityId: '',
+         account: '',
+         remark: ''
       }
    }),
    computed: {
       ...mapState('auth', ['userInfo']),
+      hasCommunity() {
+         return this.communityData.length > 0;
+      },
       groupList() { //分類社區列表
          return this.communityData.reduce((prev, current) => {
             let { iParentId, CommunityName, vRoom, RoomDetail } = current;
@@ -83,7 +134,7 @@ export default {
             return prev;
          }, []);
       },
-      renterData() { //住戶資料
+      residentData() { //住戶資料
          if (this.groupList.length === 0) return null;
          let group = this.groupList.find(item => item.iParentId === this.editData.iParentId);
          if (group !== undefined) {
@@ -128,14 +179,30 @@ export default {
             iType: this.editData.iType,
          }).then(res => res)
       },
-      hiddenHanler() { //編輯modal的 event
+       async addMember() { //增加社區成員
+         return await communityObj.addMember({
+            iUserId: this.userInfo.user_id,
+            vToken: this.userInfo.token,
+            iCommunityId: this.insertData.communityId,
+            vRoom: '',
+            vAccount: this.userInfo.account,
+            iType: 2,
+            vRemark: ''
+         }).then(res => {
+            return res;
+         });
+      },
+      editModalHidden() { //編輯modal的 event
          this.editData = { iId: '', iParentId: '', iType: '', remark: '' };
       },
-      showRenter(val) { //編輯住戶
+      showEditModal(val) {
          this.editData.iType = val.iType;
          this.editData.iId = val.iId;
          this.editData.iParentId = val.iParentId;
          this.$bvModal.show('editModal');
+      },
+      showResidentModal() {
+         this.$bvModal.show('residentModal');
       },
       async updateMember() {
          this.communityData = await this.getMember().then(res => res);
@@ -152,21 +219,29 @@ export default {
          this.responseHandler(status);
          this.isLoading = false;
       },
-      async responseHandler(status) { //ajax回應的處理
+      async insertHandler() {
+         this.isLoading = true;
+         let { status } = await this.addMember().then(res => res);
+         this.responseHandler(status);
+         this.isLoading = false;
+      },
+      async responseHandler(status) {
          let isSuccess = status === 1;
          if (isSuccess) {
             await this.updateMember();
             this.$bvModal.hide('editModal');
+            this.$bvModal.hide('residentModal');
          }
          this.$swal({
             icon: isSuccess ? 'success' : 'error',
             title: isSuccess ? '修改成功' : '修改失敗'
          });
-      },
+      }
    },
    async mounted() {
       this.isLoading = true;
       await this.updateMember();
+      this.insertData.communityId = this.hasCommunity ? this.communityData[0].iParentId : '';
       this.isLoading = false;
    },
    components: {
@@ -175,34 +250,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.infoBox {
-   @extend %centerFlex;
-   flex-direction: column;
-   margin-bottom: 20px;
-   >* {
-      @include elGutter(margin-bottom, 8px);
-   }
-   >img {
-      @include size(60px);
-      border-radius: 50%;
-   }
-   >.name {
-      color: map-get($fontColor, sidebar);
-      font-size: 18px;
-      font-weight: bold;
-   }
-   >.phone {
-      font-size: 12px;
-      color: map-get($fontColor, tab);
-   }
-}
-.formLayout {
-   margin-bottom: 20px;
-}
-.remove {
-   margin-top: 15px;
-   margin-bottom: 0;
-   color: map-get($fontColor, header);
-}
-</style>
+<style lang="scss" scoped src="./organization.scss"></style>
