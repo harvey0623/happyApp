@@ -8,14 +8,14 @@
          :communityName="group.CommunityName"
          :vRoom="group.vRoom"
          :lists="group.lists"
-         @updateRenter="editRenter"
+         @updateRenter="showRenter"
       ></OrganizeList>
    </ul>
 
    <!-- 編輯住戶modal -->
    <b-modal 
       id="editModal" modal-class="mymodal" footer-class="vertical" 
-      no-close-on-backdrop @hidden="editHidden">
+      no-close-on-backdrop @hidden="hiddenHanler">
       <template v-slot:modal-header="{ close }">
          <i class="fal fa-times" @click="close()"></i>
          <h3>編輯成員</h3>
@@ -39,7 +39,7 @@
       </template>
       <template v-slot:modal-footer>
          <button class="btnSure" @click="editHandler">確定</button>
-         <p class="remove">刪除此成員</p>
+         <p class="remove" @click="deleteHandler">刪除此成員</p>
       </template>
    </b-modal>
 
@@ -83,13 +83,17 @@ export default {
             return prev;
          }, []);
       },
-      renterData() { //人員資料
+      renterData() { //住戶資料
          if (this.groupList.length === 0) return null;
          let group = this.groupList.find(item => item.iParentId === this.editData.iParentId);
          if (group !== undefined) {
             let obj = group.lists.find(item => item.iId === this.editData.iId);
-            this.editData.remark = obj.vRemark || '';
-            return obj;
+            if (obj !== undefined) {
+               this.editData.remark = obj.vRemark || '';
+               return obj;
+            } else {
+               return null;
+            }
          } else {
             return null;
          }
@@ -97,16 +101,13 @@ export default {
    },
    methods: {
       async getMember() { //取得社區資料及組織成員
-         this.isLoading = true; 
          return await communityObj.getMember({
             iUserId: this.userInfo.user_id,
             vToken : this.userInfo.token,
             vAccount: this.userInfo.account
          }).then(res => res)
-            .finally(() => this.isLoading = false);
       },
       async saveMember() { //修改社區成員資料
-         this.isLoading = true;
          return await communityObj.saveMember({
             iUserId: this.userInfo.user_id,
             vToken : this.userInfo.token,
@@ -116,12 +117,21 @@ export default {
             iType: this.editData.iType,
             vRemark: this.editData.remark
          }).then(res => res)
-            .finally(() => this.isLoading = false);
       },
-      editHidden() { //編輯modal的 event
+      async deleteMember() { //刪除社區成員
+         return await communityObj.deleteMember({
+            iUserId: this.userInfo.user_id,
+            vToken : this.userInfo.token,
+            iCommunityId: this.editData.iParentId,
+            vAccount: this.userInfo.account,
+            iId: this.editData.iId,
+            iType: this.editData.iType,
+         }).then(res => res)
+      },
+      hiddenHanler() { //編輯modal的 event
          this.editData = { iId: '', iParentId: '', iType: '', remark: '' };
       },
-      editRenter(val) { //編輯住戶
+      showRenter(val) { //編輯住戶
          this.editData.iType = val.iType;
          this.editData.iId = val.iId;
          this.editData.iParentId = val.iParentId;
@@ -130,8 +140,19 @@ export default {
       async updateMember() {
          this.communityData = await this.getMember().then(res => res);
       },
-      async editHandler() { //編輯住戶
+      async editHandler() {
+         this.isLoading = true;
          let { status } = await this.saveMember().then(res => res);
+         this.responseHandler(status);
+         this.isLoading = false;
+      },
+      async deleteHandler() {
+         this.isLoading = true;
+         let { status } = await this.deleteMember().then(res => res);
+         this.responseHandler(status);
+         this.isLoading = false;
+      },
+      async responseHandler(status) { //ajax回應的處理
          let isSuccess = status === 1;
          if (isSuccess) {
             await this.updateMember();
@@ -141,7 +162,7 @@ export default {
             icon: isSuccess ? 'success' : 'error',
             title: isSuccess ? '修改成功' : '修改失敗'
          });
-      }
+      },
    },
    async mounted() {
       await this.updateMember();
