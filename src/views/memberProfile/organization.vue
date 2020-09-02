@@ -1,5 +1,6 @@
 <template>
 <div class="organization">
+   <Loading v-if="isLoading"></Loading>
    <ul clas="organizeBox">
       <OrganizeList
          v-for="group in groupList"
@@ -11,21 +12,39 @@
       ></OrganizeList>
    </ul>
 
+   <!-- 編輯住戶modal -->
    <b-modal 
-      id="editModal" modal-class="mymodal" 
-      footer-class="vertical" no-close-on-backdrop>
+      id="editModal" modal-class="mymodal" footer-class="vertical" 
+      no-close-on-backdrop @hidden="editHidden">
       <template v-slot:modal-header="{ close }">
          <i class="fal fa-times" @click="close()"></i>
          <h3>編輯成員</h3>
       </template>
-      <template v-slot:default>
-         
+      <template v-if="renterData !== null" v-slot:default>
+         <div class="infoBox">
+            <img src="https://fakeimg.pl/100x100/" alt="">
+            <p class="name">{{ renterData.vName || 'userName' }}</p>
+            <p class="phone">{{ renterData.vContact }}</p>
+         </div>
+         <div class="formLayout">
+            <div class="formRow">
+               <div class="formTitle">備註</div>
+               <div class="formContent">
+                  <input 
+                     type="text" class="myInput" 
+                     placeholder="請輸入備註" v-model="editData.remark">
+               </div>
+            </div>
+         </div>
       </template>
       <template v-slot:modal-footer>
-         <button class="btnSure">確定</button>
+         <button class="btnSure" @click="editHandler">確定</button>
          <p class="remove">刪除此成員</p>
       </template>
    </b-modal>
+
+
+
 </div>
 </template>
 
@@ -41,6 +60,7 @@ export default {
       }
    },
    data: () => ({
+      isLoading: false,
       communityData: [],
       editData: {
          iId: '',
@@ -77,28 +97,54 @@ export default {
    },
    methods: {
       async getMember() { //取得社區資料及組織成員
+         this.isLoading = true; 
          return await communityObj.getMember({
             iUserId: this.userInfo.user_id,
             vToken : this.userInfo.token,
             vAccount: this.userInfo.account
-         }).then(res => res);
+         }).then(res => res)
+            .finally(() => this.isLoading = false);
       },
       async saveMember() { //修改社區成員資料
-         return await communityObj.getMember({
+         this.isLoading = true;
+         return await communityObj.saveMember({
             iUserId: this.userInfo.user_id,
             vToken : this.userInfo.token,
-            vAccount: this.userInfo.account
-         }).then(res => res);
+            iCommunityId: this.editData.iParentId,
+            vAccount: this.userInfo.account,
+            iId: this.editData.iId,
+            iType: this.editData.iType,
+            vRemark: this.editData.remark
+         }).then(res => res)
+            .finally(() => this.isLoading = false);
       },
-      editRenter(val) {
+      editHidden() { //編輯modal的 event
+         this.editData = { iId: '', iParentId: '', iType: '', remark: '' };
+      },
+      editRenter(val) { //編輯住戶
          this.editData.iType = val.iType;
          this.editData.iId = val.iId;
          this.editData.iParentId = val.iParentId;
+         this.$bvModal.show('editModal');
+      },
+      async updateMember() {
+         this.communityData = await this.getMember().then(res => res);
+      },
+      async editHandler() { //編輯住戶
+         let { status } = await this.saveMember().then(res => res);
+         let isSuccess = status === 1;
+         if (isSuccess) {
+            await this.updateMember();
+            this.$bvModal.hide('editModal');
+         }
+         this.$swal({
+            icon: isSuccess ? 'success' : 'error',
+            title: isSuccess ? '修改成功' : '修改失敗'
+         });
       }
    },
    async mounted() {
-      this.$bvModal.show('editModal');
-      this.communityData = await this.getMember().then(res => res);
+      await this.updateMember();
    },
    components: {
       OrganizeList
@@ -107,7 +153,33 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.infoBox {
+   @extend %centerFlex;
+   flex-direction: column;
+   margin-bottom: 20px;
+   >* {
+      @include elGutter(margin-bottom, 8px);
+   }
+   >img {
+      @include size(60px);
+      border-radius: 50%;
+   }
+   >.name {
+      color: map-get($fontColor, sidebar);
+      font-size: 18px;
+      font-weight: bold;
+   }
+   >.phone {
+      font-size: 12px;
+      color: map-get($fontColor, tab);
+   }
+}
+.formLayout {
+   margin-bottom: 20px;
+}
 .remove {
+   margin-top: 15px;
+   margin-bottom: 0;
    color: map-get($fontColor, header);
 }
 </style>

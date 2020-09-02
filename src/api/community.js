@@ -44,11 +44,13 @@ export default {
       return result;
    },
    async saveMember(payload) {
+      console.log(payload);
       let result = await httpMethod({
          url: '/community/member_dosave',
          method: 'post',
          data: payload
       }).then(res => {
+         console.log(res.data);
          return res.data;
       });
       return result;
