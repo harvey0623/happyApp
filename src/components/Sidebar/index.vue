@@ -33,8 +33,8 @@ export default {
             iconClass: 'fal fa-user',
             isSlideDown: false,
             children: [
-               { title: '我的資料', href: '/' },
-               { title: '組織成員', href: '/' }
+               { title: '社區資料', href: { name: 'community' }},
+               { title: '組織成員', href: { name: 'organize' }}
             ]
          },
          {
