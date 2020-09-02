@@ -16,6 +16,7 @@ import MemberProfile from '@/views/memberProfile/index.vue';
 import Community from '@/views/memberProfile/community/index.vue';
 import CommunityIntro from '@/views/memberProfile/community/communityIntro.vue';
 import Organize from '@/views/memberProfile/organize/index.vue';
+import WorkRecord from '@/views/workRecord/index.vue';
 Vue.use(VueRouter);
 
 const routes = [
@@ -77,6 +78,14 @@ const routes = [
 				redirect: '/security'
 			}
 		]
+	},
+	{
+		path: '/workRecord',
+		name: 'workRecord',
+		component: WorkRecord,
+		meta: {
+			auth: true
+		}
 	},
 	{
 		path: '/notify',

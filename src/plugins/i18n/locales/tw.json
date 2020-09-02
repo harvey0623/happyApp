@@ -38,6 +38,9 @@
       },
       "communityIntro": {
          "title": "社區簡介"
+      },
+      "workRecord": {
+         "title": "工作紀錄"
       }
    },
    "validate": {

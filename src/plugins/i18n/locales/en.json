@@ -38,6 +38,9 @@
       },
       "communityIntro": {
          "title": "communityIntro"
+      },
+      "workRecord": {
+         "title": "workRecord"
       }
    },
    "validate": {
