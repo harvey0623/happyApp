@@ -165,7 +165,9 @@ export default {
       },
    },
    async mounted() {
+      this.isLoading = true;
       await this.updateMember();
+      this.isLoading = false;
    },
    components: {
       OrganizeList

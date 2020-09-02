@@ -59,7 +59,6 @@ export default {
          method: 'post',
          data: payload
       }).then(res => {
-         console.log(res.data)
          return res.data;
       });
       return result;

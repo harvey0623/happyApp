@@ -7,7 +7,7 @@
          :detail="list"
       ></communityList>
    </div>
-   <div class="btnBox center" v-show="hasData">
+   <div class="btnBox center">
       <button class="btnSure" @click="showApplyModal">社區入住申請</button>
    </div>
    <ApplyModal
@@ -74,9 +74,6 @@ export default {
             return prev;
          }, []);
       },
-      hasData() { //是否有資料
-         return this.communityList.length > 0;
-      },
       fullAddress() { //完整社區地址
          let { city, area } = this.position;
          let { floor, dong, number1, number2, room, unit } = this.houseInfo;
@@ -112,9 +109,9 @@ export default {
             iUserId: this.userInfo.user_id,
             vToken : this.userInfo.token,
             vAccount: this.userInfo.account
-         }).then(res => res);
+         }).then(res => res)
       },
-      async getCommunityList() {
+      async getCommunityList() { //取得社區名稱資料
          return await communityObj.getCommunityList({
             iUserId: this.userInfo.user_id,
             vToken : this.userInfo.token,
@@ -128,7 +125,6 @@ export default {
             this.apartmentData.lists[0].iId : 0;
       },
       async addMember() { //增加社區成員
-         this.isLoading = true;
          return await communityObj.addMember({
             iUserId: this.userInfo.user_id,
             vToken: this.userInfo.token,
@@ -139,21 +135,28 @@ export default {
             vRemark: ''
          }).then(res => {
             return res;
-         }).finally(() => this.isLoading = false);
+         });
       },
       async addHandler() {
+         this.isLoading = true;
          let { status } = await this.addMember().then(res => res);
          let isSuccess = status === 1;
+         if (isSuccess) {
+            this.lists = await this.getMember().then(res => res);
+            this.$bvModal.hide(this.modalId);
+         }
+         this.isLoading = false;
          this.$swal({
             icon: isSuccess ? 'success' : 'error',
             title: isSuccess ? '添加成功' : '添加失敗'
          });
-         if (isSuccess) this.$bvModal.hide(this.modalId);
       }
    },
    async mounted() {
+      this.isLoading = true;
       this.lists = await this.getMember().then(res => res);
       await this.getApartment();
+      this.isLoading = false;
    },
    watch: {
       position: {
