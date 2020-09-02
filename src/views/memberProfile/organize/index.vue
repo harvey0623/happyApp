@@ -250,4 +250,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped src="./organization.scss"></style>
+<style lang="scss" scoped src="./index.scss"></style>

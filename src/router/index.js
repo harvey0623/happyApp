@@ -13,9 +13,9 @@ import WorkInfo from '@/views/workInfo/index.vue';
 import Notify from '@/views/notify/index.vue';
 import Bulletin from '@/views/bulletin/index.vue';
 import MemberProfile from '@/views/memberProfile/index.vue';
-import Community from '@/views/memberProfile/community.vue';
-import CommunityIntro from '@/views/memberProfile/communityIntro.vue';
-import Organization from '@/views/memberProfile/organization.vue';
+import Community from '@/views/memberProfile/community/index.vue';
+import CommunityIntro from '@/views/memberProfile/community/communityIntro.vue';
+import Organize from '@/views/memberProfile/organize/index.vue';
 Vue.use(VueRouter);
 
 const routes = [
@@ -44,9 +44,9 @@ const routes = [
 				component: Community,
 			},
 			{
-				path: 'organization',
-				name: 'organization',
-				component: Organization,
+				path: 'organize',
+				name: 'organize',
+				component: Organize,
 			},
 		]
 	},

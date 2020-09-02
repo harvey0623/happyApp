@@ -1,0 +1,43 @@
+.organizeBox {
+   margin-bottom: 20px;
+}
+
+
+.btnAddMember {
+   width: 250px;
+}
+
+#editModal {
+   .infoBox {
+      @extend %centerFlex;
+      flex-direction: column;
+      margin-bottom: 20px;
+      >* {
+         @include elGutter(margin-bottom, 8px);
+      }
+      >img {
+         @include size(60px);
+         border-radius: 50%;
+      }
+      >.name {
+         color: map-get($fontColor, sidebar);
+         font-size: 18px;
+         font-weight: bold;
+      }
+      >.phone {
+         font-size: 12px;
+         color: map-get($fontColor, tab);
+      }
+   }
+   .formLayout {
+      margin-bottom: 20px;
+   }
+   .remove {
+      margin-top: 15px;
+      margin-bottom: 0;
+      color: map-get($fontColor, header);
+   }
+   .btnAddMember {
+      min-width: 250px;
+   }
+}
