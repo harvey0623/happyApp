@@ -77,7 +77,7 @@ export default {
       areaCode: ['+886', '+86'],
       code: '+886',
       isLoading: false,
-      user: {
+      user: { //1.0900000002/password 2.0966666666/password66
          phone: '0900000002',
          password: 'password',
          keep: false
