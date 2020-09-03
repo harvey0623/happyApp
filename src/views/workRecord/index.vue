@@ -7,6 +7,14 @@
          :month="dateInfo.month"
          @count="countHandler"
       ></DatePanel>
+      <ul class="punchBlock">
+         <PunchItem
+            v-for="item in filterPunch"
+            :key="item.groupTitle"
+            :title="item.groupTitle"
+            :record="item.data"
+         ></PunchItem>
+      </ul>
    </div>
 </div>
 </template>
@@ -15,6 +23,7 @@
 import { mapState } from 'vuex';
 import securityObj from '@/api/security.js';
 import DatePanel from '@/components/DatePanel/index.vue';
+import PunchItem from '@/components/PunchItem/index.vue';
 const today = new Date();
 export default {
    name: 'workRecord',
@@ -92,11 +101,8 @@ export default {
       this.punchData = this.copyPunch(punchResult);
    },
    components: {
-      DatePanel
+      DatePanel,
+      PunchItem
    }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>
