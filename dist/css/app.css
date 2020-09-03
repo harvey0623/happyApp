@@ -1316,6 +1316,54 @@ select {
   min-width: 250px;
 }
 
+.datePanel[data-v-062eec0e] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.datePanel[data-v-062eec0e] {
+  height: 45px;
+  padding: 0 15px;
+  background-color: #F397AE;
+}
+.datePanel > .dateText[data-v-062eec0e] {
+    color: #fff;
+    font-size: 22px;
+}
+.datePanel > button[data-v-062eec0e] {
+    width: 45px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #F2F2F2;
+    border: none;
+    border-radius: 3px;
+}
+.datePanel > button > i[data-v-062eec0e] {
+      font-size: 20px;
+      color: #3C4043;
+}
+
+.punchItem[data-v-7e2c7ab8] {
+  margin-bottom: 5px;
+  border: 1px solid #F2F2F2;
+}
+.punchItem[data-v-7e2c7ab8]:last-child {
+    margin-bottom: 0;
+}
+.punchItem > .punchItem-title[data-v-7e2c7ab8] {
+    padding: 8px 10px;
+    background-color: #F2F2F2;
+}
+.punchItem > .punchContent[data-v-7e2c7ab8] {
+    padding: 0px 10px;
+}
+.punchItem > .punchContent > .punchRecord[data-v-7e2c7ab8] {
+      padding-top: 10px;
+}
+.punchItem > .punchContent > .punchRecord[data-v-7e2c7ab8]:last-child {
+        padding-bottom: 10px;
+}
+
 .myheader {
   display: flex;
   justify-content: space-between;

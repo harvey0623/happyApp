@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import SlideUpDown from 'vue-slide-up-down';
 import OrganizeItem from '@/components/OrganizeList/OrganizeItem.vue';
 export default {
    props: {
@@ -48,7 +47,6 @@ export default {
       }
    },
    components: {
-      SlideUpDown,
       OrganizeItem
    }
 }

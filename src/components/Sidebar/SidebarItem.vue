@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import SlideUpDown from 'vue-slide-up-down';
 export default {
    props: {
       id: {
@@ -51,9 +50,6 @@ export default {
       hrefPage() {
          this.$store.commit('setMenuOpen', false);
       }
-   },
-   components: {
-      SlideUpDown
    }
 }
 </script>

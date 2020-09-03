@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import SlideUpDown from 'vue-slide-up-down';
 import PunchRecord from './PunchRecord.vue';
 export default {
    props: {
@@ -30,8 +29,7 @@ export default {
       isOpen: false
    }),
    components: {
-      PunchRecord,
-      SlideUpDown
+      PunchRecord
    }
 }
 </script>
