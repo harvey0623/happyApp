@@ -78,8 +78,8 @@ export default {
       code: '+886',
       isLoading: false,
       user: {
-         phone: '0966666666',
-         password: 'password66',
+         phone: '0900000002',
+         password: 'password',
          keep: false
       }
    }),
@@ -95,7 +95,6 @@ export default {
          return await this.$store.dispatch('auth/doLogin', {
             vAccount: this.user.phone,
             vPassword: crypto.encodeMd5(this.user.password),
-            keey: this.user.keep
          }).then(res => {
             return res;
          }).finally(() => this.isLoading = false);

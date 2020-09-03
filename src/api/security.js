@@ -6,7 +6,7 @@ export default {
          url: '/security/attendance_list',
          method: 'post',
          data: payload
-      }).then(res => res.data);
+      }).then(res => res.data.aaData);
       return result;
    }
 }

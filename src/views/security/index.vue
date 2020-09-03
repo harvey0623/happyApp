@@ -33,7 +33,7 @@
          <p class="title">我的紀錄</p>
          <div class="workContent">
             <div class="workRow">
-               <router-link to="/" class="workItem small">
+               <router-link to="/workRecord" class="workItem small">
                   <span>工作紀錄</span>
                   <div class="imgBox">
                      <img :src="require('@/assets/img/record.svg')" alt="">
