@@ -17,6 +17,7 @@ import Community from '@/views/memberProfile/community/index.vue';
 import CommunityIntro from '@/views/memberProfile/community/communityIntro.vue';
 import Organize from '@/views/memberProfile/organize/index.vue';
 import WorkRecord from '@/views/workRecord/index.vue';
+import WorkSchedule from '@/views/workSchedule/index.vue';
 Vue.use(VueRouter);
 
 const routes = [
@@ -78,6 +79,14 @@ const routes = [
 				redirect: '/security'
 			}
 		]
+	},
+	{
+		path: '/workSchedule',
+		name: 'workSchedule',
+		component: WorkSchedule,
+		meta: {
+			auth: true
+		}
 	},
 	{
 		path: '/workRecord',

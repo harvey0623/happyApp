@@ -41,7 +41,7 @@
                </router-link>
             </div>
             <div class="workRow">
-               <router-link to="/" class="workItem small">
+               <router-link to="/workSchedule" class="workItem small">
                   <span>我的班表</span>
                   <div class="imgBox">
                      <img :src="require('@/assets/img/shift.svg')" alt="">

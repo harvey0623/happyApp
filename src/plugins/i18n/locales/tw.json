@@ -41,6 +41,9 @@
       },
       "workRecord": {
          "title": "工作紀錄"
+      },
+      "workSchedule": {
+         "title": "我的班表"
       }
    },
    "validate": {
