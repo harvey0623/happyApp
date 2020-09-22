@@ -19,6 +19,10 @@
          </ul>
       </template>
    </div>
+   <QrcodeReader
+      v-if="openCamera"
+      :openCamera="openCamera"
+   ></QrcodeReader>
 </div>
 </template>
 
@@ -27,6 +31,7 @@ import { mapState } from 'vuex';
 import MissionList from '@/components/MissionList/index.vue';
 import securityObj from '@/api/security.js';
 import PatrolList from '@/components/PatrolList/index.vue';
+import QrcodeReader from '@/components/QrcodeReader/index.vue';
 export default {
    name: 'patrolMission',
    metaInfo() {
@@ -38,6 +43,7 @@ export default {
       id: 0,
       isLoading: false,
       missionList: [],
+      openCamera: false
    }),
    computed: {
       ...mapState('auth', ['userInfo', 'userCommunity']),
@@ -85,7 +91,8 @@ export default {
       }
    },
    components: {
-      PatrolList
+      PatrolList,
+      QrcodeReader
    }
 }
 </script>
