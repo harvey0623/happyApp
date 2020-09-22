@@ -17,4 +17,12 @@ export default {
       }).then(res => res.data.aaData);
       return result;
    },
+   async getMission(payload) {
+      let result = await httpMethod({
+         url: '/security/mission_list',
+         method: 'post',
+         data: payload
+      }).then(res => res.data.aaData);
+      return result;
+   },
 }

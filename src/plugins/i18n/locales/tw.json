@@ -44,6 +44,9 @@
       },
       "workSchedule": {
          "title": "我的班表"
+      },
+      "workMission": {
+         "title": "工作任務"
       }
    },
    "validate": {

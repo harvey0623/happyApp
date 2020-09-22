@@ -18,6 +18,7 @@ import CommunityIntro from '@/views/memberProfile/community/communityIntro.vue';
 import Organize from '@/views/memberProfile/organize/index.vue';
 import WorkRecord from '@/views/workRecord/index.vue';
 import WorkSchedule from '@/views/workSchedule/index.vue';
+import Mission from '@/views/mission/index.vue';
 Vue.use(VueRouter);
 
 const routes = [
@@ -75,26 +76,25 @@ const routes = [
 				component: WorkInfo,		
 			},
 			{
+				path: 'workRecord',
+				name: 'workRecord',
+				component: WorkRecord,
+			},
+			{
+				path: 'workSchedule',
+				name: 'workSchedule',
+				component: WorkSchedule,
+			},
+			{
+				path: 'workMission',
+				name: 'workMission',
+				component: Mission
+			},
+			{
 				path: '*',
 				redirect: '/security'
 			}
 		]
-	},
-	{
-		path: '/workSchedule',
-		name: 'workSchedule',
-		component: WorkSchedule,
-		meta: {
-			auth: true
-		}
-	},
-	{
-		path: '/workRecord',
-		name: 'workRecord',
-		component: WorkRecord,
-		meta: {
-			auth: true
-		}
 	},
 	{
 		path: '/notify',

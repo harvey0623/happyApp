@@ -20,7 +20,7 @@
                </router-link>
             </div>
             <div class="workRow">
-               <router-link to="/" class="workItem">
+               <router-link :to="{ name: 'workMission' }" class="workItem">
                   <span>工作任務</span>
                   <div class="imgBox">
                      <img :src="require('@/assets/img/task.svg')" alt="">
@@ -33,7 +33,7 @@
          <p class="title">我的紀錄</p>
          <div class="workContent">
             <div class="workRow">
-               <router-link to="/workRecord" class="workItem small">
+               <router-link :to="{ name: 'workRecord' }" class="workItem small">
                   <span>工作紀錄</span>
                   <div class="imgBox">
                      <img :src="require('@/assets/img/record.svg')" alt="">
@@ -41,7 +41,7 @@
                </router-link>
             </div>
             <div class="workRow">
-               <router-link to="/workSchedule" class="workItem small">
+               <router-link :to="{ name: 'workSchedule' }" class="workItem small">
                   <span>我的班表</span>
                   <div class="imgBox">
                      <img :src="require('@/assets/img/shift.svg')" alt="">

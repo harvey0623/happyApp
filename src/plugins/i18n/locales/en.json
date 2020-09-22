@@ -44,6 +44,9 @@
       },
       "workSchedule": {
          "title": "workSchedule"
+      },
+      "workMission": {
+         "title": "workMission"
       }
    },
    "validate": {
