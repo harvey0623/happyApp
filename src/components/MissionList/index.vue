@@ -1,5 +1,5 @@
 <template>
-<router-link to="/" class="missionList">
+<router-link :to="path" class="missionList">
    <div class="missionDesc">
       <div class="title">{{ title }}</div>
       <div class="duration">{{ durationTime }}</div>
@@ -31,6 +31,12 @@ export default {
    computed: {
       durationTime() {
          return `巡檢時段 : ${this.beginTime}-${this.finishTime}`;
+      },
+      path() {
+         return {
+            name: 'patrolMission',
+            params: { id: this.id }
+         }
       }
    }
 }

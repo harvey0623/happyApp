@@ -47,6 +47,9 @@
       },
       "workMission": {
          "title": "workMission"
+      },
+      "patrolMission": {
+         "title": "patrolMission"
       }
    },
    "validate": {

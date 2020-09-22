@@ -18,7 +18,8 @@ import CommunityIntro from '@/views/memberProfile/community/communityIntro.vue';
 import Organize from '@/views/memberProfile/organize/index.vue';
 import WorkRecord from '@/views/workRecord/index.vue';
 import WorkSchedule from '@/views/workSchedule/index.vue';
-import Mission from '@/views/mission/index.vue';
+import WorkMission from '@/views/workMission/index.vue';
+import PatrolMission from '@/views/patrolMission/index.vue';
 Vue.use(VueRouter);
 
 const routes = [
@@ -88,7 +89,12 @@ const routes = [
 			{
 				path: 'workMission',
 				name: 'workMission',
-				component: Mission
+				component: WorkMission
+			},
+			{
+				path: 'patrolMission/:id',
+				name: 'patrolMission',
+				component: PatrolMission
 			},
 			{
 				path: '*',

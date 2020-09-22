@@ -1,0 +1,53 @@
+.patrolList {
+   border-bottom: 1px solid #fff;
+   &:last-child {
+      border-bottom: none
+   }
+}
+
+.patrolToggle {
+   display: flex;
+   align-items: center;
+   padding: 15px;
+   background-color: map-get($elBgColor, position);
+   >.fa-thumbtack {
+      color: map-get($fontColor, primary);
+      font-size: 20px;
+   }
+   >span {
+      margin-left: 10px;
+      font-weight: bold;
+      font-size: 18px;
+   }
+   >.fa-caret-down {
+      margin-left: auto;
+      color: map-get($fontColor, form);
+      font-size: 18px;
+   }
+}
+
+.patrolInfo {
+   padding: 0 15px;
+   color: map-get($fontColor, form);
+   >.infoTop {
+      padding: 12px 0;
+      border-bottom: 1px solid map-get($borderColor, primary);
+      >* {
+         @include elGutter(margin-bottom, 8px);
+      }
+   }
+   >.infoBottom {
+      padding-top: 12px;
+      padding-bottom: 20px;
+      >* {
+         @include elGutter(margin-bottom, 8px);
+      }
+      .fa-circle {
+         margin-right: 5px;
+         font-size: 12px;
+      }
+      >.btnBox {
+         margin-top: 20px;
+      }
+   }
+}

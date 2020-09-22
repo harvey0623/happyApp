@@ -41,17 +41,16 @@
    &.center {
       text-align: center;
    }
+   &.space_bwtween {
+      display: flex;
+      justify-content: space-between;
+      >button,
+      >a {
+         width: 48%;
+      }
+   }
    // &.right {
    //    text-align: right;
-   // }
-   // &.space_bwtween {
-   //    display: flex;
-   //    justify-content: space-between;
-   //    >button,
-   //    >a {
-   //       width: 48%;
-   //       margin-right: 0;
-   //    }
    // }
    // >* {
    //    @include elGutter(margin-right, 8px);
