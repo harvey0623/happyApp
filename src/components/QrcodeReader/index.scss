@@ -27,9 +27,10 @@
             left: 0;
             top: 0;
             @include size(100%);
-            background-color: rgba(#fff, 0.55);
+            background-color: rgba(#fff, 0.6);
             text-align: center;
             line-height: 300px;
+            color: red;
          }
       }
    }
