@@ -1,6 +1,4 @@
-%cameraSize {
-   @include size(300px);
-}
+$cameraSize: 320px;
 
 #qrcodeReader {
    position: fixed;
@@ -18,19 +16,21 @@
       top: 20px;
    }
    >.lensBox {
-      @extend %cameraSize;
+      @include size($cameraSize);
+      transform: translateY(-25%);
       .overlay {
-         @extend %cameraSize;
          @extend %centerFlex;
+         font-size: 25px;
+         // background-color: #fff;
          .process {
             position: absolute;
             left: 0;
             top: 0;
             @include size(100%);
-            background-color: rgba(#fff, 0.6);
+            line-height: $cameraSize;
+            background-color: rgba(#fff, 0.75);
             text-align: center;
-            line-height: 300px;
-            color: red;
+            color: #ff0000;
          }
       }
    }

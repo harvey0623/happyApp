@@ -120,7 +120,7 @@ export default {
          return new Promise((resolve) => {
             setTimeout(() => {
                resolve(id === this.tempPunch.pointId.toString());
-            }, 2000);
+            }, 1500);
          });
       }
    },
