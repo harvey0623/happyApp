@@ -16,9 +16,9 @@
                v-for="patrol in patrolList"
                :key="patrol.iId"
                :patrol="patrol"
+               @punch="patrolPunch"
             ></PatrolList>
          </ul>
-         <button @click="openCamera = true">click</button>
       </template>
       <template v-else>
          <EmptyBlock text="找不到巡檢任務"></EmptyBlock>
@@ -27,6 +27,8 @@
    <QrcodeReader
       v-show="openCamera"
       :openCamera.sync="openCamera"
+      :cameraStatus.sync="cameraStatus"
+      :isProcess="isProcess"
       @scan="scanHandler"
    ></QrcodeReader>
 </div>
@@ -49,7 +51,9 @@ export default {
       id: 0,
       isLoading: false,
       missionList: [],
-      openCamera: false
+      openCamera: false,
+      cameraStatus: 'auto',
+      isProcess: false
    }),
    computed: {
       ...mapState('auth', ['userInfo', 'userCommunity']),
@@ -86,8 +90,13 @@ export default {
          }).then(res => res)
             .finally(() => this.isLoading = false)
       },
+      patrolPunch(payload) {
+         this.openCamera = true;
+      },
       scanHandler(scanData) {
          alert(scanData);
+         this.isProcess = true;
+         this.cameraStatus = 'off';
       }
    },
    async mounted() {

@@ -1,13 +1,15 @@
 <template>
 <div id="qrcodeReader">
    <div class="closeText" @click="closeHandler">關閉</div>
-   <!-- <div v-if="hasError" class="errorTip">{{ errorMessage }}</div> -->
-   <div class="lensBox">
+   <div v-if="hasError" class="errorTip">{{ errorMessage }}</div>
+   <div v-else class="lensBox">
       <qrcode-stream
          v-if="openCamera"
+         :camera="cameraStatus"
          @decode="onDecode" 
          @init="onInit">
          <div v-show="cameraLoading">相機開啟中...</div>
+         <div v-show="isProcess" class="process">處理中...</div>
       </qrcode-stream>
    </div>
 </div>
@@ -18,6 +20,14 @@ import { QrcodeStream } from 'vue-qrcode-reader'
 export default {
    props: {
       openCamera: {
+         type: Boolean,
+         required: true
+      },
+      cameraStatus: {
+         type: String,
+         required: true
+      },
+      isProcess: {
          type: Boolean,
          required: true
       }
@@ -56,6 +66,7 @@ export default {
       },
       closeHandler() {
          this.$emit('update:openCamera', false);
+         this.$emit('update:cameraStatus', 'auto');
       }
    },
    components: {
@@ -66,8 +77,7 @@ export default {
 
 <style lang="scss">
 %cameraSize {
-   width: 300px;
-   height: 300px;
+   @include size(300px);
 }
 #qrcodeReader {
    position: fixed;
@@ -86,10 +96,18 @@ export default {
    }
    >.lensBox {
       @extend %cameraSize;
-      background-color: #fff;
       .overlay {
          @extend %cameraSize;
          @extend %centerFlex;
+         .process {
+            position: absolute;
+            left: 0;
+            top: 0;
+            @include size(100%);
+            background-color: rgba(#fff, 0.55);
+            text-align: center;
+            line-height: 300px;
+         }
       }
    }
 }

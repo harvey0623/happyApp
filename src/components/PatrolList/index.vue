@@ -15,7 +15,10 @@
          <p>{{ patrol.vSummary }}</p>
          <div class="btnBox space_bwtween">
             <button class="outline-verify">巡檢回報</button>
-            <button class="btnPatrol">巡邏點打卡</button>
+            <button class="btnPatrol" @click="punchHandler">
+               <i class="fal fa-barcode-scan"></i>
+               <span>巡邏點打卡</span>
+            </button>
          </div>
       </div>
    </SlideUpDown>
@@ -31,8 +34,15 @@ export default {
       }
    },
    data: () => ({
-      isOpen: false
-   })
+      isOpen: true
+   }),
+   methods: {
+      punchHandler() {
+         this.$emit('punch', {
+            id: this.patrol.iId,
+         });
+      }
+   }
 }
 </script>
 
