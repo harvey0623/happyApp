@@ -2,7 +2,7 @@
 <div id="qrcodeReader">
    <div class="closeText" @click="closeHandler">關閉</div>
    <div v-if="hasError" class="errorTip">{{ errorMessage }}</div>
-   <div v-else class="lensBox">
+   <div v-else class="lensBox" ref="lensBox">
       <qrcode-stream
          v-if="openCamera"
          :camera="cameraStatus"
@@ -67,7 +67,10 @@ export default {
          }
       },
       onDecode(data) {
-         this.$emit('scan', data);
+         this.$emit('scan', {
+            scanData: data,
+            lensElement: this.$refs.lensBox
+         });
       },
       closeHandler() {
          if (this.isProcess) return;

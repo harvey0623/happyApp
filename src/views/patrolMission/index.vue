@@ -109,14 +109,15 @@ export default {
             changeStatus: payload.changeStatus
          };
       },
-      async scanHandler(scanData) {
-         this.isProcess = true;
+      async scanHandler({ scanData, lensElement }) {
          this.cameraStatus = 'off';
+         this.isProcess = true;
          let isMatch = await this.matchPointId(scanData).then(res => res);
-         this.isProcess = false;
          this.cameraStatus = 'auto';
+         this.isProcess = false;
+         await this.$nextTick();
          if (isMatch) {
-            let base64 = await this.screenShot().then(res => res);
+            let base64 = await this.screenShot(lensElement).then(res => res);
             this.setLS({ base64 });
             this.openCamera = false;
             this.tempPunch.changeStatus(true);
@@ -130,11 +131,10 @@ export default {
          return new Promise((resolve) => {
             setTimeout(() => {
                resolve(id === this.tempPunch.pointId.toString());
-            }, 1500);
+            }, 1000);
          });
       },
-      async screenShot() { //截圖
-         let el = this.$refs.qrcodeReader.$el;
+      async screenShot(el) { //截圖
          let canvas = await html2canvas(el).then(res => res);
          return canvas.toDataURL();
       },
