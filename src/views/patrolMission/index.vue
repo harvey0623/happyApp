@@ -24,6 +24,7 @@
    </div>
    <QrcodeReader
       v-if="openCamera"
+      ref="qrcodeReader"
       :openCamera.sync="openCamera"
       :cameraStatus.sync="cameraStatus"
       :isProcess="isProcess"
@@ -38,6 +39,7 @@ import MissionList from '@/components/MissionList/index.vue';
 import securityObj from '@/api/security.js';
 import PatrolList from '@/components/PatrolList/index.vue';
 import QrcodeReader from '@/components/QrcodeReader/index.vue';
+import html2canvas from 'html2canvas';
 export default {
    name: 'patrolMission',
    metaInfo() {
@@ -49,7 +51,7 @@ export default {
       missionId: 0,
       isLoading: false,
       missionList: [],
-      openCamera: false,
+      openCamera: true,
       cameraStatus: 'auto',
       isProcess: false,
       tempPunch: {
@@ -114,6 +116,8 @@ export default {
          this.isProcess = false;
          this.cameraStatus = 'auto';
          if (isMatch) {
+            let base64 = await this.screenShot().then(res => res);
+            alert(base64);
             this.openCamera = false;
             this.tempPunch.changeStatus(true);
          }
@@ -128,6 +132,11 @@ export default {
                resolve(id === this.tempPunch.pointId.toString());
             }, 1500);
          });
+      },
+      async screenShot() {
+         let el = this.$refs.qrcodeReader.$el;
+         let canvas =  await html2canvas(el).then(res => res);
+         return canvas.toDataURL();
       }
    },
    async mounted() {

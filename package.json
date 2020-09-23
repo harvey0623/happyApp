@@ -18,6 +18,7 @@
     "cross-env": "^7.0.2",
     "crypto-js": "^4.0.0",
     "gsap": "^3.5.0",
+    "html2canvas": "^1.0.0-rc.7",
     "swiper": "^5.4.5",
     "vee-validate": "^3.3.9",
     "vue": "^2.6.11",
