@@ -1518,6 +1518,9 @@ select {
     left: 20px;
     top: 20px;
 }
+#qrcodeReader > .lensBox {
+    background-color: #fff;
+}
 
 .missionInfo[data-v-2538100e] {
   margin-bottom: 30px;

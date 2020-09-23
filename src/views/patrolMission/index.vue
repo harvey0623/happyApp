@@ -1,6 +1,7 @@
 <template>
 <div class="patrolMission">
-   <backBlock title="巡檢任務"></backBlock>
+   <BackBlock title="巡檢任務"></BackBlock>
+   <Loading v-if="isLoading"></Loading>
    <div class="mycontainer vertical">
       <template v-if="hasMission">
          <div class="missionInfo">
@@ -19,10 +20,14 @@
          </ul>
          <button @click="openCamera = true">click</button>
       </template>
+      <template v-else>
+         <EmptyBlock text="找不到巡檢任務"></EmptyBlock>
+      </template>
    </div>
    <QrcodeReader
       v-show="openCamera"
       :openCamera.sync="openCamera"
+      @scan="scanHandler"
    ></QrcodeReader>
 </div>
 </template>
@@ -44,7 +49,7 @@ export default {
       id: 0,
       isLoading: false,
       missionList: [],
-      openCamera: true
+      openCamera: false
    }),
    computed: {
       ...mapState('auth', ['userInfo', 'userCommunity']),
@@ -54,7 +59,7 @@ export default {
          else return null;
       },
       totalPlace() {
-         if (this.targetMission === undefined) return 0; 
+         if (this.targetMission === null) return 0; 
          else return this.targetMission.place.length;
       },
       patrolList() {
@@ -80,6 +85,9 @@ export default {
             iCommunityId: this.userCommunity
          }).then(res => res)
             .finally(() => this.isLoading = false)
+      },
+      scanHandler(scanData) {
+         alert(scanData);
       }
    },
    async mounted() {

@@ -1,8 +1,8 @@
 <template>
 <div id="qrcodeReader">
    <div class="closeText" @click="closeHandler">關閉</div>
-   <div v-if="hasError" class="errorTip">{{ errorMessage }}</div>
-   <div v-else class="lensBox">
+   <!-- <div v-if="hasError" class="errorTip">{{ errorMessage }}</div> -->
+   <div class="lensBox">
       <qrcode-stream
          v-if="openCamera"
          @decode="onDecode" 
@@ -46,15 +46,13 @@ export default {
             await promise;
             this.errorMessage === '';
          } catch (error) {
-            console.log(error);
             this.errorMessage = this.errorInfo[error.name];
          } finally {
             this.cameraLoading = false;
          }
       },
-      onDecode(result) {
-         console.log(result);
-         this.result = result;
+      onDecode(data) {
+         this.$emit('scan', data);
       },
       closeHandler() {
          this.$emit('update:openCamera', false);
@@ -88,6 +86,7 @@ export default {
    }
    >.lensBox {
       @extend %cameraSize;
+      background-color: #fff;
       .overlay {
          @extend %cameraSize;
          @extend %centerFlex;

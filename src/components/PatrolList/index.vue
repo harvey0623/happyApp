@@ -5,7 +5,7 @@
       <span>巡查點</span>
       <i class="fas fa-caret-down"></i>
    </div>
-   <SlideUpDown :active="isOpen" class="patrolInfo">
+   <SlideUpDown :active="isOpen" class="patrolInfo" :duration="300">
       <div class="infoTop">
          <p>哨點名稱 : {{ patrol.vTitle }}</p>
          <p>順序序號 : {{ patrol.vDetail }}</p>
@@ -31,7 +31,7 @@ export default {
       }
    },
    data: () => ({
-      isOpen: true
+      isOpen: false
    })
 }
 </script>

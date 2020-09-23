@@ -17,6 +17,7 @@
          ></MissionList>
       </div>
    </div>
+   <Loading v-if="isLoading"></Loading>
 </div>
 </template>
 
@@ -32,6 +33,7 @@ export default {
       }
    },
    data: () => ({
+      isLoading: false,
       missionList: []
    }),
    computed: {
@@ -40,22 +42,23 @@ export default {
          return this.missionList.length;
       },
       missionCategory() {
-         let result = this.missionList.reduce((prev, current) => {
+         return this.missionList.reduce((prev, current) => {
             let { iId, vTitle, vBegin, vFinish } = current;
             prev.push({ iId, vTitle, vBegin, vFinish });
             return prev;
          }, []);
-         return result;
       }
    },
    methods: {
       async getMission() {
+         this.isLoading = true;
          return await securityObj.getMission({
             iUserId: this.userInfo.user_id,
             vToken: this.userInfo.token,
             iSecurityId: 2,
             iCommunityId: this.userCommunity
-         }).then(res => res);
+         }).then(res => res)
+            .finally(() => this.isLoading = false);
       }
    },
    async mounted() {
