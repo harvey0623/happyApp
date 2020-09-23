@@ -40,7 +40,10 @@ export default {
    methods: {
       punchHandler() {
          this.$emit('punch', {
-            checkPointId: this.patrol.checkPointId
+            pointId: this.patrol.checkPointId,
+            changeStatus: (status) => {
+               this.isScan = status;
+            }
          });
       }
    }

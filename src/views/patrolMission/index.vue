@@ -54,7 +54,10 @@ export default {
       openCamera: false,
       cameraStatus: 'auto',
       isProcess: false,
-      tempPointId: null
+      tempPunch: {
+         pointId: null,
+         changeStatus: null
+      }
    }),
    computed: {
       ...mapState('auth', ['userInfo', 'userCommunity']),
@@ -92,22 +95,27 @@ export default {
             .finally(() => this.isLoading = false)
       },
       patrolPunch(payload) {
-         this.tempPointId = payload.checkPointId;
          this.openCamera = true;
+         this.tempPunch = {
+            pointId: payload.pointId,
+            changeStatus: payload.changeStatus
+         };
       },
       async scanHandler(scanData) {
-         alert(scanData);
-         alert(typeof scanData);
          this.isProcess = true;
          this.cameraStatus = 'off';
          let isMatch = await this.matchPointId(scanData).then(res => res);
-         alert(isMatch);
-      },
-      matchPointId(id) {
-         return new Promise((resolve) => {
-            resolve(id === this.tempPointId.toString());
+         this.isProcess = false;
+         this.cameraStatus = 'auto';
+         if (isMatch) {
+            this.openCamera = false;
+            this.tempPunch.changeStatus(true);
+         }
+         this.$swal({
+            icon: isMatch ? 'success' : 'error',
+            title: isMatch ? '巡點成功' : '巡點失敗'
          });
-      }
+      },
    },
    async mounted() {
       this.id = parseInt(this.$route.params.id);
