@@ -21,8 +21,8 @@
       </template>
    </div>
    <QrcodeReader
-      v-if="openCamera"
-      :openCamera="openCamera"
+      v-show="openCamera"
+      :openCamera.sync="openCamera"
    ></QrcodeReader>
 </div>
 </template>
@@ -44,7 +44,7 @@ export default {
       id: 0,
       isLoading: false,
       missionList: [],
-      openCamera: false
+      openCamera: true
    }),
    computed: {
       ...mapState('auth', ['userInfo', 'userCommunity']),

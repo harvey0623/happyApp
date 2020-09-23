@@ -1,12 +1,15 @@
 <template>
-<div class="qrcodeReader">
-   <p class="error">{{ error }}</p>
-   <p class="decode-result">Last result: <b>{{ result }}</b></p>
-   <qrcode-stream
-      v-if="openCamera"
-      @decode="onDecode" 
-      @init="onInit"
-   ></qrcode-stream>
+<div id="qrcodeReader">
+   <div class="closeText" @click="closeHandler">關閉</div>
+   <div v-if="hasError" class="errorTip">{{ errorMessage }}</div>
+   <div v-else class="lensBox">
+      <qrcode-stream
+         v-if="openCamera"
+         @decode="onDecode" 
+         @init="onInit">
+         <div v-show="cameraLoading">相機開啟中...</div>
+      </qrcode-stream>
+   </div>
 </div>
 </template>
 
@@ -19,37 +22,43 @@ export default {
          required: true
       }
    },
-   data() {
-      return {
-         result: "",
-         error: "",
-      };
+   data: () => ({
+      cameraLoading: false,
+      errorMessage: '',
+      errorInfo: {
+         NotAllowedError: 'you need to grant camera access permisson',
+         NotFoundError: 'no camera on this device',
+         NotSupportedError: 'secure context required (HTTPS, localhost)',
+         NotReadableError: 'is the camera already in use',
+         OverconstrainedError: 'installed cameras are not suitable',
+         StreamApiNotSupportedError: 'Stream API is not supported in this browser'
+      }
+   }),
+   computed: {
+      hasError() {
+         return this.errorMessage !== '';
+      },
    },
    methods: {
-      onDecode(result) {
-         this.result = result;
-      },
       async onInit(promise) {
          try {
-            alert(this.openCamera);
-            alert(promise);
+            this.cameraLoading = true;
             await promise;
+            this.errorMessage === '';
          } catch (error) {
-            if (error.name === "NotAllowedError") {
-               this.error = "ERROR: you need to grant camera access permisson";
-            } else if (error.name === "NotFoundError") {
-               this.error = "ERROR: no camera on this device";
-            } else if (error.name === "NotSupportedError") {
-               this.error = "ERROR: secure context required (HTTPS, localhost)";
-            } else if (error.name === "NotReadableError") {
-               this.error = "ERROR: is the camera already in use?";
-            } else if (error.name === "OverconstrainedError") {
-               this.error = "ERROR: installed cameras are not suitable";
-            } else if (error.name === "StreamApiNotSupportedError") {
-               this.error = "ERROR: Stream API is not supported in this browser";
-            }
+            console.log(error);
+            this.errorMessage = this.errorInfo[error.name];
+         } finally {
+            this.cameraLoading = false;
          }
       },
+      onDecode(result) {
+         console.log(result);
+         this.result = result;
+      },
+      closeHandler() {
+         this.$emit('update:openCamera', false);
+      }
    },
    components: {
       QrcodeStream
@@ -57,13 +66,32 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.qrcodeReader {
+<style lang="scss">
+%cameraSize {
+   width: 300px;
+   height: 300px;
+}
+#qrcodeReader {
    position: fixed;
    left: 0;
    top: 0;
+   @extend %centerFlex;
    @include size(100%, 100vh);
-   background-color: yellow;
+   background-color: #000;
+   color: #fff;
+   font-size: 20px;
    z-index: 20;
+   >.closeText {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+   }
+   >.lensBox {
+      @extend %cameraSize;
+      .overlay {
+         @extend %cameraSize;
+         @extend %centerFlex;
+      }
+   }
 }
 </style>
