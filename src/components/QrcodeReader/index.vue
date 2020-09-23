@@ -8,7 +8,7 @@
          :camera="cameraStatus"
          @decode="onDecode" 
          @init="onInit">
-         <div v-show="cameraLoading">相機開啟中...</div>
+         <div v-show="isShowProcessText">相機開啟中...</div>
          <div v-show="isProcess" class="process">處理中...</div>
       </qrcode-stream>
    </div>
@@ -42,12 +42,16 @@ export default {
          NotReadableError: 'is the camera already in use',
          OverconstrainedError: 'installed cameras are not suitable',
          StreamApiNotSupportedError: 'Stream API is not supported in this browser'
-      }
+      },
+      isFirst: true
    }),
    computed: {
       hasError() {
          return this.errorMessage !== '';
       },
+      isShowProcessText() {
+         return this.isFirst && this.cameraLoading;
+      }
    },
    methods: {
       async onInit(promise) {
@@ -55,6 +59,7 @@ export default {
             this.cameraLoading = true;
             await promise;
             this.errorMessage === '';
+            this.isFirst = false;
          } catch (error) {
             this.errorMessage = this.errorInfo[error.name];
          } finally {

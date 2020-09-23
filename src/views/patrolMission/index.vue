@@ -25,7 +25,7 @@
       </template>
    </div>
    <QrcodeReader
-      v-show="openCamera"
+      v-if="openCamera"
       :openCamera.sync="openCamera"
       :cameraStatus.sync="cameraStatus"
       :isProcess="isProcess"
@@ -116,6 +116,13 @@ export default {
             title: isMatch ? '巡點成功' : '巡點失敗'
          });
       },
+      matchPointId(id) { //確認qrcode的id是否跟巡點id相同
+         return new Promise((resolve) => {
+            setTimeout(() => {
+               resolve(id === this.tempPunch.pointId.toString());
+            }, 1000);
+         });
+      }
    },
    async mounted() {
       this.id = parseInt(this.$route.params.id);
