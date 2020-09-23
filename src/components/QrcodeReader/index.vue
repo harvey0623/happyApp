@@ -31,7 +31,8 @@ export default {
       },
       async onInit(promise) {
          try {
-            console.log('a');
+            alert(this.openCamera);
+            alert(promise);
             await promise;
          } catch (error) {
             if (error.name === "NotAllowedError") {
@@ -45,8 +46,7 @@ export default {
             } else if (error.name === "OverconstrainedError") {
                this.error = "ERROR: installed cameras are not suitable";
             } else if (error.name === "StreamApiNotSupportedError") {
-               this.error =
-                  "ERROR: Stream API is not supported in this browser";
+               this.error = "ERROR: Stream API is not supported in this browser";
             }
          }
       },

@@ -17,6 +17,7 @@
                :patrol="patrol"
             ></PatrolList>
          </ul>
+         <button @click="openCamera = true">click</button>
       </template>
    </div>
    <QrcodeReader
