@@ -3,7 +3,8 @@
    <BackBlock title="巡檢任務"></BackBlock>
    <Loading v-if="isLoading"></Loading>
    <div class="mycontainer vertical">
-      <template v-if="hasMission">
+      <EmptyBlock v-show="showEmpty" text="找不到巡檢任務"></EmptyBlock>
+      <div v-if="hasMission">
          <div class="missionInfo">
             <p class="title">{{ targetMission.vTitle }}</p>
             <div class="content">
@@ -19,10 +20,7 @@
                @punch="patrolPunch"
             ></PatrolList>
          </ul>
-      </template>
-      <template v-else>
-         <EmptyBlock text="找不到巡檢任務"></EmptyBlock>
-      </template>
+      </div>
    </div>
    <QrcodeReader
       v-if="openCamera"
@@ -48,7 +46,7 @@ export default {
       }
    },
    data: () => ({
-      id: 0,
+      missionId: 0,
       isLoading: false,
       missionList: [],
       openCamera: false,
@@ -57,12 +55,13 @@ export default {
       tempPunch: {
          pointId: null,
          changeStatus: null
-      }
+      },
+      isFirstLoadData: true,
    }),
    computed: {
       ...mapState('auth', ['userInfo', 'userCommunity']),
       targetMission() {
-         let obj = this.missionList.find(item => item.iId === this.id);
+         let obj = this.missionList.find(item => item.iId === this.missionId);
          if (obj !== undefined) return obj;
          else return null;
       },
@@ -80,7 +79,10 @@ export default {
          return `${vBegin}-${vFinish}`;
       },
       hasMission() {
-         return this.isLoading === false && this.targetMission !== null;
+         return !this.isLoading && this.targetMission !== null;
+      },
+      showEmpty() {
+         return !this.isLoading && this.targetMission === null && !this.isFirstLoadData;
       }
    },
    methods: {
@@ -91,8 +93,12 @@ export default {
             vToken: this.userInfo.token,
             iSecurityId: 2,
             iCommunityId: this.userCommunity
-         }).then(res => res)
-            .finally(() => this.isLoading = false)
+         }).then(res => {
+            return res;
+         }).finally(() => {
+            this.isLoading = false;
+            this.isFirstLoadData = false;
+         })
       },
       patrolPunch(payload) {
          this.openCamera = true;
@@ -125,12 +131,12 @@ export default {
       }
    },
    async mounted() {
-      this.id = parseInt(this.$route.params.id);
+      this.missionId = parseInt(this.$route.params.id);
       this.missionList = await this.getMission().then(res => res);
    },
    watch: {
       $route(newVal) {
-         this.id = parseInt(newVal.params.id);
+         this.missionId = parseInt(newVal.params.id);
       }
    },
    components: {
@@ -151,7 +157,7 @@ export default {
       font-size: 18px;
    }
    >.content {
-      padding: 15px;
+      padding: 12px 15px;
       background-color: map-get($elBgColor, position);
       color: map-get($fontColor, form);
       >p {

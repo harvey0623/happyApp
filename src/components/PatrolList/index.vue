@@ -14,7 +14,7 @@
          <div><i class="fas fa-circle"></i>需執行事項</div>
          <p>{{ patrol.vSummary }}</p>
          <div class="btnBox space_bwtween">
-            <button class="outline-verify">巡檢回報</button>
+            <button class="outline-verify" @click="patrolReport">巡檢回報</button>
             <button class="btnPatrol" @click="punchHandler">
                <i class="fal fa-barcode-scan"></i>
                <span>巡邏點打卡</span>
@@ -45,6 +45,9 @@ export default {
                this.isScan = status;
             }
          });
+      },
+      patrolReport() {
+         if (!this.isScan) return;
       }
    }
 }

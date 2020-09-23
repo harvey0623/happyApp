@@ -1444,7 +1444,7 @@ select {
 .patrolToggle[data-v-52ff393d] {
   display: flex;
   align-items: center;
-  padding: 15px;
+  padding: 12px 15px;
   background-color: #F2F2F2;
 }
 .patrolToggle > .fa-thumbtack[data-v-52ff393d] {
@@ -1460,6 +1460,8 @@ select {
     margin-left: auto;
     color: #646464;
     font-size: 18px;
+    -webkit-transform: scale(0.85);
+            transform: scale(0.85);
 }
 .patrolInfo[data-v-52ff393d] {
   padding: 0 15px;
@@ -1549,7 +1551,7 @@ select {
     font-size: 18px;
 }
 .missionInfo > .content[data-v-2538100e] {
-    padding: 15px;
+    padding: 12px 15px;
     background-color: #F2F2F2;
     color: #646464;
 }

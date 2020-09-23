@@ -8,7 +8,7 @@
 .patrolToggle {
    display: flex;
    align-items: center;
-   padding: 15px;
+   padding: 12px 15px;
    background-color: map-get($elBgColor, position);
    >.fa-thumbtack {
       color: map-get($fontColor, primary);
@@ -23,6 +23,7 @@
       margin-left: auto;
       color: map-get($fontColor, form);
       font-size: 18px;
+      transform: scale(0.85);
    }
 }
 
