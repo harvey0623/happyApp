@@ -101,11 +101,11 @@ export default {
          this.isProcess = true;
          this.cameraStatus = 'off';
          let isMatch = await this.matchPointId(scanData).then(res => res);
-         console.log(isMatch)
+         alert(isMatch);
       },
       matchPointId(id) {
          return new Promise((resolve) => {
-            resolve(id === this.tempPointId);
+            resolve(id === this.tempPointId.toString());
          });
       }
    },
