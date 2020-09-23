@@ -35,11 +35,11 @@
 
 <script>
 import { mapState } from 'vuex';
+import QrcodeReader from '@/components/QrcodeReader/index.vue';
+import html2canvas from 'html2canvas';
 import MissionList from '@/components/MissionList/index.vue';
 import securityObj from '@/api/security.js';
 import PatrolList from '@/components/PatrolList/index.vue';
-import QrcodeReader from '@/components/QrcodeReader/index.vue';
-import html2canvas from 'html2canvas';
 export default {
    name: 'patrolMission',
    metaInfo() {
@@ -51,7 +51,7 @@ export default {
       missionId: 0,
       isLoading: false,
       missionList: [],
-      openCamera: true,
+      openCamera: false,
       cameraStatus: 'auto',
       isProcess: false,
       tempPunch: {
@@ -117,7 +117,7 @@ export default {
          this.cameraStatus = 'auto';
          if (isMatch) {
             let base64 = await this.screenShot().then(res => res);
-            alert(base64);
+            this.setLS({ base64 });
             this.openCamera = false;
             this.tempPunch.changeStatus(true);
          }
@@ -133,10 +133,14 @@ export default {
             }, 1500);
          });
       },
-      async screenShot() {
+      async screenShot() { //截圖
          let el = this.$refs.qrcodeReader.$el;
-         let canvas =  await html2canvas(el).then(res => res);
+         let canvas = await html2canvas(el).then(res => res);
          return canvas.toDataURL();
+      },
+      setLS(data) {
+         localStorage.setItem(`pointId-${this.tempPunch.pointId}`, JSON.stringify(data));
+         alert(localStorage.getItem(`pointId-${this.tempPunch.pointId}`));
       }
    },
    async mounted() {
