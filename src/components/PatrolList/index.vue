@@ -8,7 +8,7 @@
    <SlideUpDown :active="isOpen" class="patrolInfo" :duration="300">
       <div class="infoTop">
          <p>哨點名稱 : {{ patrol.vTitle }}</p>
-         <p>順序序號 : {{ patrol.vDetail }}</p>
+         <p>順序序號 : {{ patrol.checkPointId }}</p>
       </div>
       <div class="infoBottom">
          <div><i class="fas fa-circle"></i>需執行事項</div>
@@ -34,12 +34,13 @@ export default {
       }
    },
    data: () => ({
-      isOpen: true
+      isOpen: true,
+      isScan: false
    }),
    methods: {
       punchHandler() {
          this.$emit('punch', {
-            id: this.patrol.iId,
+            checkPointId: this.patrol.checkPointId
          });
       }
    }

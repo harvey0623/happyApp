@@ -53,7 +53,8 @@ export default {
       missionList: [],
       openCamera: false,
       cameraStatus: 'auto',
-      isProcess: false
+      isProcess: false,
+      tempPointId: null
    }),
    computed: {
       ...mapState('auth', ['userInfo', 'userCommunity']),
@@ -91,12 +92,21 @@ export default {
             .finally(() => this.isLoading = false)
       },
       patrolPunch(payload) {
+         this.tempPointId = payload.checkPointId;
          this.openCamera = true;
       },
-      scanHandler(scanData) {
+      async scanHandler(scanData) {
          alert(scanData);
+         alert(typeof scanData);
          this.isProcess = true;
          this.cameraStatus = 'off';
+         let isMatch = await this.matchPointId(scanData).then(res => res);
+         console.log(isMatch)
+      },
+      matchPointId(id) {
+         return new Promise((resolve) => {
+            resolve(id === this.tempPointId);
+         });
       }
    },
    async mounted() {

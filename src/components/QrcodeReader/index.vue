@@ -65,6 +65,7 @@ export default {
          this.$emit('scan', data);
       },
       closeHandler() {
+         if (this.isProcess) return;
          this.$emit('update:openCamera', false);
          this.$emit('update:cameraStatus', 'auto');
       }
@@ -75,40 +76,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-%cameraSize {
-   @include size(300px);
-}
-#qrcodeReader {
-   position: fixed;
-   left: 0;
-   top: 0;
-   @extend %centerFlex;
-   @include size(100%, 100vh);
-   background-color: #000;
-   color: #fff;
-   font-size: 20px;
-   z-index: 20;
-   >.closeText {
-      position: absolute;
-      left: 20px;
-      top: 20px;
-   }
-   >.lensBox {
-      @extend %cameraSize;
-      .overlay {
-         @extend %cameraSize;
-         @extend %centerFlex;
-         .process {
-            position: absolute;
-            left: 0;
-            top: 0;
-            @include size(100%);
-            background-color: rgba(#fff, 0.55);
-            text-align: center;
-            line-height: 300px;
-         }
-      }
-   }
-}
-</style>
+<style lang="scss" src="./index.scss"></style>
