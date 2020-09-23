@@ -140,7 +140,6 @@ export default {
       },
       setLS(data) {
          localStorage.setItem(`pointId-${this.tempPunch.pointId}`, JSON.stringify(data));
-         alert(localStorage.getItem(`pointId-${this.tempPunch.pointId}`));
       }
    },
    async mounted() {
