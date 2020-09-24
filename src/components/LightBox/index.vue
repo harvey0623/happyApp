@@ -1,13 +1,18 @@
 <template>
 <div id="lightBox">
-   <img :src="imageUrl" :key="timestamp" alt="">
-   <div class="direction prev" @click="direction(-1)">
+   <img 
+      :src="imageUrl" 
+      :key="timestamp"
+      @touchstart="startHandler"
+      @touchmove="moveHandler"
+      @touchend="endHandler">
+   <div class="direction prev" @click="$emit('dir', -1)">
       <i class="fal fa-chevron-left"></i>
    </div>
-   <div class="direction next" @click="direction(1)">
+   <div class="direction next" @click="$emit('dir', 1)">
       <i class="fal fa-chevron-right"></i>
    </div>
-   <div class="ligthBox-close" @click="closeHandler">
+   <div class="ligthBox-close" @click="$emit('close')">
       <i class="fal fa-times"></i>
    </div>
 </div>
@@ -26,11 +31,14 @@ export default {
       }
    },
    methods: {
-      direction(num) {
-         this.$emit('dir', num);
+      startHandler(evt) {
+         // console.log(evt);
       },
-      closeHandler() {
-         this.$emit('close');
+      moveHandler(evt) {
+         // console.log(evt);
+      },
+      endHandler(evt) {
+         // console.log(evt);
       }
    }
 }
@@ -54,9 +62,9 @@ export default {
    >.direction {
       position: absolute;
       top: 50%;
+      transform: translateY(-50%);
       color: #fff;
       font-size: 35px;
-      transform: translateY(-50%);
       &.prev {
          left: 10px;
       }
@@ -69,7 +77,7 @@ export default {
       right: 15px;
       top: 5px;
       color: #fff;
-      font-size: 35px;
+      font-size: 30px;
    }
 }
 </style>
