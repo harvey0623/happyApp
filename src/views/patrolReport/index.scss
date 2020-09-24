@@ -50,3 +50,20 @@
       }
    }
 }
+
+.photoBox {
+   display: flex;
+   flex-wrap: wrap;
+   >* {
+      margin-right: 10px;
+      margin-bottom: 10px;
+   }
+   >.uploadBox {
+      @extend %centerFlex;
+      @include size(75px);
+      border-radius: 4px;
+      background-color: map-get($elBgColor, auth);
+      color: #fff;
+      font-size: 30px;
+   }
+}
