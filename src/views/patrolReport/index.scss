@@ -52,8 +52,10 @@
 }
 
 .photoBox {
+   position: relative;
    display: flex;
    flex-wrap: wrap;
+   min-height: 150px;
    >* {
       margin-right: 12px;
       margin-bottom: 15px;
@@ -65,5 +67,15 @@
       background-color: map-get($elBgColor, auth);
       color: #fff;
       font-size: 30px;
+   }
+   >.waitUpload {
+      position: absolute;
+      @extend %centerFlex;
+      left: 0;
+      top: 0;
+      @include size(100%);
+      background-color: rgba(#fff, 0.75);
+      font-size: 20px;
+      color: map-get($fontColor, verify);
    }
 }

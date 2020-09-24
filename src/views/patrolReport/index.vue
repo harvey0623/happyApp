@@ -23,7 +23,8 @@ export default {
       },
       missionList: [],
       question: '',
-      uploadImages: []
+      uploadImages: [],
+      isUpload: false
    }),
    computed: {
       ...mapState('auth', ['userInfo', 'userCommunity']),
@@ -76,6 +77,7 @@ export default {
          let files = Array.from(evt.target.files);
          this.resetInputType();
          if (files.length === 0) return;
+         this.isUpload = true;
          for (let i = 0; i < files.length; i++) {
             let base64 = await this.generateBase64(files[i]).then(res => res);
             this.uploadImages.push({
@@ -83,6 +85,7 @@ export default {
                base64
             });
          }
+         this.isUpload = false;
       },
       generateBase64(file) { //產生base64
          return new Promise((resolve) => {
@@ -95,9 +98,7 @@ export default {
       },
       removeUpload(timestamp) {
          let index = this.uploadImages.find(item => item.timestamp === timestamp);
-         if (index !== -1) {
-            this.uploadImages.splice(index, 1);
-         }
+         if (index !== -1) this.uploadImages.splice(index, 1);
       }
    },
    async mounted() {

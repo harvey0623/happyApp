@@ -48,6 +48,7 @@
                :base64="image.base64"
                @remove="removeUpload"
             ></ReportThumb>
+            <div class="waitUpload" v-show="isUpload">檔案上傳中...</div>
          </div>
       </div>
       <div class="statusBox btnBox">
