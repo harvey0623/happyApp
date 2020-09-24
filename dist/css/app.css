@@ -255,6 +255,16 @@ select {
   border-width: 0 0 1px 0;
   border-color: #d4cece; }
 
+.myTextarea {
+  display: block;
+  width: 100%;
+  min-height: 150px;
+  color: #646464;
+  border: none;
+  border-bottom: 1px solid #C5C1C0;
+  outline: none;
+  resize: none; }
+
 .keepCheckbox {
   display: inline-flex;
   width: 18px;
@@ -1560,6 +1570,157 @@ select {
 }
 .missionInfo > .content > p[data-v-2538100e]:last-child {
         margin-bottom: 0;
+}
+
+.reportThumb[data-v-081011f6] {
+  position: relative;
+  width: 75px;
+  height: 75px;
+  border-radius: 4px;
+  background-size: cover;
+}
+.reportThumb > .removeIcon[data-v-081011f6] {
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #D6D6D8;
+    color: #646464;
+    text-align: center;
+    line-height: 20px;
+}
+
+#lightBox[data-v-51e42d48] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#lightBox[data-v-51e42d48] {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 20;
+}
+#lightBox > img[data-v-51e42d48] {
+    display: block;
+    max-width: 95%;
+    height: auto;
+    margin: 0 auto;
+}
+#lightBox > .direction[data-v-51e42d48] {
+    position: absolute;
+    top: 50%;
+    color: #fff;
+    font-size: 35px;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+}
+#lightBox > .direction.prev[data-v-51e42d48] {
+      left: 10px;
+}
+#lightBox > .direction.next[data-v-51e42d48] {
+      right: 10px;
+}
+#lightBox > .ligthBox-close[data-v-51e42d48] {
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    color: #fff;
+    font-size: 35px;
+}
+
+.photoBox > .uploadBox[data-v-7a272abd], .photoBox > .waitUpload[data-v-7a272abd] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modeBox[data-v-7a272abd] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.placeInfo[data-v-7a272abd] {
+  margin-bottom: 30px;
+  color: #646464;
+}
+.placeInfo > p[data-v-7a272abd] {
+    margin-bottom: 10px;
+}
+.placeInfo > p[data-v-7a272abd]:last-child {
+      margin-bottom: 0;
+}
+.reportBlock[data-v-7a272abd] {
+  min-height: 400px;
+  padding: 30px;
+  box-shadow: 0px -1px 10px #0000001F;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+.reportBlock > .statusBox[data-v-7a272abd] {
+    margin-bottom: 35px;
+}
+.reportBlock > .statusBox[data-v-7a272abd]:last-child {
+      margin-bottom: 0;
+}
+.reportBlock > .statusBox > .statusTitle[data-v-7a272abd] {
+      margin-bottom: 15px;
+      color: #3C4043;
+      font-weight: bold;
+}
+.reportBlock > .statusBox > .btnReport[data-v-7a272abd] {
+      display: block;
+      width: 85%;
+      margin: 0 auto;
+}
+.modeBox > label[data-v-7a272abd] {
+  flex: 0 0 48%;
+}
+.modeBox > label > input:checked + span[data-v-7a272abd] {
+    color: #fff;
+    background-color: #F397AE;
+}
+.modeBox > label > span[data-v-7a272abd] {
+    display: block;
+    width: 100%;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid #F397AE;
+    color: #F397AE;
+}
+.photoBox[data-v-7a272abd] {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 150px;
+}
+.photoBox > *[data-v-7a272abd] {
+    margin-right: 12px;
+    margin-bottom: 15px;
+}
+.photoBox > .uploadBox[data-v-7a272abd] {
+    width: 75px;
+    height: 75px;
+    border-radius: 4px;
+    background-color: #BAD6C8;
+    color: #fff;
+    font-size: 30px;
+}
+.photoBox > .waitUpload[data-v-7a272abd] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.75);
+    font-size: 20px;
+    color: #F397AE;
 }
 
 .myheader {
