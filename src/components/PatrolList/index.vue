@@ -31,6 +31,10 @@ export default {
       patrol: {
          type: Object,
          required: true
+      },
+      missionId: {
+         type: Number,
+         required: true
       }
    },
    data: () => ({
@@ -47,7 +51,17 @@ export default {
          });
       },
       patrolReport() {
-         if (!this.isScan) return;
+         if (!this.isScan) {
+            this.$router.push({
+               name: 'patrolReport',
+               params: {
+                  missionId: this.missionId,
+                  pointId: this.patrol.checkPointId
+               }
+            });
+         } else {
+            this.$swal({ icon: 'error', title: '請先進行巡邏打卡' });
+         }
       }
    }
 }

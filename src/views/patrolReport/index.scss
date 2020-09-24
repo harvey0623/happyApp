@@ -1,0 +1,52 @@
+.placeInfo {
+   margin-bottom: 30px;
+   color: map-get($fontColor, form);
+   >p {
+      @include elGutter(margin-bottom, 10px);
+   }
+}
+
+.reportBlock {
+   min-height: 400px;
+   padding: 30px;
+   box-shadow: 0px -1px 10px #0000001F;
+   border-top-left-radius: 30px;
+   border-top-right-radius: 30px;
+   >.statusBox {
+      @include elGutter(margin-bottom, 35px);
+      >.statusTitle {
+         margin-bottom: 15px;
+         color: map-get($fontColor, tab);
+         font-weight: bold;
+      }
+      >.btnReport {
+         display: block;
+         width: 85%;
+         margin: 0 auto;
+      }
+   }
+}
+
+.modeBox {
+   @extend %bwtFlex;
+   >label {
+      flex: 0 0 48%;
+      >input {
+         &:checked {
+            &+span {
+               color: #fff;
+               background-color: map-get($elBgColor, date);
+            }
+         }
+      }
+      >span {
+         display: block;
+         @include size(100%, map-get($heightObj, button));
+         line-height: map-get($heightObj, button);
+         text-align: center;
+         border-radius: 20px;
+         border: 1px solid map-get($borderColor, verify);
+         color: map-get($fontColor, verify);
+      }
+   }
+}

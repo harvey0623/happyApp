@@ -24,6 +24,17 @@ select {
    border-color: map-get($borderColor, primary);
 }
 
+.myTextarea {
+   display: block;
+   width: 100%;
+   min-height: 150px;
+   color: map-get($fontColor, form);
+   border: none;
+   border-bottom: 1px solid #C5C1C0;
+   outline: none;
+   resize: none;
+}
+
 .keepCheckbox {
    display: inline-flex;
    @extend %resetForm;

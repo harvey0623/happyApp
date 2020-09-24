@@ -50,6 +50,9 @@
       },
       "patrolMission": {
          "title": "巡檢任務"
+      },
+      "patrolReport": {
+         "title": "巡檢回報"
       }
    },
    "validate": {

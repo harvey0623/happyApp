@@ -16,6 +16,7 @@
             <PatrolList
                v-for="patrol in patrolList"
                :key="patrol.iId"
+               :missionId="missionId"
                :patrol="patrol"
                @punch="patrolPunch"
             ></PatrolList>

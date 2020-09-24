@@ -20,6 +20,7 @@ import WorkRecord from '@/views/workRecord/index.vue';
 import WorkSchedule from '@/views/workSchedule/index.vue';
 import WorkMission from '@/views/workMission/index.vue';
 import PatrolMission from '@/views/patrolMission/index.vue';
+import PatrolReport from '@/views/patrolReport/index.vue';
 Vue.use(VueRouter);
 
 const routes = [
@@ -95,6 +96,11 @@ const routes = [
 				path: 'patrolMission/:id',
 				name: 'patrolMission',
 				component: PatrolMission
+			},
+			{
+				path: 'patrolReport/:missionId/:pointId',
+				name: 'patrolReport',
+				component: PatrolReport
 			},
 			{
 				path: '*',

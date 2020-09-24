@@ -50,6 +50,9 @@
       },
       "patrolMission": {
          "title": "patrolMission"
+      },
+      "patrolReport": {
+         "title": "patrolReport"
       }
    },
    "validate": {
