@@ -1,5 +1,5 @@
 <template>
-<div class="reportThumb" :style="bgStyle">
+<div class="reportThumb" :style="bgStyle" @click="clickHandler">
    <div class="removeIcon" @click="removeHandler">
       <i class="far fa-times"></i>
    </div>
@@ -24,6 +24,9 @@ export default {
       }
    },
    methods: {
+      clickHandler() {
+         this.$emit('preview', this.timestamp);
+      },
       removeHandler() {
          this.$emit('remove', this.timestamp);
       }

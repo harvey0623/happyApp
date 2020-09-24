@@ -24,7 +24,7 @@
             </label>
          </div>
       </div>
-      <div class="statusBox question">
+      <div class="statusBox">
          <p class="statusTitle">問題描述</p>
          <textarea
             class="myTextarea"
@@ -32,7 +32,7 @@
             placeholder="請描述問題"
          ></textarea>
       </div>
-      <div class="statusBox question">
+      <div class="statusBox">
          <p class="statusTitle">存檔圖片</p>
          <div class="photoBox">
             <label class="uploadBox">
@@ -46,6 +46,7 @@
                :key="image.timestamp"
                :timestamp="image.timestamp"
                :base64="image.base64"
+               @preview="previewHandler"
                @remove="removeUpload"
             ></ReportThumb>
             <div class="waitUpload" v-show="isUpload">檔案上傳中...</div>
@@ -55,4 +56,11 @@
          <button class="btnSure btnReport">送出回報</button>
       </div>
    </div>
+   <LightBox
+      v-show="showLightBox"
+      :timestamp="lightBoxTimestamp"
+      :imageUrl="lightBoxImageUrl"
+      @dir="changeDirection"
+      @close="showLightBox = false">
+   </LightBox>
 </div>

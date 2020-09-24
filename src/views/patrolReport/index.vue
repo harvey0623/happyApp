@@ -4,6 +4,8 @@
 import { mapState } from 'vuex';
 import securityObj from '@/api/security.js';
 import ReportThumb from '@/components/ReportThumb/index.vue';
+import LightBox from '@/components/LightBox/index.vue';
+import { computeHeightAndMargins } from '@fullcalendar/vue';
 export default {
    name: 'patrolReport',
    metaInfo() {
@@ -13,6 +15,12 @@ export default {
    },
    data: () => ({
       currentMode: 1,
+      missionList: [],
+      question: '',
+      uploadImages: [],
+      isUpload: false,
+      showLightBox: false,
+      previewIndex: null,
       modeList: [
          { title: '正常', value: 1 },
          { title: '異常', value: 0 },
@@ -21,10 +29,6 @@ export default {
          missionId: 0,
          pointId: 0
       },
-      missionList: [],
-      question: '',
-      uploadImages: [],
-      isUpload: false
    }),
    computed: {
       ...mapState('auth', ['userInfo', 'userCommunity']),
@@ -49,6 +53,20 @@ export default {
       site() {
          if (this.targetPoint === null) return '';
          else return this.targetPoint.vSummary;
+      },
+      totalUpload() {
+         return this.uploadImages.length;
+      },
+      targetUpload() {
+         return this.uploadImages[this.previewIndex];
+      },
+      lightBoxTimestamp() {
+         if (this.targetUpload === undefined) return 0;
+         else return this.targetUpload.timestamp;
+      },
+      lightBoxImageUrl() {
+         if (this.targetUpload === undefined) return '';
+         else return this.targetUpload.base64;
       }
    },
    methods: {
@@ -81,7 +99,7 @@ export default {
          for (let i = 0; i < files.length; i++) {
             let base64 = await this.generateBase64(files[i]).then(res => res);
             this.uploadImages.push({
-               timestamp: Date.now(),
+               timestamp: Date.now() + (i * 10),
                base64
             });
          }
@@ -97,8 +115,15 @@ export default {
          });
       },
       removeUpload(timestamp) {
-         let index = this.uploadImages.find(item => item.timestamp === timestamp);
+         let index = this.uploadImages.findIndex(item => item.timestamp === timestamp);
          if (index !== -1) this.uploadImages.splice(index, 1);
+      },
+      async previewHandler(timestamp) {
+         this.previewIndex = this.uploadImages.findIndex(item => item.timestamp === timestamp);
+         this.showLightBox = true;
+      },
+      changeDirection(num) {
+         this.previewIndex = (this.previewIndex + num + this.totalUpload) % this.totalUpload;
       }
    },
    async mounted() {
@@ -106,7 +131,8 @@ export default {
       this.missionList = await this.getMission().then(res => res);
    },
    components: {
-      ReportThumb
+      ReportThumb,
+      LightBox
    }
 }
 </script>
