@@ -51,7 +51,7 @@ export default {
          });
       },
       patrolReport() {
-         if (!this.isScan) {
+         if (this.isScan) {
             this.$router.push({
                name: 'patrolReport',
                params: {

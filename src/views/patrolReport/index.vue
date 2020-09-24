@@ -3,7 +3,7 @@
 <script>
 import { mapState } from 'vuex';
 import securityObj from '@/api/security.js';
-const reader = new FileReader();
+import ReportThumb from '@/components/ReportThumb/index.vue';
 export default {
    name: 'patrolReport',
    metaInfo() {
@@ -72,22 +72,40 @@ export default {
          this.$refs.fileInput.type = 'text';
          this.$refs.fileInput.type = 'file';
       },
-      uploadHandler(evt) {
-         let file = evt.target.files[0];
-         reader.readAsDataURL(file);
-      },
-      loadHandler(evt) {
-         this.uploadImages.push({ base64: evt.target.result });
+      async uploadHandler(evt) { //上傳檔案
+         let files = Array.from(evt.target.files);
          this.resetInputType();
+         if (files.length === 0) return;
+         for (let i = 0; i < files.length; i++) {
+            let base64 = await this.generateBase64(files[i]).then(res => res);
+            this.uploadImages.push({
+               timestamp: Date.now(),
+               base64
+            });
+         }
+      },
+      generateBase64(file) { //產生base64
+         return new Promise((resolve) => {
+            let reader = new FileReader();
+            reader.addEventListener('load', (evt) => {
+               resolve(evt.target.result);
+            });
+            reader.readAsDataURL(file);
+         });
+      },
+      removeUpload(timestamp) {
+         let index = this.uploadImages.find(item => item.timestamp === timestamp);
+         if (index !== -1) {
+            this.uploadImages.splice(index, 1);
+         }
       }
    },
    async mounted() {
       this.setAboutId();
       this.missionList = await this.getMission().then(res => res);
-      reader.addEventListener('load', this.loadHandler);
    },
-   beforeDestroy() {
-      reader.removeEventListener('load', this.loadHandler);
+   components: {
+      ReportThumb
    }
 }
 </script>

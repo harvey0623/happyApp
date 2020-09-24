@@ -36,9 +36,18 @@
          <p class="statusTitle">存檔圖片</p>
          <div class="photoBox">
             <label class="uploadBox">
-               <input type="file" @change="uploadHandler" ref="fileInput" hidden>
+               <input 
+                  type="file" accept="image/*" @change="uploadHandler" 
+                  capture="camera" multiple ref="fileInput" hidden>
                <i class="fal fa-camera"></i>
             </label>
+            <ReportThumb
+               v-for="image in uploadImages"
+               :key="image.timestamp"
+               :timestamp="image.timestamp"
+               :base64="image.base64"
+               @remove="removeUpload"
+            ></ReportThumb>
          </div>
       </div>
       <div class="statusBox btnBox">
