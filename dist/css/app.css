@@ -1615,10 +1615,10 @@ select {
 #lightBox > .direction[data-v-51e42d48] {
     position: absolute;
     top: 50%;
-    color: #fff;
-    font-size: 35px;
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%);
+    color: #fff;
+    font-size: 35px;
 }
 #lightBox > .direction.prev[data-v-51e42d48] {
       left: 10px;
@@ -1631,7 +1631,7 @@ select {
     right: 15px;
     top: 5px;
     color: #fff;
-    font-size: 35px;
+    font-size: 30px;
 }
 
 .photoBox > .uploadBox[data-v-7a272abd], .photoBox > .waitUpload[data-v-7a272abd] {

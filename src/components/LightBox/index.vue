@@ -6,10 +6,10 @@
       @touchstart="startHandler"
       @touchmove="moveHandler"
       @touchend="endHandler">
-   <div class="direction prev" @click="$emit('dir', -1)">
+   <div class="direction prev" @click="direction(-1)">
       <i class="fal fa-chevron-left"></i>
    </div>
-   <div class="direction next" @click="$emit('dir', 1)">
+   <div class="direction next" @click="direction(1)">
       <i class="fal fa-chevron-right"></i>
    </div>
    <div class="ligthBox-close" @click="$emit('close')">
@@ -35,9 +35,12 @@ export default {
          start: 0,
          move: 0
       },
-      rangeNumber: 20
+      rangeNumber: 50
    }),
    methods: {
+      direction(num) {
+         this.$emit('dir', num);
+      },
       startHandler(evt) {
          this.touchPos.start = evt.touches[0].pageX;
       },
@@ -46,7 +49,9 @@ export default {
       },
       endHandler(evt) {
          let { start, move } = this.touchPos;
-         let diff = Math.abs(start - move);
+         let diff = move - start;
+         if (diff >= this.rangeNumber) this.direction(1);
+         if (diff <= -this.rangeNumber) this.direction(-1);
       }
    }
 }
