@@ -1609,7 +1609,7 @@ select {
 #lightBox > img[data-v-51e42d48] {
     display: block;
     max-width: 95%;
-    height: auto;
+    max-height: 450px;
     margin: 0 auto;
 }
 #lightBox > .direction[data-v-51e42d48] {
@@ -1625,6 +1625,9 @@ select {
 }
 #lightBox > .direction.next[data-v-51e42d48] {
       right: 10px;
+}
+#lightBox > .direction.hidden[data-v-51e42d48] {
+      display: none;
 }
 #lightBox > .ligthBox-close[data-v-51e42d48] {
     position: absolute;

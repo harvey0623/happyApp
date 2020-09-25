@@ -118,17 +118,29 @@ export default {
          let index = this.uploadImages.findIndex(item => item.timestamp === timestamp);
          if (index !== -1) this.uploadImages.splice(index, 1);
       },
-      async previewHandler(timestamp) {
+      previewHandler(timestamp) {
          this.previewIndex = this.uploadImages.findIndex(item => item.timestamp === timestamp);
          this.showLightBox = true;
       },
       changeDirection(num) {
          this.previewIndex = (this.previewIndex + num + this.totalUpload) % this.totalUpload;
+      },
+      setBodyOverflow(val) {
+         document.body.style.overflow = val;
       }
    },
    async mounted() {
       this.setAboutId();
       this.missionList = await this.getMission().then(res => res);
+   },
+   watch: {
+      showLightBox(val) {
+         let styleVal = val ? 'hidden' : '';
+         this.setBodyOverflow(styleVal);
+      }
+   },
+   beforeDestroy() {
+      this.setBodyOverflow('');
    },
    components: {
       ReportThumb,

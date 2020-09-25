@@ -6,10 +6,10 @@
       @touchstart="startHandler"
       @touchmove="moveHandler"
       @touchend="endHandler">
-   <div class="direction prev" @click="direction(-1)">
+   <div class="direction prev" :class="{hidden: isLessOne}" @click="direction(-1)">
       <i class="fal fa-chevron-left"></i>
    </div>
-   <div class="direction next" @click="direction(1)">
+   <div class="direction next" :class="{hidden: isLessOne}" @click="direction(1)">
       <i class="fal fa-chevron-right"></i>
    </div>
    <div class="ligthBox-close" @click="$emit('close')">
@@ -29,6 +29,10 @@ export default {
          type: String,
          required: true
       },
+      totalImage: {
+         type: Number,
+         required: true
+      }
    },
    data: () => ({
       touchPos: {
@@ -37,6 +41,11 @@ export default {
       },
       rangeNumber: 50
    }),
+   computed: {
+      isLessOne() {
+         return this.totalImage <= 1;
+      }
+   },
    methods: {
       direction(num) {
          this.$emit('dir', num);
@@ -69,7 +78,7 @@ export default {
    >img {
       display: block;
       max-width: 95%;
-      height: auto;
+      max-height: 450px;
       margin: 0 auto;
    }
    >.direction {
@@ -83,6 +92,9 @@ export default {
       }
       &.next {
          right: 10px;
+      }
+      &.hidden {
+         display: none;
       }
    }
    >.ligthBox-close {
