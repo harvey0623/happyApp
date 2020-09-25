@@ -37,8 +37,10 @@
          <div class="photoBox">
             <label class="uploadBox">
                <input 
-                  type="file" accept="image/*" @change="uploadHandler" 
-                  capture multiple ref="fileInput" hidden>
+                  type="file" 
+                  capture multiple hidden
+                  @change="uploadHandler" 
+                  ref="fileInput">
                <i class="fal fa-camera"></i>
             </label>
             <ReportThumb
