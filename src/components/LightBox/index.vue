@@ -28,17 +28,25 @@ export default {
       imageUrl: {
          type: String,
          required: true
-      }
+      },
    },
+   data: () => ({
+      touchPos: {
+         start: 0,
+         move: 0
+      },
+      rangeNumber: 20
+   }),
    methods: {
       startHandler(evt) {
-         // console.log(evt);
+         this.touchPos.start = evt.touches[0].pageX;
       },
       moveHandler(evt) {
-         // console.log(evt);
+         this.touchPos.move = evt.touches[0].pageX;
       },
       endHandler(evt) {
-         // console.log(evt);
+         let { start, move } = this.touchPos;
+         let diff = Math.abs(start - move);
       }
    }
 }
