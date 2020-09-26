@@ -134,10 +134,21 @@ export default {
       },
       setBodyOverflow(val) {
          document.body.style.overflow = val;
+      },
+      getScanBase64() { //取得掃描qrcode的base64
+         let lsData = localStorage.getItem(`pointId-${this.idGroup.pointId}`);
+         let base64 = lsData === null ? '' : JSON.parse(lsData).base64;
+         if (base64 !== '') {
+            this.uploadImages.push({
+               timestamp: Date.now(),
+               base64
+            });
+         }
       }
    },
    async mounted() {
       this.setAboutId();
+      this.getScanBase64();
       this.missionList = await this.getMission().then(res => res);
    },
    watch: {
