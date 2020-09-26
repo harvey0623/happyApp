@@ -91,10 +91,17 @@ export default {
          this.$refs.fileInput.type = 'text';
          this.$refs.fileInput.type = 'file';
       },
+      checkIsImageFile(files) { //檢查是否為圖片檔
+         return files.every(file => file.type.includes('image/'));
+      },
       async uploadHandler(evt) { //上傳檔案
          let files = Array.from(evt.target.files);
+         let isImageFile = this.checkIsImageFile(files);
          this.resetInputType();
-         if (files.length === 0) return;
+         if (!isImageFile) {
+            this.$swal({ icon: 'error', title: '必須是圖片檔案' });
+            return;
+         }
          this.isUpload = true;
          for (let i = 0; i < files.length; i++) {
             let base64 = await this.generateBase64(files[i]).then(res => res);
