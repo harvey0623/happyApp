@@ -19,6 +19,15 @@
          color: map-get($fontColor, tab);
          font-weight: bold;
       }
+      >.questionTip {
+         display: none;
+         padding-top: 3px;
+         color: red;
+         text-align: right;
+         &.show {
+            display: block;
+         }
+      }
       >.btnReport {
          display: block;
          width: 85%;

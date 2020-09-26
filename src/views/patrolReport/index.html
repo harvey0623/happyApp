@@ -1,5 +1,6 @@
 <div class="patrolReport">
    <BackBlock title="巡檢回報"></BackBlock>
+   <Loading v-if="isLoading"></Loading>
    <div class="mycontainer vertical">
       <div class="placeInfo">
          <p>哨點名稱 : {{ outpost }}</p>
@@ -31,6 +32,7 @@
             v-model="question"
             placeholder="請描述問題"
          ></textarea>
+         <p class="questionTip" :class="{show: nofill}">請填寫問題</p>
       </div>
       <div class="statusBox">
          <p class="statusTitle">存檔圖片</p>

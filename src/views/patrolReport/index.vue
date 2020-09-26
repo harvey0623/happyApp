@@ -21,6 +21,8 @@ export default {
       isUpload: false,
       showLightBox: false,
       previewIndex: null,
+      nofill: false,
+      isLoading: false,
       modeList: [
          { title: '正常', value: 1 },
          { title: '異常', value: 0 },
@@ -81,13 +83,19 @@ export default {
          })
       },
       async uploadMission(payload) {
+         this.isLoading = true;
          return await securityObj.uploadMission({
             iUserId: this.userInfo.user_id,
             vToken: this.userInfo.token,
             iSecurityId: 2,
-         }).then(res => {
-            return res;
-         })
+            log: [{
+               vCode: `2|${this.idGroup.missionId}|${this.idGroup.pointId}`,
+               vMessage: this.question,
+               iDateTime: Math.floor(Date.now() / 1000).toFixed(0),
+               vMissionImage: payload
+            }]
+         }).then(res => res)
+            .finally(() => this.isLoading = false)
       },
       setAboutId() {
          let { missionId, pointId } = this.$route.params;
@@ -147,7 +155,6 @@ export default {
       getScanBase64() { //取得掃描qrcode的base64
          let lsData = localStorage.getItem(`pointId-${this.idGroup.pointId}`);
          let base64 = lsData === null ? '' : JSON.parse(lsData).base64;
-         // console.log(base64);
          if (base64 !== '') {
             this.uploadImages.push({
                timestamp: Date.now(),
@@ -156,7 +163,17 @@ export default {
          }
       },
       async reportHandler() {
-         
+         if (this.question === '') {
+            this.nofill = true;
+            return;
+         }
+         let base64Data = this.uploadImages.map((item) => ({ vImage: item.base64 }));
+         let reportResult = await this.uploadMission(base64Data).then(res => res);
+         let isOk = reportResult.status === 1;
+         this.$swal({ 
+            icon: isOk ? 'success' : 'error', 
+            title: isOk ? '回報成功' : '回報失敗' 
+         });
       }
    },
    async mounted() {
@@ -165,6 +182,9 @@ export default {
       this.missionList = await this.getMission().then(res => res);
    },
    watch: {
+      question(val) {
+         this.nofill = val === '';
+      },
       showLightBox(val) {
          let styleVal = val ? 'hidden' : '';
          this.setBodyOverflow(styleVal);

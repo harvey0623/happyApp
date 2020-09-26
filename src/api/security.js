@@ -30,7 +30,7 @@ export default {
          url: '/security/upload/mission',
          method: 'post',
          data: payload
-      }).then(res => res.data.aaData);
+      }).then(res => res.data);
       return result;
    }
 }

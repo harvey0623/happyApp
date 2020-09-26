@@ -1675,6 +1675,15 @@ select {
       color: #3C4043;
       font-weight: bold;
 }
+.reportBlock > .statusBox > .questionTip[data-v-7a272abd] {
+      display: none;
+      padding-top: 3px;
+      color: red;
+      text-align: right;
+}
+.reportBlock > .statusBox > .questionTip.show[data-v-7a272abd] {
+        display: block;
+}
 .reportBlock > .statusBox > .btnReport[data-v-7a272abd] {
       display: block;
       width: 85%;
