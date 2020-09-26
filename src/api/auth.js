@@ -17,7 +17,20 @@ export default {
       }).then(res => res.data);
       return result;
    },
-   async doLogout(payload) {
-      let url = '';
-   }
+   async sendSMS(payload) {
+      let result = await httpMethod({
+         url: '/auth/app/sendSMS',
+         method: 'post',
+         data: payload
+      }).then(res => res.data);
+      return result;
+   },
+   async checkCode(payload) {
+      let result = await httpMethod({
+         url: '/auth/app/checkCode',
+         method: 'post',
+         data: payload
+      }).then(res => res.data);
+      return result;
+   },
 }

@@ -16,8 +16,8 @@
                      class="outer" tag="div" 
                      :rules="`required|${phoneRule}`" v-slot="{ errors }"> 
                      <input 
-                        type="text" 
-                        class="myInput" 
+                        type="number" 
+                        class="myInput"
                         placeholder="請輸入手機號碼"
                         v-model.trim="user.phone">
                      <span class="errMsg" v-show="errors.length !== 0">
@@ -51,7 +51,7 @@
             </div>
          </ValidationObserver>
          <div class="btnBox center">
-            <button class="btnAuth" @click="suerHandler">確定</button>
+            <button class="btnAuth" @click="confirmHandler">確定</button>
          </div>
       </div>
    </div>
@@ -59,6 +59,8 @@
 </template>
 
 <script>
+import { constrainPoint } from '@fullcalendar/vue';
+import { mapActions } from 'vuex';
 export default {
    name: 'forgotPw',
    metaInfo() {
@@ -81,13 +83,26 @@ export default {
       }
    },
    methods: {
+      ...mapActions('auth', ['sendSMS', 'checkCode']),
       async sendHandler() {
          let isValid = await this.$refs.verifyForm.validate().then(res => res);
          if (!isValid) return;
+         let smsResult = await this.sendSMS({ vAccount: this.user.phone }).then(res => res);
+         this.$swal({
+            icon: smsResult ? 'success': 'error',
+            title: smsResult ? '簡訊已寄送': '請重新輸入電話碼'
+         });
       },
-      async suerHandler() {
+      async confirmHandler() {
          let isValid = await this.$refs.msgForm.validate().then(res => res);
          if (!isValid) return;
+         let { status, message } = await this.checkCode({ 
+            vVerification: this.user.msg
+         }).then(res => res);
+         this.$swal({
+            icon: status === 1 ? 'success' : 'error',
+            title: message
+         });
       }
    }
 }

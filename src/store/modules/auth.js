@@ -27,7 +27,12 @@ const authStore = function() {
       namespaced: true,
       state: {
          userInfo: LS.get('userInfo'),
-         userCommunity: LS.get('communityId')
+         userCommunity: LS.get('communityId'),
+         forgotUser: {
+            account: '',
+            user_id: '',
+            token: ''
+         }
       },
       mutations: {
          setUserInfo(state, value) {
@@ -39,6 +44,9 @@ const authStore = function() {
             state.userCommunity = value;
             if (value !== null) LS.set('communityId', value);
             else LS.remove('communityId');
+         },
+         setForgotUser(state, payload) {
+            state.forgotUser = payload;
          }
       },
       getters: {
@@ -67,6 +75,20 @@ const authStore = function() {
                commit('setUserCommunity', null);
                resolve();
             });
+         },
+         async sendSMS({ commit }, payload) { //驗證碼寄送
+            let { status, userinfo } = await authObj.sendSMS(payload).then(res => res);
+            if (status === 1) commit('setForgotUser', userinfo);
+            return status === 1;
+         },
+         async checkCode({ state, commit }, payload) { //檢查驗證碼
+            let checkResult = await authObj.checkCode({
+               vAccount: state.forgotUser.account,
+               iUserId : state.forgotUser.user_id,
+               vToken: state.forgotUser.token,
+               vVerification: payload.vVerification
+            }).then(res => res);
+            return checkResult;
          }
       }
    }
