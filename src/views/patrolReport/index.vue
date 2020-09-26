@@ -70,12 +70,21 @@ export default {
       }
    },
    methods: {
-      async getMission() {
+      async getMission() { //取得任務
          return await securityObj.getMission({
             iUserId: this.userInfo.user_id,
             vToken: this.userInfo.token,
             iSecurityId: 2,
             iCommunityId: this.userCommunity
+         }).then(res => {
+            return res;
+         })
+      },
+      async uploadMission(payload) {
+         return await securityObj.uploadMission({
+            iUserId: this.userInfo.user_id,
+            vToken: this.userInfo.token,
+            iSecurityId: 2,
          }).then(res => {
             return res;
          })
@@ -138,12 +147,16 @@ export default {
       getScanBase64() { //取得掃描qrcode的base64
          let lsData = localStorage.getItem(`pointId-${this.idGroup.pointId}`);
          let base64 = lsData === null ? '' : JSON.parse(lsData).base64;
+         // console.log(base64);
          if (base64 !== '') {
             this.uploadImages.push({
                timestamp: Date.now(),
                base64
             });
          }
+      },
+      async reportHandler() {
+         
       }
    },
    async mounted() {

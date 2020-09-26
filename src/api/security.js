@@ -25,4 +25,12 @@ export default {
       }).then(res => res.data.aaData);
       return result;
    },
+   async uploadMission(payload) {
+      let result = await httpMethod({
+         url: '/security/upload/mission',
+         method: 'post',
+         data: payload
+      }).then(res => res.data.aaData);
+      return result;
+   }
 }
