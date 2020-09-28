@@ -8,18 +8,16 @@
       <i class="fal fa-user"></i>
       <div>我的資料</div>
    </router-link>
-   <router-link to="/a">
+   <!-- <router-link to="/">
       <i class="far fa-barcode-scan"></i>
       <div>條碼掃描</div>
-   </router-link>
+   </router-link> -->
 </div>
 </template>
 
 <script>
 export default {
-   computed: {
-
-   }
+   
 }
 </script>
 
