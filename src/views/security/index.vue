@@ -103,22 +103,28 @@ export default {
          }).then(res => {
             return res;
          }).err(err => { 
+            alert(JSON.stringify(err));
             return { status: 0 };
          });
       },
       async scanHandler({ scanData }) {
-         this.cameraStatus = 'off';
-         this.isProcess = true;
-         alert(scanData)
-         let { status } = await this.uploadAttendance({ vCode: scanData }).then(res => res);
-         let isOk = status === 1;
-         this.openCamera = false;
-         this.cameraStatus = 'auto';
-         this.isProcess = false;
-         this.$swal({
-            icon: isOk ? 'success' : 'error',
-            title: isOk ? '打卡成功' : '打卡失敗'
-         });
+         try {
+            this.cameraStatus = 'off';
+            this.isProcess = true;
+            alert(scanData)
+            let { status } = await this.uploadAttendance({ vCode: scanData }).then(res => res);
+            let isOk = status === 1;
+            alert(isOk)
+            this.openCamera = false;
+            this.cameraStatus = 'auto';
+            this.isProcess = false;
+            this.$swal({
+               icon: isOk ? 'success' : 'error',
+               title: isOk ? '打卡成功' : '打卡失敗'
+            });
+         } catch(err) {
+            alert(err);
+         }
       }
    },
    components: {
