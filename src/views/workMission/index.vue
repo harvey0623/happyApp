@@ -26,7 +26,7 @@ import { mapState } from 'vuex';
 import MissionList from '@/components/MissionList/index.vue';
 import securityObj from '@/api/security.js';
 export default {
-   name: 'mission',
+   name: 'workMission',
    metaInfo() {
       return { 
          title: this.$i18n.t('seo.workMission.title'),

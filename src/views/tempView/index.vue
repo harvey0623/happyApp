@@ -1,5 +1,7 @@
 <template>
-<router-view></router-view>
+<keep-alive :include="['workMission', 'patrolMission']">
+   <router-view></router-view>
+</keep-alive>
 </template>
 
 <script>
