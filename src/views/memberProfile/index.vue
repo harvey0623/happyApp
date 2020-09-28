@@ -10,7 +10,9 @@
       <ProfileTab></ProfileTab>
    </div>
    <div class="mycontainer">
-      <router-view></router-view>
+      <keep-alive>
+         <router-view></router-view>
+      </keep-alive>
    </div>
 </div>
 </template>
