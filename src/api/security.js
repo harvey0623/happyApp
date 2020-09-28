@@ -1,6 +1,14 @@
 import httpMethod from './http.js';
 
 export default {
+   async uploadAttendance(payload) {
+      let result = await httpMethod({
+         url: '/security/upload/attendance',
+         method: 'post',
+         data: payload
+      }).then(res => res.data.aaData);
+      return result;
+   },
    async getAttendance(payload) {
       let result = await httpMethod({
          url: '/security/attendance_list',

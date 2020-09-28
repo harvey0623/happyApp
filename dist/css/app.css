@@ -815,6 +815,48 @@ select {
       margin-right: 8px;
 }
 
+#qrcodeReader, #qrcodeReader > .lensBox .overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#qrcodeReader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+  color: #fff;
+  font-size: 20px;
+  z-index: 20;
+}
+#qrcodeReader > .closeText {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+#qrcodeReader > .lensBox {
+    width: 320px;
+    height: 320px;
+    -webkit-transform: translateY(-25%);
+            transform: translateY(-25%);
+}
+#qrcodeReader > .lensBox .overlay {
+      font-size: 25px;
+}
+#qrcodeReader > .lensBox .overlay .process {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        line-height: 320px;
+        background-color: rgba(255, 255, 255, 0.75);
+        text-align: center;
+        color: #ff0000;
+}
+
 .punchBox, .workBox .workRow.split > .workItem, .workBox .workRow > .workItem {
   display: flex;
   justify-content: center;
@@ -1443,48 +1485,6 @@ select {
 .missionTitle > .total[data-v-350e8d54] {
     margin-left: 5px;
     color: #f65d75;
-}
-
-#qrcodeReader, #qrcodeReader > .lensBox .overlay {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#qrcodeReader {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: #000;
-  color: #fff;
-  font-size: 20px;
-  z-index: 20;
-}
-#qrcodeReader > .closeText {
-    position: absolute;
-    left: 20px;
-    top: 20px;
-}
-#qrcodeReader > .lensBox {
-    width: 320px;
-    height: 320px;
-    -webkit-transform: translateY(-25%);
-            transform: translateY(-25%);
-}
-#qrcodeReader > .lensBox .overlay {
-      font-size: 25px;
-}
-#qrcodeReader > .lensBox .overlay .process {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        line-height: 320px;
-        background-color: rgba(255, 255, 255, 0.75);
-        text-align: center;
-        color: #ff0000;
 }
 
 .patrolList[data-v-52ff393d] {

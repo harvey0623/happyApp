@@ -1,8 +1,15 @@
 <template>
 <div class="security">
    <CharacterInfo></CharacterInfo>
+   <QrcodeReader
+      v-if="openCamera"
+      :openCamera.sync="openCamera"
+      :cameraStatus.sync="cameraStatus"
+      :isProcess="isProcess"
+      @scan="scanHandler"
+   ></QrcodeReader>
    <div class="mycontainer">
-      <div class="punchBox">
+      <div class="punchBox" @click="punchHandler">
          <img :src="require('@/assets/img/punch.svg')" alt="">
          <span>上下班打卡</span>
       </div>
@@ -59,11 +66,15 @@
          </div>
       </div>
    </div>
+
 </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import CharacterInfo from '@/components/CharacterInfo/index.vue';
+import QrcodeReader from '@/components/QrcodeReader/index.vue';
+import securityObj from '@/api/security.js';
 export default {
    name: 'security',
    metaInfo() {
@@ -71,8 +82,47 @@ export default {
          title: this.$i18n.t('seo.security.title'),
       }
    },
+   data: () => ({
+      openCamera: false,
+      cameraStatus: 'auto',
+      isProcess: false
+   }),
+   computed: {
+      ...mapState('auth', ['userInfo'])
+   },
+   methods: {
+      punchHandler() {
+         this.openCamera = true;
+      },
+      async uploadAttendance(payload) {
+         return await securityObj.uploadAttendance({
+            iUserId: this.userInfo.user_id,
+	         vToken: this.userInfo.token,
+            iSecurityId: 2,
+            log: [payload]
+         }).then(res => {
+            return res;
+         }).err(err => { 
+            return { status: 0 };
+         });
+      },
+      async scanHandler({ scanData }) {
+         this.cameraStatus = 'off';
+         this.isProcess = true;
+         let { status } = await this.uploadAttendance({ vCode: scanData }).then(res => res);
+         let isOk = status === 1;
+         this.openCamera = false;
+         this.cameraStatus = 'auto';
+         this.isProcess = false;
+         this.$swal({
+            icon: isOk ? 'success' : 'error',
+            title: isOk ? '打卡成功' : '打卡失敗'
+         });
+      }
+   },
    components: {
-      CharacterInfo
+      CharacterInfo,
+      QrcodeReader
    }
 }
 </script>
