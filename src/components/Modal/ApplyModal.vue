@@ -102,7 +102,7 @@
 </template>
 
 <script>
-import regionsList from '@/components/ZipCode/index.json';
+import regionsList from '@/assets/json/index.json';
 export default {
    props: {
       modalId: {
