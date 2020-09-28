@@ -15,6 +15,9 @@
       "forgotPw": {
          "title": "忘記密碼"
       },
+      "fixPassword": {
+         "title": "修改密碼"
+      },
       "security": {
          "title": "保全人員"
       },

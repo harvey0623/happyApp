@@ -8,6 +8,7 @@ import Entrance from '@/views/entrance/index.vue';
 import Login from '@/views/login/index.vue';
 import Register from '@/views/register/index.vue';
 import ForgotPw from '@/views/forgotPw/index.vue';
+import FixPassword from '@/views/fixPassword/index.vue';
 import Security from '@/views/security/index.vue';
 import WorkInfo from '@/views/workInfo/index.vue';
 import Notify from '@/views/notify/index.vue';
@@ -157,6 +158,19 @@ const routes = [
 		}
 	},
 	{
+		path: '/fixPassword',
+		name: 'fixPassword',
+		component: FixPassword,
+		beforeEnter(to, from, next) {
+			let hasData = store.state.auth.forgotUser !== null;
+			if (hasData) return next();
+			else return next('/login');
+		},
+		meta: {
+			layout: 'entranceLayout'
+		}
+	},
+	{
 		path: '*',
 		redirect: '/'
 	}
@@ -178,7 +192,7 @@ const router = new VueRouter({
 	}
 });
 
-const entranceName = ['entrance', 'login', 'register', 'forgotPw'];
+const entranceName = ['entrance', 'login', 'register', 'forgotPw', 'fixPassword'];
 
 router.beforeEach((to, from, next) => {
 	if (to.matched.some(record => record.meta.auth)) {

@@ -15,6 +15,9 @@
       "forgotPw": {
          "title": "Forgot Password"
       },
+      "fixPassword": {
+         "title": "fixPassword"
+      },
       "security": {
          "title": "security"
       },

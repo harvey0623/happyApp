@@ -1,5 +1,6 @@
 <template>
 <div class="forgotPw">
+   <Loading v-if="isLoading"></Loading>
    <div class="mycontainer authBox">
       <h1 class="authTitle">忘記密碼</h1>
       <div class="authBody">
@@ -27,10 +28,7 @@
                </div>
             </div>
             <div class="formRow">
-               <button 
-                  class="outline-verify" 
-                  @click="sendHandler"
-               >寄送驗證碼</button>
+               <button class="outline-verify" @click="sendHandler">寄送驗證碼</button>
             </div>
          </ValidationObserver>
          <ValidationObserver tag="div" class="formLayout" ref="msgForm">
@@ -60,7 +58,7 @@
 
 <script>
 import { constrainPoint } from '@fullcalendar/vue';
-import { mapActions } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 export default {
    name: 'forgotPw',
    metaInfo() {
@@ -75,8 +73,10 @@ export default {
          phone: '',
          msg: ''
       },
+      isLoading: false
    }),
    computed: {
+      ...mapState('auth', ['forgotUser']),
       phoneRule() {
          let ruleObj = { '+886': 'mobileTw', '+86': 'mobileCn' };
          return ruleObj[this.code];
@@ -84,7 +84,7 @@ export default {
    },
    methods: {
       ...mapActions('auth', ['sendSMS', 'checkCode']),
-      async sendHandler() {
+      async sendHandler() { //寄送驗證碼
          let isValid = await this.$refs.verifyForm.validate().then(res => res);
          if (!isValid) return;
          let smsResult = await this.sendSMS({ vAccount: this.user.phone }).then(res => res);
@@ -93,16 +93,34 @@ export default {
             title: smsResult ? '簡訊已寄送': '請重新輸入電話碼'
          });
       },
-      async confirmHandler() {
+      isSendedSMS() {
+         let result = this.forgotUser !== null;
+         if (!result) {
+            this.$swal({
+               icon: 'error',
+               title: '請先取得簡訊驗證碼'
+            });
+         }
+         return result;
+      },
+      async confirmHandler() { //確認驗證碼
+         if (!this.isSendedSMS()) return;
          let isValid = await this.$refs.msgForm.validate().then(res => res);
          if (!isValid) return;
+         this.isLoading = true;
          let { status, message } = await this.checkCode({ 
             vVerification: this.user.msg
-         }).then(res => res);
+         }).then(res => {
+            return res;
+         }).finally(() => {
+            this.isLoading = false;
+         });
+         let isOk = status === 1;
          this.$swal({
-            icon: status === 1 ? 'success' : 'error',
+            icon: isOk ? 'success' : 'error',
             title: message
          });
+         if (isOk) this.$router.push('/fixPassword');
       }
    }
 }

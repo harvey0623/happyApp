@@ -28,11 +28,7 @@ const authStore = function() {
       state: {
          userInfo: LS.get('userInfo'),
          userCommunity: LS.get('communityId'),
-         forgotUser: {
-            account: '',
-            user_id: '',
-            token: ''
-         }
+         forgotUser: null,
       },
       mutations: {
          setUserInfo(state, value) {
@@ -78,8 +74,9 @@ const authStore = function() {
          },
          async sendSMS({ commit }, payload) { //驗證碼寄送
             let { status, userinfo } = await authObj.sendSMS(payload).then(res => res);
-            if (status === 1) commit('setForgotUser', userinfo);
-            return status === 1;
+            let isOk = status === 1;
+            if (isOk) commit('setForgotUser', userinfo);
+            return isOk;
          },
          async checkCode({ state, commit }, payload) { //檢查驗證碼
             let checkResult = await authObj.checkCode({
@@ -89,6 +86,17 @@ const authStore = function() {
                vVerification: payload.vVerification
             }).then(res => res);
             return checkResult;
+         },
+         async fixPassword({ state, commit }, payload) {
+            let fixResult = await authObj.newPassword({
+               vAccount: state.forgotUser.account,
+               iUserId : state.forgotUser.user_id,
+               vToken: state.forgotUser.token,
+               vFirstPassword: payload.password,
+               vSecondPassword: payload.confirmPw,
+            }).then(res => res);
+            if (fixResult.status === 1) commit('setForgotUser', null);
+            return fixResult;
          }
       }
    }

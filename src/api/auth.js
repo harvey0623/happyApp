@@ -33,4 +33,12 @@ export default {
       }).then(res => res.data);
       return result;
    },
+   async newPassword(payload) {
+      let result = await httpMethod({
+         url: '/auth/app/newPassword',
+         method: 'post',
+         data: payload
+      }).then(res => res.data);
+      return result;
+   }
 }

@@ -1,5 +1,6 @@
 <template>
 <div class="register">
+   <Loading v-if="isLoading"></Loading>
    <div class="mycontainer authBox">
       <h1 class="authTitle">會員註冊</h1>
       <div class="authBody">
@@ -117,7 +118,8 @@ export default {
          email: 'admin@gmail.com',
          password: 'abc123',
          confirmPw: 'abc123'
-      }
+      },
+      isLoading: false
    }),
    computed: {
       phoneRule() {
@@ -130,13 +132,15 @@ export default {
       async clickHandler() {
          let isValid = await this.$refs.form.validate().then(res => res);
          if (!isValid) return;
+         this.isLoading = true;
          let { registerStatus, message } = await this.doRegister({
             vAccount: this.user.phone,
             name: this.user.name,
             email: this.user.email,
             password: this.user.password,
             confirmPw: this.user.confirmPw
-         }).then(res => res);
+         }).then(res => res)
+            .finally(() => this.isLoading = false);
          this.$swal({
             icon: registerStatus ? 'success' : 'error',
             title: message
