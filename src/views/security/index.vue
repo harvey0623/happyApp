@@ -66,7 +66,6 @@
          </div>
       </div>
    </div>
-
 </div>
 </template>
 
@@ -101,35 +100,32 @@ export default {
             iSecurityId: 2,
             log: [payload]
          }).then(res => {
+            if (res === '') throw new Error();
             return res;
-         }).err(err => { 
-            alert(JSON.stringify(err));
+         }).catch(err => { 
             return { status: 0 };
          });
       },
       async scanHandler({ scanData }) {
-         try {
-            this.cameraStatus = 'off';
-            this.isProcess = true;
-            alert(scanData)
-            let { status } = await this.uploadAttendance({ vCode: scanData }).then(res => res);
-            let isOk = status === 1;
-            alert(isOk)
-            this.openCamera = false;
-            this.cameraStatus = 'auto';
-            this.isProcess = false;
-            this.$swal({
-               icon: isOk ? 'success' : 'error',
-               title: isOk ? '打卡成功' : '打卡失敗'
-            });
-         } catch(err) {
-            alert(err);
-         }
+         this.cameraStatus = 'off';
+         this.isProcess = true;
+         let { status } = await this.uploadAttendance({ vCode: scanData }).then(res => res);
+         let isOk = status === 1;
+         this.openCamera = false;
+         this.cameraStatus = 'auto';
+         this.isProcess = false;
+         this.$swal({
+            icon: isOk ? 'success' : 'error',
+            title: isOk ? '打卡成功' : '打卡失敗'
+         });
       }
    },
    components: {
       CharacterInfo,
       QrcodeReader
+   },
+   mounted() {
+      // this.scanHandler({ scanData: '3|1' });
    }
 }
 </script>
