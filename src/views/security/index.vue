@@ -109,6 +109,7 @@ export default {
       async scanHandler({ scanData }) {
          this.cameraStatus = 'off';
          this.isProcess = true;
+         alert(scanData)
          let { status } = await this.uploadAttendance({ vCode: scanData }).then(res => res);
          let isOk = status === 1;
          this.openCamera = false;
