@@ -124,9 +124,6 @@ export default {
       CharacterInfo,
       QrcodeReader
    },
-   mounted() {
-      // this.scanHandler({ scanData: '3|1' });
-   }
 }
 </script>
 
