@@ -77,6 +77,7 @@ export default {
       },
       communityName() {
          if (this.securityData === null) return '';
+         if (this.securityData.communityInfo[0] === undefined) return '';
          return this.securityData.communityInfo[0].communityName;
       },
       tempSecurity() {
