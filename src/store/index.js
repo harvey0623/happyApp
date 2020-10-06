@@ -26,11 +26,11 @@ export default new Vuex.Store({
 		},
 		removeToastr(state, timestamp) { //移除訊息
 			let index = state.toastrList.findIndex(item => item.timestamp === timestamp);
-			state.toastrList.splice(index, 1);
+			if (index !== -1) state.toastrList.splice(index, 1);
 		}
 	},
 	getters: {
-		toastrLength(state) {
+		toastrLength(state) { //訊息數量
 			return state.toastrList.length;
 		}
 	},

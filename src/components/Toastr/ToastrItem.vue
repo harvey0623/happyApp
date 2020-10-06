@@ -1,7 +1,7 @@
 <template>
 <transition name="fade" appear>
    <div class="toastrItem" v-if="show" @click="hideHandler">
-      <div class="iconBox">
+      <div class="iconBox" :class="boxClass">
          <i class="far" :class="iconClass"></i>
       </div>
       <div class="msgBox">{{ msg }}</div>
@@ -36,6 +36,9 @@ export default {
       timer: null
    }),
    computed: {
+      boxClass() {
+         return this.status === 1 ? 'success' : 'error';
+      },
       iconClass() {
          return this.status === 1 ? 'fa-check' : 'fa-times';
       }
@@ -49,6 +52,7 @@ export default {
       startCountdown() {
          return new Promise((resolve) => {
             this.timer = setTimeout(() => {
+               this.hideHandler();
                resolve();
             }, this.duration);
          });
@@ -56,10 +60,6 @@ export default {
    },
    async mounted() {
       await this.startCountdown();
-      this.hideHandler();
-   },
-   beforeDestroy() {
-      clearTimeout(this.timer);
    }
 }
 </script>
