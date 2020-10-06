@@ -18,19 +18,19 @@ export default new Vuex.Store({
 		setMenuOpen(state, value) {
 			state.isMenuOpen = value;
 		},
-		addToastr(state, payload) {
+		addToastr(state, payload) { //增加訊息
 			state.toastrList.push({
 				timestamp: Date.now(),
 				...payload
 			});
 		},
-		removeToastr(state, timestamp) {
+		removeToastr(state, timestamp) { //移除訊息
 			let index = state.toastrList.findIndex(item => item.timestamp === timestamp);
 			state.toastrList.splice(index, 1);
 		}
 	},
 	getters: {
-		toastrLenght(state) {
+		toastrLength(state) {
 			return state.toastrList.length;
 		}
 	},
