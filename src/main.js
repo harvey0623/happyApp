@@ -24,6 +24,9 @@ Vue.use(validator);
 Vue.prototype.$hasStoreModule = function (namespace) {
 	return this.$store.hasModule(namespace);
 }
+Vue.prototype.$addToastr = function(payload) {
+	this.$store.commit('addToastr', payload);
+}
 
 const app = new Vue({
 	router,
