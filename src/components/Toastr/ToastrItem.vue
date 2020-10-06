@@ -1,6 +1,14 @@
 <template>
-<transition name="fade" appear>
-   <div class="toastrItem" v-if="show" @click="hideHandler">
+<transition 
+   name="" 
+   appear
+   enter-active-class="animate__animated animate__flipInX"
+   leave-active-class="animate__animated animate__flipOutX">
+   <div 
+      class="toastrItem" 
+      v-if="show" 
+      @click="hideHandler" 
+      @animationend="animateEnd">
       <div class="iconBox" :class="boxClass">
          <i class="far" :class="iconClass"></i>
       </div>
@@ -46,8 +54,12 @@ export default {
    methods: {
       hideHandler() {
          clearTimeout(this.timer);
-         this.$store.commit('removeToastr', this.timestamp);
          this.show = false;
+      },
+      animateEnd(evt) {
+         if (evt.target.classList.contains('v-leave-to')) {
+            this.$store.commit('removeToastr', this.timestamp);
+         }
       },
       startCountdown() {
          return new Promise((resolve) => {

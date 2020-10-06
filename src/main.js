@@ -7,6 +7,7 @@ import validator from "@/plugins/veeValidate/index.js";
 import VueMeta from 'vue-meta';
 
 //===global component
+import 'animate.css/animate.min.css';
 import '@/components/global/index.js';
 
 //====filter
