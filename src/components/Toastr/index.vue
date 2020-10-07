@@ -6,7 +6,7 @@
       :timestamp="toastr.timestamp"
       :status="toastr.status"
       :msg="toastr.msg"
-      :duration="3000"
+      :duration="duration"
    ></ToastrItem>
 </div>
 </template>
@@ -15,6 +15,12 @@
 import { mapState, mapGetters } from 'vuex';
 import ToastrItem from './ToastrItem.vue';
 export default {
+   props: {
+      duration: {
+         type: Number,
+         default: 3000 
+      }
+   },
    computed: {
       ...mapState(['toastrList']),
       ...mapGetters(['toastrLength']),

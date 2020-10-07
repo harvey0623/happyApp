@@ -72,12 +72,12 @@ export default {
          }).then(res => {
             return res;
          }).finally(() => {
-            this.isLoading = false
+            this.isLoading = false;
          });
          let isOk = status === 1;
-         this.$swal({
-            icon: isOk ? 'success' : 'error',
-            title: message
+         this.$addToastr({
+            status: isOk ? 1 : 0,
+            msg: message
          });
          if (isOk) this.$router.replace('/login');
       }

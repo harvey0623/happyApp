@@ -88,19 +88,14 @@ export default {
          let isValid = await this.$refs.verifyForm.validate().then(res => res);
          if (!isValid) return;
          let smsResult = await this.sendSMS({ vAccount: this.user.phone }).then(res => res);
-         this.$swal({
-            icon: smsResult ? 'success': 'error',
-            title: smsResult ? '簡訊已寄送': '請重新輸入電話碼'
+         this.$addToastr({
+            status: smsResult ? 1: 0,
+            msg: smsResult ? '簡訊已寄送': '請重新輸入電話碼'
          });
       },
       isSendedSMS() {
          let result = this.forgotUser !== null;
-         if (!result) {
-            this.$swal({
-               icon: 'error',
-               title: '請先取得簡訊驗證碼'
-            });
-         }
+         if (!result) this.$addToastr({ status: 0, msg: '請先取得簡訊驗證碼' });
          return result;
       },
       async confirmHandler() { //確認驗證碼
@@ -116,10 +111,7 @@ export default {
             this.isLoading = false;
          });
          let isOk = status === 1;
-         this.$swal({
-            icon: isOk ? 'success' : 'error',
-            title: message
-         });
+         this.$addToastr({ status: isOk ? 1 : 0, msg: message });
          if (isOk) this.$router.push('/fixPassword');
       }
    }
