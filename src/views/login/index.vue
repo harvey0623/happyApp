@@ -103,7 +103,7 @@ export default {
          let isValid = await this.$refs.form.validate().then(res => res);
          if (!isValid) return;
          let { loginStatus } = await this.doLogin().then(res => res);
-         if (!loginStatus) this.$swal({ icon: 'error', title: '帳號密碼有誤' });
+         if (!loginStatus) this.$addToastr({ status: 0, msg: '帳號密碼有誤' });
          else this.$router.replace('/');
       }
    },

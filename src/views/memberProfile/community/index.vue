@@ -146,9 +146,9 @@ export default {
             this.$bvModal.hide(this.modalId);
          }
          this.isLoading = false;
-         this.$swal({
-            icon: isSuccess ? 'success' : 'error',
-            title: isSuccess ? '添加成功' : '添加失敗'
+         this.$addToastr({
+            status: isSuccess ? 1 : 0,
+            msg: isSuccess ? '添加成功' : '添加失敗'
          });
       }
    },

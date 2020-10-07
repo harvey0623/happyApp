@@ -123,9 +123,9 @@ export default {
             this.openCamera = false;
             this.tempPunch.changeStatus(true);
          }
-         this.$swal({
-            icon: isMatch ? 'success' : 'error',
-            title: isMatch ? '巡點成功' : '巡點失敗'
+         this.$addToastr({
+            status: isMatch ? 1 : 0,
+            msg: isMatch ? '巡點成功' : '巡點失敗'
          });
       },
       matchPointId(id) { //確認qrcode的id是否跟巡點id相同

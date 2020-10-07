@@ -1,8 +1,7 @@
 import axios from 'axios';
 import router from '@/router/index.js';
 import store from '@/store/index.js';
-import i18n from '@/plugins/i18n/index.js';
-import swal from '@/plugins/sweetAlert/index.js';
+// import i18n from '@/plugins/i18n/index.js';
 
 const errorHandle = function(code) {
    let codeObj = {
@@ -10,7 +9,7 @@ const errorHandle = function(code) {
       401: '請重新登入',
       500: '司服器錯誤'
    };
-   swal({ icon: 'error', title: codeObj[code] });
+   store.commit('addToastr', { status: 0, msg: codeObj[code] });
    if (code === 401) router.replace('/login');
 }
 

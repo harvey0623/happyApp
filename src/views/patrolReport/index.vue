@@ -116,7 +116,7 @@ export default {
          let isImageFile = this.checkIsImageFile(files);
          this.resetInputType();
          if (!isImageFile) {
-            this.$swal({ icon: 'error', title: '必須是圖片檔案' });
+            this.$addToastr({ status: 0, msg: '上傳檔案需為圖片檔' });
             return;
          }
          this.isUpload = true;
@@ -170,9 +170,9 @@ export default {
          let base64Data = this.uploadImages.map((item) => ({ vImage: item.base64 }));
          let reportResult = await this.uploadMission(base64Data).then(res => res);
          let isOk = reportResult.status === 1;
-         this.$swal({ 
-            icon: isOk ? 'success' : 'error', 
-            title: isOk ? '回報成功' : '回報失敗' 
+         this.$addToastr({ 
+            status: isOk ? 1 : 0, 
+            msg: isOk ? '回報成功' : '回報失敗' 
          });
       }
    },
