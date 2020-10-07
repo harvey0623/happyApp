@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import i18n from '@/plugins/i18n/index.js';
 import store from '@/store/index.js';
 import TempView from '@/views/tempView/index.vue';
 import Home from '@/views/home/index.vue';
@@ -10,7 +9,6 @@ import Register from '@/views/register/index.vue';
 import ForgotPw from '@/views/forgotPw/index.vue';
 import FixPassword from '@/views/fixPassword/index.vue';
 import Security from '@/views/security/index.vue';
-import WorkInfo from '@/views/workInfo/index.vue';
 import Notify from '@/views/notify/index.vue';
 import Bulletin from '@/views/bulletin/index.vue';
 import MemberProfile from '@/views/memberProfile/index.vue';
@@ -72,11 +70,6 @@ const routes = [
 				path: '',
 				name: 'security',
 				component: Security,		
-			},
-			{
-				path: 'workInfo',
-				name: 'workInfo',
-				component: WorkInfo,		
 			},
 			{
 				path: 'workRecord',

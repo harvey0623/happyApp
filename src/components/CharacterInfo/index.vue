@@ -3,13 +3,12 @@
    <div class="backIcon" @click="backHandler">
       <i class="fal fa-long-arrow-left"></i>
    </div>
-   <router-link to="/security/workInfo" class="detailBox">
-      <div class="companyName">{{ companyName }}</div>
+   <div class="detailBox">
+      <div class="companyName">{{ companyName || 'Big Company' }}</div>
       <div class="laborName">
          <span>{{ laborName }}</span>
-         <i class="fal fa-pen"></i>
       </div>
-   </router-link>
+   </div>
 </div>
 </template>
 
