@@ -55,14 +55,14 @@
                   </div>
                </router-link>
             </div>
-            <div class="workRow">
+            <!-- <div class="workRow">
                <router-link to="/" class="workItem small">
                   <span>請假事項</span>
                   <div class="imgBox">
                      <img :src="require('@/assets/img/task.svg')" alt="">
                   </div>
                </router-link>
-            </div>
+            </div> -->
          </div>
       </div>
    </div>

@@ -5,7 +5,7 @@
       @switch="chooseCommunity"
    ></BannerBlock>
    <PositionBox></PositionBox>
-   <FeatureBox></FeatureBox>
+   <!-- <FeatureBox></FeatureBox> -->
    <BulletinSlider :bulletinData="bulletin1"></BulletinSlider>
    <Announce
       :title="'社區公告'"
@@ -123,7 +123,7 @@ export default {
       BulletinSlider,
       Announce,
       PositionBox,
-      FeatureBox
+      // FeatureBox
    }
 }
 </script>

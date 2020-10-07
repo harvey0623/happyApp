@@ -1,4 +1,4 @@
-import httpMethod from './http.js';
+import httpMethod from './config.js';
 
 export default {
    async doLogin(payload) {

@@ -17,16 +17,16 @@
 export default {
    data: () => ({
       lists: [
-         { title: '管委會', iconClass: 'fas fa-users', href: '/' },
+         // { title: '管委會', iconClass: 'fas fa-users', href: '/' },
          { title: '保全人員', iconClass: 'fas fa-user-shield', href: '/security' },
-         { title: '物業人員', iconClass: 'fas fa-user', href: '/' },
-         { title: '房仲人員', iconClass: 'fas fa-user-tie', href: '/' },
+         // { title: '物業人員', iconClass: 'fas fa-user', href: '/' },
+         // { title: '房仲人員', iconClass: 'fas fa-user-tie', href: '/' },
       ]
    })
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .positionBox {
    display: flex;
    align-items: center;
