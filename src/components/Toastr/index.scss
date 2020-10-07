@@ -1,0 +1,46 @@
+$success: rgb(28, 212, 28);
+$fail: red;
+
+.toastr {
+   position: fixed;
+   right: 0;
+   top: 0;
+   width: 200px;
+   padding: 10px;
+   z-index: 19;
+}
+
+.toastrItem {
+   display: flex;
+   align-items: center;
+   padding: 8px 15px;
+   @include elGutter(margin-bottom, 10px);
+   border-radius: 3px;
+   background-color: #fff;
+   >.iconBox {
+      flex: 0 0 30px;
+      height: 30px;
+      margin-right: 8px;
+      border-radius: 50%;
+      border: 2px solid #000;
+      font-size: 20px;
+      text-align: center;
+      line-height: 26px;
+      &.success {
+         border-color: $success;
+      }
+      &.error {
+         border-color: $fail;
+      }
+      >.fa-check {
+         color: $success;
+      }
+      >.fa-times {
+         color: $fail;
+      }
+   }
+   >.msgBox {
+      font-size: 16px;
+      color: map-get($fontColor, sidebar);
+   }
+}

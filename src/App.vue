@@ -5,11 +5,13 @@
          <router-view></router-view>
       </keep-alive>
    </component>
+   <Toastr></Toastr>
 </div>
 </template>
 
 <script>
 import '@/assets/scss/modules/index.scss';
+import Toastr from '@/components/Toastr/index.vue';
 export default {
    metaInfo() {
       return {
@@ -21,13 +23,13 @@ export default {
          ]
       }
    },
-   data: () => ({
-      
-   }),
 	computed: {
 		layout() {
 			return this.$route.meta.layout || 'defaultLayout';
       }
+   },
+   components: {
+      Toastr
    }
 }
 </script>

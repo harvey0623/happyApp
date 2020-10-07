@@ -114,9 +114,9 @@ export default {
          this.openCamera = false;
          this.cameraStatus = 'auto';
          this.isProcess = false;
-         this.$swal({
-            icon: isOk ? 'success' : 'error',
-            title: isOk ? '打卡成功' : '打卡失敗'
+         this.$addToastr({
+            status: isOk ? 1 : 0,
+            msg: isOk ? '打卡成功' : '打卡失敗'
          });
       }
    },

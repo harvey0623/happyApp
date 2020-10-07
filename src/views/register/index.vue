@@ -141,9 +141,9 @@ export default {
             confirmPw: this.user.confirmPw
          }).then(res => res)
             .finally(() => this.isLoading = false);
-         this.$swal({
-            icon: registerStatus ? 'success' : 'error',
-            title: message
+         this.$addToastr({
+            status: registerStatus ? 1 : 0,
+            msg: message
          });
          if (registerStatus) this.$router.replace('/login');
       }

@@ -11,11 +11,27 @@ Vuex.Store.prototype.hasModule = function (module) {
 export default new Vuex.Store({
 	strict: process.NODE_ENV === 'development',
 	state: {
-		isMenuOpen: false
+		isMenuOpen: false,
+		toastrList: []
 	},
 	mutations: {
 		setMenuOpen(state, value) {
 			state.isMenuOpen = value;
+		},
+		addToastr(state, payload) { //增加訊息
+			state.toastrList.push({
+				timestamp: Date.now(),
+				...payload
+			});
+		},
+		removeToastr(state, timestamp) { //移除訊息
+			let index = state.toastrList.findIndex(item => item.timestamp === timestamp);
+			if (index !== -1) state.toastrList.splice(index, 1);
+		}
+	},
+	getters: {
+		toastrLength(state) { //訊息數量
+			return state.toastrList.length;
 		}
 	},
 	actions: {

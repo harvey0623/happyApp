@@ -60,7 +60,7 @@ export default {
                }
             });
          } else {
-            this.$swal({ icon: 'error', title: '請先進行巡邏打卡' });
+            this.$addToastr({ status: 0, msg: '請先進行巡邏打卡' });
          }
       }
    }

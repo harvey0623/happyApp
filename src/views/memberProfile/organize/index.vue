@@ -232,9 +232,9 @@ export default {
             this.$bvModal.hide('editModal');
             this.$bvModal.hide('residentModal');
          }
-         this.$swal({
-            icon: isSuccess ? 'success' : 'error',
-            title: isSuccess ? '修改成功' : '修改失敗'
+         this.$addToastr({
+            status: isSuccess ? 1 : 0,
+            msg: isSuccess ? '修改成功' : '修改失敗'
          });
       }
    },
