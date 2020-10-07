@@ -515,25 +515,25 @@ select {
         font-size: 14px;
 }
 
-.positionBox {
+.positionBox[data-v-6dfa7c36] {
   display: flex;
   align-items: center;
   padding: 15px;
   margin-bottom: 15px;
 }
-.positionBox > .title {
+.positionBox > .title[data-v-6dfa7c36] {
     flex: 0 0 65px;
     margin-right: 15px;
     color: #4F3B54;
     font-weight: bold;
 }
-.positionBox > .positionList {
+.positionBox > .positionList[data-v-6dfa7c36] {
     flex: 1;
     display: flex;
     flex-wrap: nowrap;
     overflow: auto;
 }
-.positionBox > .positionList > a {
+.positionBox > .positionList > a[data-v-6dfa7c36] {
       flex: 0 0 160px;
       height: 38px;
       margin-right: 15px;
@@ -542,11 +542,11 @@ select {
       text-align: center;
       line-height: 38px;
 }
-.positionBox > .positionList > a > i {
+.positionBox > .positionList > a > i[data-v-6dfa7c36] {
         color: #f65d75;
         font-size: 20px;
 }
-.positionBox > .positionList > a > span {
+.positionBox > .positionList > a > span[data-v-6dfa7c36] {
         margin-left: 5px;
         color: #646464;
 }
@@ -993,26 +993,6 @@ select {
           width: 50px;
           height: auto;
           margin: auto;
-}
-
-.companyInfo[data-v-08358dbc] {
-  margin-bottom: 30px;
-}
-.companyInfo > .nameBlock[data-v-08358dbc] {
-    text-align: center;
-    font-size: 18px;
-}
-.companyInfo > .nameBlock.companyName[data-v-08358dbc] {
-      margin-bottom: 5px;
-      color: #4F3B54;
-      font-weight: bold;
-}
-.companyInfo > .nameBlock.communityName[data-v-08358dbc] {
-      color: #f65d75;
-}
-.laborInfo[data-v-08358dbc] {
-  padding-left: 22px;
-  padding-right: 22px;
 }
 
 .notifyTab[data-v-0873ff0f] {
