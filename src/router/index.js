@@ -57,7 +57,7 @@ const routes = [
 		]
 	},
 	{
-		path: '/communityIntro/:id',
+		path: '/communityIntro/:id(\\d+)',
 		name: 'communityIntro',
 		component: CommunityIntro
 	},
@@ -94,12 +94,12 @@ const routes = [
 				component: WorkMission
 			},
 			{
-				path: 'patrolMission/:id',
+				path: 'patrolMission/:id(\\d+)',
 				name: 'patrolMission',
 				component: PatrolMission
 			},
 			{
-				path: 'patrolReport/:missionId/:pointId',
+				path: 'patrolReport/:missionId(\\d+)/:pointId(\\d+)',
 				name: 'patrolReport',
 				component: PatrolReport
 			},
@@ -118,7 +118,7 @@ const routes = [
 		}
 	},
 	{
-		path: '/bulletin/:id',
+		path: '/bulletin/:id(\\d+)',
 		name: 'bulletin',
 		component: Bulletin,
 		meta: {
